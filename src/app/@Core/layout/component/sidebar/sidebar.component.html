@@ -1,0 +1,53 @@
+<nav [ngClass]="_menuService.showSideBar ? 'w-52 xl:w-64' : 'w-[70px]'"
+    class="hidden h-full flex-col justify-between overflow-auto bg-primary-300 pt-3 transition-all duration-300 scrollbar-thin lg:flex">
+    <div class="px-4">
+        <!-- Brand -->
+        <div class=" flex items-center justify-between relative">
+            <div class=" flex items-center" *ngIf="_menuService.showSideBar">
+                <a class="flex items-center justify-center rounded focus:outline-none focus:ring-1">
+                    <img src="../../../../../assets/images/light-logo.png" alt="">
+                </a>
+            </div>
+            
+            <div class="ltr:ml-2 rtl:mr-2">
+                <button (click)="toggleSidebar()"
+                    class="text-gray-950 w-7 h-7 rounded-md bg-primary-500 flex items-center justify-center hover:opacity-80 group ltr:-mr-4 rtl:-ml-4">
+                    <span class="icon icon-arrow-left text-white transition duration-300 text-xs"
+                        [ngClass]="{ '-rotate-180': !_menuService.showSideBar}"></span>
+                </button>
+            </div>
+        </div>
+
+         <!-- Separator -->
+         <div class="pt-3">
+            <hr class="border-t-2 border-primary-400" />
+        </div>
+
+        <!-- Menu Items -->
+        <app-sidebar-menu></app-sidebar-menu>
+
+    </div>
+
+    <div class="mx-4 my-4 space-y-1">
+
+        
+        <!-- Sign out -->
+        <div class="bg-primary-700 group flex h-9 cursor-pointer items-center justify-center rounded py-2">
+
+            <a routerLink="/Auth" (click)="logout()" [ngClass]="{ 'm-auto': !_menuService.showSideBar}"
+                class="flex items-center gap-2 text-center text-xs font-semibold tracking-wide text-white/50 hover:text-white cursor-pointer transition duration-300">
+                <span class="icon icon-info text-sm"></span>
+                <span [ngClass]="{ hidden: !_menuService.showSideBar}">Sign out</span>
+            </a>
+
+            <!-- Tooltip -->
+            <div class="fixed w-full " *ngIf="!_menuService.showSideBar">
+                <span
+                    class="z-1 absolute left-10 -top-[20px] w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-xs font-bold text-white shadow-md transition-all duration-300 group-hover:scale-100">
+                    Sign out
+                </span>
+            </div>
+        </div>
+
+    </div>
+</nav>

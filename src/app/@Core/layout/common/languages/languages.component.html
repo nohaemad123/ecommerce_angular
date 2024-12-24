@@ -1,0 +1,14 @@
+<div class="flex items-center justify-end gap-1 cursor-pointer relative z-20" (click)="switchLanguage()">
+         <img src="assets/images/{{(currentLang | async) == 'ar' ? 'en':'SA' }}.png" class="rounded-sm" alt="" height="20" width="20">
+        <span class="text-sm text-white">{{(((currentLang | async) == 'ar') ? 'en':'ar') | transloco}}</span>
+     <!-- <ng-container *ngIf="currentLang==='ar'">
+        <img src="assets/images/en.png" class="rounded-sm" alt="" height="20" width="20">
+        <span class="text-sm text-white">EN</span>
+    </ng-container> -->
+</div>
+<!-- {{currentLang | async}} -->
+<ng-container *transloco="let t">
+
+
+
+</ng-container>

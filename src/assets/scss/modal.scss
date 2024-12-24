@@ -1,0 +1,39 @@
+.hs-overlay {
+    @apply w-full h-full fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[999] overflow-x-hidden overflow-y-auto;
+
+    &__content {
+        @apply hs-overlay-open:mt-7 hs-overlay-open:opacity-100 hs-overlay-open:duration-500 mt-0 opacity-0 ease-out transition-all 
+        sm:max-w-lg sm:w-full m-3 sm:mx-auto min-h-[calc(100%-3.5rem)] flex items-center;
+
+        .box {
+            @apply w-full flex flex-col bg-white border shadow-sm rounded-xl;
+        }
+
+        .header{
+            @apply flex justify-between items-center py-3 px-4 border-b;
+            // .close{
+            //     @apply sfi sfi-close text-coral-700;
+            // }
+        }
+
+        .footer {
+            @apply flex justify-end items-center gap-x-2 p-5 border-t;
+        }
+    }
+
+    // Alert Modal
+    .alert-modal{
+        .main{
+            @apply px-8 py-8 overflow-y-auto text-center;
+            // .icon{
+            //     @apply sfi sfi-alarm text-6xl font-extrabold
+            // }
+            .des{
+                @apply text-gray-800 mb-0 text-base leading-6
+            }
+        }
+        .footer{
+            @apply justify-center border-0 pt-0 #{!important};
+        }
+    }
+}

@@ -1,0 +1,136 @@
+<div class="space-y-4">
+    <div class="px-12 py-8 rounded-md bg-neutral-50 flex_c_b">
+        <div class="flex-1">
+            <h3 class="mb-5 text-lg text-neutral-600">Shipping</h3>
+            <div class="space-y-2">
+                <div>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="checkbox">
+                        </div>
+                        <span class="text-sm font-normal text-gray-400 ms-3 dark:text-gray-300">Free
+                            Shipping</span>
+                    </label>
+                </div>
+                <div>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="checkbox">
+                        </div>
+                        <span
+                            class="text-sm font-normal text-gray-400 ms-3 dark:text-gray-300">Multiply
+                            Shipping</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="flex-1">
+            <div class="w-full form-group">
+                <label for="login-email" class="input-lable">Shipping Cost</label>
+                <input type="text" name="email" placeholder="Shipping Cost" autocomplete="off"
+                    class="custom-input">
+            </div>
+        </div>
+    </div>
+    <div class="px-12 py-8 rounded-md bg-neutral-50 flex_c_b">
+        <div class="flex-1">
+            <h3 class="mb-3 text-lg text-neutral-600">stock</h3>
+            <div class="flex-1 w-full form-group">
+                <label class="input-lable">stock</label>
+                <div class="">
+                    <ng-select class="relative selectBox" placeholder="stock">
+                        <ng-option>in stock</ng-option>
+                        <ng-option>2</ng-option>
+                    </ng-select>
+                </div>
+            </div>
+        </div>
+        <div class="flex-1">
+            <div>
+                <img src="assets/images/chart.png" class="ms-auto" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="px-12 py-8 rounded-md bg-neutral-50">
+        <h3 class="mb-3 text-lg text-neutral-600">Related</h3>
+        <div class="gap-6 flex_c_b">
+            <div class="flex-1">
+                <div class="w-full form-group">
+                    <label for="login-email" class="input-lable">Name <span
+                            class="text-xs text-neutral-400">(up to
+                            10)</span></label>
+                    <input type="text" name="email" placeholder="Enter your Name" autocomplete="off"
+                        class="custom-input">
+                </div>
+            </div>
+            <div class="flex-1">
+                <div class="w-full form-group">
+                    <label for="login-email" class="input-lable">Product Cross Sale <span
+                            class="text-xs text-neutral-400">(up to 10)</span></label>
+                    <input type="text" name="email" placeholder="Enter your Name" autocomplete="off"
+                        class="custom-input">
+                </div>
+            </div>
+            <div class="flex-1">
+                <div class="form-group">
+                    <label class="input-lable">Collection</label>
+                    <div class="">
+                        <ng-select class="relative selectBox" placeholder="Chose Collection">
+                            <ng-option>in stock</ng-option>
+                            <ng-option>2</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="px-12 py-8 rounded-md bg-neutral-50">
+        <h3 class="mb-3 text-lg text-neutral-600">Marketing</h3>
+        <div class="gap-6 flex_c_b">
+            <div class="gap-32 flex_c_b flex-2">
+                <div>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="checkbox">
+                        </div>
+                        <span class="text-sm font-normal text-gray-400 ms-3 dark:text-gray-300">Cash
+                            On
+                            Delivery</span>
+                    </label>
+                </div>
+                <div>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="checkbox">
+                        </div>
+                        <span class="text-sm font-normal text-gray-400 ms-3 dark:text-gray-300">show
+                            stock</span>
+                    </label>
+                </div>
+                <div>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="checkbox">
+                        </div>
+                        <span
+                            class="text-sm font-normal text-gray-400 ms-3 dark:text-gray-300">Embedded
+                            Barcode</span>
+                    </label>
+                </div>
+            </div>
+            <div class="relative flex-1">
+                <div class="absolute bottom-[-50px] end-0">
+                    <img src="assets/images/links.png" class="ms-auto" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-between mt-10 text-end">
+        <button class="w-40 custom-button group" (click)="onPervious()">
+            <span class="text-sm">Previous</span>
+        </button>
+        <button class="w-40 custom-button filled-button"  (click)="onNext()">
+            <span class="text-sm">Next</span>
+        </button>
+    </div>
+</div>

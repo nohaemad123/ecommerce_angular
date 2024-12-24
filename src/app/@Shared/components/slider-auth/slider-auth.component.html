@@ -1,0 +1,56 @@
+<div class="bg-primary-slideAuth px-8 xl:px-16 pb-12 pt-10 fixed h-full end-0 w-5/12">
+    <div class="bg-pattern absolute bottom-0 left-0 w-full h-3/5 xl:h-3/4 bg-no-repeat bg-left-bottom blur-sm bg-contain"></div>
+
+    <div class="h-full flex justify-between  flex-col gap-6">
+        <!-- language-site -->
+        <!-- <div class="flex items-center justify-end gap-1 cursor-pointer relative z-20" (click)="switchLanguage()">
+            <ng-container *ngIf="currentLang==='en'">
+                <img src="assets/images/SA.png" class="rounded-sm" alt="" height="20" width="20">
+                <span class="text-sm text-white">AR</span>
+            </ng-container>
+            <ng-container *ngIf="currentLang==='ar'">
+                <img src="assets/images/en.png" class="rounded-sm" alt="" height="20" width="20">
+                <span class="text-sm text-white">EN</span>
+            </ng-container>
+        </div> -->
+        <app-languages></app-languages>
+        <div class="bg-auth border border-gray-300 rounded-md p-4 xl:p-8 relative flex-1 overflow-auto ltr">
+            <owl-carousel-o [options]="customOptions">
+                <ng-template carouselSlide>
+                    <div class="flex justify-between h-full flex-col text-wrap">
+                        <p class="text-2xl text-white font-Omnes line-clamp-4 text-left h-full text-wrap">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        </p>
+                        <div class="mb-20 imageSlide">
+                            <img src="assets/images/slide-auth2.png"  alt=""
+                                class="h-[300px] w-full object-contain">
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                <div class="flex justify-between h-full flex-col  text-wrap">
+                    <p class="text-2xl text-white font-Omnes line-clamp-4 text-left h-full text-wrap ">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </p>
+                    <div class="mb-20 imageSlide">
+                        <img src="assets/images/slide-auth.png" alt="" class="h-[300px] w-full object-contain">
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template carouselSlide>
+                <div class="flex justify-between h-full flex-col text-wrap">
+                    <p class="text-2xl text-white font-nunito line-clamp-4 text-left h-full text-wrap">asdasdasd
+                    </p>
+                    <div class="mb-20 imageSlide">
+                        <img src="assets/images/slide-auth1.png" alt="" class="h-[300px] w-full object-contain">
+                    </div>
+                </div>
+            </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+</div>

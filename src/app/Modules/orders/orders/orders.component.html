@@ -1,0 +1,67 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main - Brands feed -->
+    <main class="flex flex-col flex-auto">
+
+        <!-- Title -->
+        <h2 class="text-lg font-medium leading-none tracking-normal">{{'orders.list.breadcrumb.orders' | transloco}}
+        </h2>
+
+        <!-- start breadcrumb -->
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="flex">
+                <li><a href="#" class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">
+                        {{'home' | transloco}}
+                    </a>
+                </li>
+                <li><a href="#" class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">
+                        {{'orders.list.breadcrumb.orders' | transloco}}
+                    </a>
+                </li>
+                <li class="text-primary" aria-current="page"> {{'orders.list.breadcrumb.list' | transloco}}
+                </li>
+            </ol>
+        </nav>
+        <!-- end breadcrumb -->
+
+        <div class="flex items-center justify-between mt-4">
+            <div class="relative px-0.5">
+                <input type="text" class="w-64 ps-8 custom-input" placeholder="Search">
+                <!-- icon -->
+                <div class="absolute cursor-pointer top-4 start-3">
+                    <span class="text-gray-400 icon icon-search"></span>
+                </div>
+            </div>
+
+        </div>
+
+
+        <ng-container *ngIf="(orders$ | async) as orders; else loading">
+            <ng-container *ngIf="orders.items.length; else noOrders">
+                <div class="mt-8">
+                    <app-table [filter]="filterCriteria" [columns]="columns" [rows]="orders"
+                        (setLimitEvent)="setLimit($event)" (setPageEvent)="setPage($event)"></app-table>
+                </div>
+            </ng-container>
+        </ng-container>
+
+
+        <ng-template #loading>
+            <div class="mt-8" *ngIf="!ordersError">
+                Loading...
+            </div>
+
+            <ng-container *ngIf="ordersError">
+                <app-error-loading [error_msg]="error_msg"></app-error-loading>
+            </ng-container>
+        </ng-template>
+
+        <ng-template #noOrders>
+            <div class="mt-8">
+                <app-empty-state [emptyStateData]="emptyStateData"></app-empty-state>
+            </div>
+        </ng-template>
+
+    </main>
+
+</div>

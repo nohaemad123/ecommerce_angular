@@ -1,0 +1,258 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main -->
+    <div class="flex flex-col flex-auto">
+
+        <!-- Brands feed -->
+        <div class="">
+
+            <!-- Title -->
+            <h2 class=" text-lg font-medium tracking-normal leading-none">
+                {{"categories.add_edit.breadcrumb.add_category"|transloco}}</h2>
+
+            <!-- start breadcrumb -->
+            <nav aria-label="breadcrumb" class="mt-2">
+                <ol class="flex">
+                    <li><a href="#"
+                            class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">{{"categories.home"|transloco}}</a>
+                    </li>
+                    <li><a href="#"
+                            class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">{{"categories.list.breadcrumb.categories"|transloco}}</a>
+                    </li>
+                    <li class="text-primary" aria-current="page">
+                        {{"categories.add_edit.breadcrumb.add_category"|transloco}}</li>
+                </ol>
+            </nav>
+
+            <form class="space-y-6" [formGroup]="newEditCategoryForm" (ngSubmit)="onSubmitNewCategories()">
+                <div class="flex gap-8 ">
+                    <div class="bg-neutral-50 px-5 py-7   rounded-lg mb-6 w-3/5">
+
+                        <ul class="flex list-none gap-8 mb-6">
+                            <li class="text-center flex items-center gap-2">
+                                <img src="../../../../assets/images/en.png" class="w-5 h-5 rounded-full" alt="">
+                                <a class="text-sm uppercase rounded block leading-normal cursor-pointer"
+                                    (click)="toggleTabs(1)"
+                                    [ngClass]="{'text-gray-400': openTab !== 1, 'text-sky-600 underline': openTab === 1}">
+                                    {{"categories.add_edit.english"|transloco}}
+                                </a>
+                            </li>
+                            <li class="text-center flex items-center gap-2">
+                                <img src="../../../../assets/images/SA.png" class="w-5 h-5 rounded-full" alt="">
+                                <a class="text-sm uppercase rounded block leading-normal cursor-pointer"
+                                    (click)="toggleTabs(2)"
+                                    [ngClass]="{'text-gray-400': openTab !== 2, 'text-sky-600 underline': openTab === 2}">
+                                    {{"categories.add_edit.arabic"|transloco}}
+                                </a>
+                            </li>
+
+                        </ul>
+
+
+                        <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
+                            <div class="form-group">
+                                <label for="login-email"
+                                    class="block text-base text-gray-900 mb-2 font-normal">{{"categories.add_edit.form.labels.name_en"|transloco}}</label>
+                                <input type="text" [ngClass]="{ '': (newEditCategoryForm.controls['nameEn'].errors)}"
+                                    name="nameEn"
+                                    placeholder="{{'categories.add_edit.form.placeholders.name_en'|transloco}}"
+                                    autocomplete="off" formControlName="nameEn" class="custom-input">
+                                <div *ngIf="(newEditCategoryForm.controls['nameEn'].touched && newEditCategoryForm.controls['nameEn'].invalid)"
+                                    class="invalid-feedback mt-2">
+                                    <div *ngIf="newEditCategoryForm.controls['nameEn'].errors?.['required']"
+                                        class="text-[#B00020] font-normal text-sm">
+                                        {{"categories.add_edit.form.messages.name_en"|transloco}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
+                            <div class="form-group">
+                                <label
+                                    class="block text-base text-gray-900 mb-2 font-normal">{{"categories.add_edit.form.labels.name_ar"|transloco}}</label>
+                                <input type="text" [ngClass]="{ '': (newEditCategoryForm.controls['name'].errors)}"
+                                    name="name"
+                                    placeholder="{{'categories.add_edit.form.placeholders.name_ar'|transloco}}"
+                                    autocomplete="off" formControlName="name" class="custom-input">
+
+                                <div *ngIf="(newEditCategoryForm.controls['name'].touched && newEditCategoryForm.controls['name'].invalid)"
+                                    class="invalid-feedback mt-2">
+                                    <div *ngIf="newEditCategoryForm.controls['name'].errors?.['required']"
+                                        class="text-[#B00020] font-normal text-sm">
+                                        {{"categories.add_edit.form.messages.name_ar"|transloco}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=" bg-neutral-100 px-2 py-2 mt-4 mb-4 w-50  rounded-lg">
+                            <div class=" form-group">
+                                <input type="checkbox" [checked]="isChecked"
+                                    class=" border border-gray-200 focus:outline-none rounded-md"
+                                    (click)="checkCategory($event)">
+                                <label for="checkbox" class="text-sm text-gray-600 mx-2">
+                                    {{"categories.add_edit.form.labels.add_parent"|transloco}}</label>
+                                <ng-container *ngIf="!isChecked;else parent_category"></ng-container>
+
+                            </div>
+                        </div>
+
+                        <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
+                            <div class="form-group">
+                                <label for="login-email"
+                                    class="block text-base text-gray-900 mb-2 font-normal">{{"categories.add_edit.form.labels.description_en"|transloco}}</label>
+                                <textarea rows="5" cols="20" type="text"
+                                    [ngClass]="{ '': (newEditCategoryForm.controls['descriptionEn'].errors)}"
+                                    name="name"
+                                    placeholder="{{'categories.add_edit.form.placeholders.description_en'|transloco}}"
+                                    autocomplete="off" formControlName="descriptionEn"
+                                    class="custom-input h-40"></textarea>
+                                <div *ngIf="(newEditCategoryForm.controls['descriptionEn'].touched && newEditCategoryForm.controls['descriptionEn'].invalid)"
+                                    class="invalid-feedback mt-2">
+                                    <div *ngIf="newEditCategoryForm.controls['descriptionEn'].errors?.['required']"
+                                        class="text-[#B00020] font-normal text-sm">
+                                        {{"categories.add_edit.form.messages.description_en"|transloco}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
+
+
+                            <div class="form-group">
+                                <label
+                                    class="block text-base text-gray-900 mb-2 font-normal">{{"categories.add_edit.form.labels.description_ar"|transloco}}</label>
+                                <textarea rows="5" type="text"
+                                    [ngClass]="{ '': (newEditCategoryForm.controls['description'].errors)}"
+                                    name="description"
+                                    placeholder="{{'categories.add_edit.form.placeholders.description_ar'|transloco}}"
+                                    autocomplete="off" formControlName="description"
+                                    class="custom-input h-40"></textarea>
+                                <div *ngIf="(newEditCategoryForm.controls['description'].touched && newEditCategoryForm.controls['description'].invalid)"
+                                    class="invalid-feedback mt-2">
+                                    <div *ngIf="newEditCategoryForm.controls['description'].errors?.['required']"
+                                        class="text-[#B00020] font-normal text-sm">
+                                        {{"categories.add_edit.form.messages.description_ar"|transloco}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="w-2/5">
+                        <div class=" bg-neutral-50 px-2 py-3 mb-6  rounded-lg">
+                            <ng-template #parent_category>
+                                <div class=" bg-neutral-50 px-2 py-7 mt-4 mb-4   rounded-lg">
+                                    <div class="form-group">
+                                        <label
+                                            class="block text-base text-gray-900 mb-2 font-normal">{{"categories.add_edit.form.labels.parent_category"|transloco}}</label>
+                                    
+                                            <ng-select [searchable]="true" placeholder="choose parent category" [clearable]="false" formControlName="parentCategoryId"
+                                            bindValue="id" bindLabel="name">
+
+                                            <ng-option *ngFor="let category of categoriesData"
+                                                [value]="category?.id">{{
+                                                category?.name
+                                                }}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </ng-template>
+
+                            <div class="form-group">
+
+                                <label class="flex justify-between cursor-pointer">
+
+                                    
+                                    <input type="checkbox" [ngClass]="statusChecked ? 'checked' : ''"  [checked]="statusChecked" (change)="toggleCheck($event)" formControlName="status" value="" class=" sr-only peer">
+                                    <span
+                                        class="ms-3 text-sm font-normal text-gray-400 dark:text-gray-300">{{"categories.add_edit.form.labels.status"|transloco}}</span>
+
+                                    <div class="checkbox">
+                                    </div>
+
+                                </label>
+
+                                <div *ngIf="(newEditCategoryForm.controls['status'].touched && newEditCategoryForm.controls['status'].invalid)"
+                                    class="invalid-feedback mt-2">
+                                    <div *ngIf="newEditCategoryForm.controls['status'].errors?.['required']"
+                                        class="text-dangerDark font-normal text-sm">
+                                        {{'brands.common_fields.required_messages'|transloco}}</div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" bg-neutral-50 px-2 py-3   rounded-lg">
+                            <div class="form-group">
+                                <span class="ms-3 text-sm font-normal">icon</span>
+
+                                <upload-image [folderName]="FOLDERNAME"
+                                    [imgURL]="updatedIMG !== undefined ? updatedIMG : ''"
+                                    (onUpload)="onUploadIMG($event)">
+
+                                </upload-image>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class=" bg-neutral-50 px-4 py-7 mb-6  rounded-lg">
+                    <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
+                        <div class="form-group mb-6">
+                            <label
+                                class="block text-base text-gray-900 mb-2 font-normal">{{"categories.add_edit.form.labels.meta_title_en"|transloco}}</label>
+                            <input type="text" formControlName="metaTitleEn" name="metaTitleEn"
+                                placeholder="{{'categories.add_edit.form.placeholders.meta_title_en'|transloco}}"
+                                autocomplete="off" class="custom-input">
+
+
+                        </div>
+                        <div class="form-group">
+                            <label
+                                class="block text-base text-gray-900 mb-2 font-normal">{{"categories.add_edit.form.labels.meta_description_en"|transloco}}</label>
+                            <textarea rows="5" type="text" formControlName="metaDescriptionEn" name="metaDescriptionEn"
+                                placeholder="{{'categories.add_edit.form.placeholders.meta_description_en'|transloco}}"
+                                autocomplete="off" class="custom-input h-40"></textarea>
+
+
+                        </div>
+                    </div>
+                    <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
+                        <div class="form-group mb-6">
+                            <label
+                                class="block text-base text-gray-900 mb-2 font-normal">{{"categories.add_edit.form.labels.meta_title_ar"|transloco}}</label>
+                            <input type="text" formControlName="metaTitle" name="metaTitle"
+                                placeholder="{{'categories.add_edit.form.placeholders.meta_title_ar'|transloco}}"
+                                autocomplete="off" class="custom-input">
+
+
+                        </div>
+                        <div class="form-group">
+                            <label
+                                class="block text-base text-gray-900 mb-2 font-normal">{{"categories.add_edit.form.labels.meta_description_ar"|transloco}}</label>
+                            <textarea rows="5" type="text"
+                            formControlName="metaDescription" name="metaDescription"
+                                placeholder="{{'categories.add_edit.form.placeholders.meta_description_ar'|transloco}}"
+                                autocomplete="off" class="custom-input h-40"></textarea>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-row-reverse">
+                    <button type="submit" class="custom-button filled-button w-40"
+                        [disabled]="newEditCategoryForm.invalid">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1 ml-1">
+                            loading...</span>
+                        <span *ngIf="!loading">
+                            {{"categories.add_edit.save"|transloco}}
+                        </span>
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

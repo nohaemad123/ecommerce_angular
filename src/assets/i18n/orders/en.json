@@ -1,0 +1,116 @@
+{
+    "home": "Home",
+    "shipping": "Shipping",
+    "shippingMethodSuccess": "Shipping method selected",
+    "orderSentForShipping": "Order sent to OTO for shipping",
+    "DeliveryEstimation": "Delivery Estimation Time",
+    "Cancel": "Cancel",
+    "Confirm": "Confirm",
+    "Success": "Success",
+    "DeliveryEstimationText": "Delivery estimation time selected successfully!",
+    "no_orders": {
+        "title": "Orders is empty"
+    },
+    "table": {
+        "thead": {
+            "id": "Id",
+            "tracking_number": "Tracking number",
+            "customer_name": "Customer name",
+            "email": "E-mail",
+            "total": "Total",
+            "actions": "Actions",
+            "status": "Status",
+            "payment_method": "Payment method"
+        }
+    },
+    "list": {
+        "breadcrumb": {
+            "orders": "orders",
+            "list": "List"
+        }
+    },
+    "view_order": {
+        "breadcrumb": {
+            "orders": "orders",
+            "view_order": "View order"
+        },
+        "tabs": {
+            "order_details": "Order details",
+            "order_history": "Order history"
+        },
+        "order_date": "Order date",
+        "payment_method": "Payment method",
+        "shipping_method": "Shipping method",
+        "documents": "Documents",
+        "invoice_receipt": "Invoice receipt",
+        "shipping": "Shipping",
+        "rewards_points": "Rewards points",
+        "shipping_address": "Shipping address",
+        "name": "Name",
+        "phone": "Phone",
+        "country": "Country",
+        "street_address": "Street address",
+        "city": "City",
+        "building_number": "Building number",
+        "tracking": "Tracking",
+        "tracking_number": "Tracking number",
+        "status": "Status",
+        "summary": "Summary",
+        "sub_total": "Sub-total",
+        "discount": "Discount",
+        "tax": "Tax",
+        "total": "Total",
+        "action_buttons": {
+            "make_prepared": "Make order prepared",
+            "make_revised": "Make order revised",
+            "reject": "Reject"
+        },
+        "StatusCode": {
+            "Revised": "Revised",
+            "Prepared": "Prepared",
+            "Activated": "Activated",
+            "Locked": "Locked",
+            "Canceled": "Canceled",
+            "Completed": "Completed",
+            "Delivered": "Delivered",
+            "Delivering": "Delivering",
+            "Denied": "Denied",
+            "Expired": "Expired",
+            "Failed": "Failed",
+            "Pending": "Pending",
+            "Processing": "Processing",
+            "Refunded": "Refunded"
+        },
+        "order_details_table": {
+            "thead": {
+                "id": "Id",
+                "product_name": "Product name",
+                "quantity": "Quantity",
+                "unit_price": "Unit price",
+                "total_price": "Total price"
+            }
+        },
+        "order_history_table": {
+            "thead": {
+                "id": "Id",
+                "customer_nodified":"Customer notified",
+                "order_status":"Order status"
+
+            }
+        },
+        "prepare_order_success":{
+            "title":"Order prepared",
+            "subtitle":"Order prepared successfully"
+        },
+        "revise_order_success":{
+            "title":"Order revised",
+            "subtitle":"Order revised successfully"
+        },
+        "reject_order_success":{
+            "title":"Order rejected",
+            "subtitle":"Order rejected successfully"
+        }
+    },
+    "order_error_loading":"An error occurred while fetching order",
+    "order_details_error_loading":"An error occurred while fetching order details"
+}

@@ -1,0 +1,68 @@
+<div class="space-y-4">
+    <div class="px-12 py-8 rounded-md bg-neutral-50">
+        <div class="flex items-baseline gap-2 mb-6">
+            <h3 class="mb-0 text-lg text-neutral-600 required">{{ 'products.ThumbnailImage' | transloco}}</h3>
+            <!-- <span class="text-xs text-neutral-400">(Allowed to upload 12 images)</span> -->
+        </div>
+        <div class="w-6/12">
+            <upload-image [folderName]="FOLDERNAME"  [multiple]="false" [imgURL]="mainIMG !== undefined ? mainIMG : ''" (onUpload)="onUploadMainIMG($event)"></upload-image>
+        </div>
+    </div>
+    <div class="px-12 py-8 rounded-md bg-neutral-50">
+        <div class="flex items-baseline gap-2 mb-6">
+            <h3 class="mb-0 text-lg text-neutral-600 required">{{ 'products.GalleryImages' | transloco}}</h3>
+            <!-- <span class="text-xs text-neutral-400">(Allowed to upload 12 images)</span> -->
+        </div>
+        <div class="w-6/12">
+            <upload-image [folderName]="FOLDERNAME" [multiple]="true" [imgURL]="productIMGs !== undefined ? productIMGs : ''" (onUpload)="onUploadIMG($event)"></upload-image>
+        </div>
+    </div>
+    
+    <!-- <div class="px-12 py-8 rounded-md bg-neutral-50">
+        <div class="flex items-baseline gap-2 mb-6">
+            <h3 class="mb-0 text-lg text-neutral-600">Video</h3>
+        </div>
+        <div class="gap-40 flex_c">
+            <div class="flex-1 space-y-4">
+                <div class="w-full form-group">
+                    <label class="input-lable">Video source</label>
+                    <div class="">
+                        <ng-select class="relative selectBox" placeholder="Video source">
+                            <ng-option>1</ng-option>
+                            <ng-option>2</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="w-full form-group">
+                    <label for="login-email" class="input-lable">Video source</label>
+                    <input type="text" name="text" placeholder="Video source" autocomplete="off"
+                        class="custom-input">
+                </div>
+            </div>
+            <div class="flex-1">
+                <video width="500px" controls class="ms-auto">
+                    <source src="mov_bbb.mp4" type="video/mp4">
+                    <source src="mov_bbb.ogg" type="video/ogg">
+                </video>
+            </div>
+        </div>
+    </div> -->
+    <!-- <div class="px-12 py-8 rounded-md bg-neutral-50">
+        <div class="flex items-baseline gap-2 mb-6">
+            <h3 class="mb-0 text-lg text-neutral-600">Attach file Pdf</h3>
+            <span class="text-xs text-neutral-400">Click or drag file to this area to upload from
+                local drive</span>
+        </div>
+        <div class="w-6/12">
+            <upload-image [folderName]="'uplaod file'"></upload-image>
+        </div>
+    </div> -->
+    <div class="flex justify-between mt-10 text-end">
+        <button class="w-40 custom-button group" (click)="onPervious()">
+            <span class="text-sm">{{ 'products.Previous' | transloco}}</span>
+        </button>
+        <button class="w-40 custom-button filled-button" [disabled]="!productImages.length || !mainImage.length"  (click)="onNext()">
+            <span class="text-sm">{{ 'products.Next' | transloco}}</span>
+        </button>
+    </div>
+</div>

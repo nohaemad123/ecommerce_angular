@@ -1,0 +1,35 @@
+.custom-input {
+  @apply border border-gray-200 rounded-md placeholder:text-gray-400 placeholder:text-sm focus:outline-0 
+  outline-0 focus:shadow-lg focus:outline-offset-0 transition duration-300 w-full h-12 bg-transparent font-light text-start px-5
+}
+
+
+// upload file
+.upload-file .dz-wrapper .dz-message {
+  @apply bg-white rounded-md border-neutral-300 #{!important};
+}
+.upload-image{
+&_smallCard{
+  .dz-message{
+    @apply m-0 #{!important};
+  }
+   
+}
+}
+
+
+// checkbox
+.checkbox_input {
+  @apply shrink-0 mt-0.5 border-gray-200 rounded text-primary-400 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none
+}
+
+// checkbox_BG
+.checkbox_bg {
+  @apply flex items-start min-w-20 relative w-[-webkit-fill-available];
+  input{
+    @apply  z-10 mt-[6px] ms-2;
+  }
+  label{
+    @apply bg-black-50 absolute w-full h-7 m-0 text-nowrap ps-7 pe-3 pt-[7px] cursor-pointer rounded;
+  }
+}

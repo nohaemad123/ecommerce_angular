@@ -1,0 +1,126 @@
+.ngx-datatable {
+	.datatable-header {
+		background: #F8F9FB;
+		border-radius: 10px;
+        text-align: center;
+
+		.datatable-header {
+			&-inner {
+				height: 100%;
+				width: 100% !important;
+
+				.datatable-row-center {
+					align-items: center;
+					width: 100%;
+
+				}
+			}
+
+			&-cell {
+				flex: 1 1 0%;
+				&-template-wrap{
+					text-align: start;
+				}
+			}
+		}
+
+		.datatable-header-cell-label {
+			font-size: 16px;
+			font-weight: 500;
+			color: #949496;
+			display: flex;
+					justify-content: start;
+					align-items: center;
+					flex-wrap: wrap;
+                    text-align: center;
+					overflow-x: unset;
+					text-wrap: wrap;
+		}
+	}
+
+	.datatable-body {
+		.datatable-body-row>div{
+			/* gap: 30px; */
+			display: flex;
+    		align-items: center;
+			padding: 0.5rem 0;
+		}
+
+		.datatable-row-wrapper {
+			border-bottom: 1px solid #E9EAF3;
+			.datatable-row-center {
+
+				.datatable-body-cell {
+					padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+					flex: 1 1 0%;
+					justify-content: flex-start;
+					display: flex;
+					justify-content: start;
+					align-items: start;
+					flex-wrap: wrap;
+                    text-align: center;
+					overflow-x: unset;
+					text-wrap: wrap;
+					&:first-child {
+						color: #949496;
+						padding: 0;
+					}
+				}
+			}
+		}
+
+		.datatable-scroll {
+			width: 100%;
+		}
+
+		&-row>div {
+			width: 100%;
+
+		}
+	}
+
+	.datatable-footer {
+		border-top: 1px solid #eee;
+		.page-count {
+			@apply hidden
+		}
+
+		.datatable-pager {
+			.pager {
+				@apply flex justify-end gap-1 #{!important};
+				li {
+					a {
+						@apply w-7 h-7 text-center flex items-center justify-center border border-neutral-100
+						hover:bg-neutral-100 rounded-md text-neutral-600 #{!important}
+					}
+
+					&.active {
+						@apply bg-neutral-100 rounded-md
+					}
+					&.disabled,&:last-child,&:nth-last-child(2),&:first-child,&:nth-of-type(2){
+						@apply hidden #{!important};
+					}
+				}
+			}
+
+		}
+	}
+}
+
+// custom table (align-bottom-align-middle)
+.table {
+	&__header {
+		&__cell {
+			@apply table-cell text-neutral-600 text-sm px-4 whitespace-nowrap;
+		}
+	}
+
+	&__content {
+		@apply table-row bg-transparent w-full rounded mb-3;
+
+		&__cell {
+			@apply table-cell py-1.5 px-2 whitespace-nowrap;
+		}
+	}
+}

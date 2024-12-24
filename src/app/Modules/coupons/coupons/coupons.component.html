@@ -1,0 +1,78 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main Coupon feed -->
+    <main class="flex flex-col flex-auto">
+
+        <!-- Title -->
+        <h2 class="text-lg font-medium tracking-normal leading-none">{{'coupons.title' | transloco}}</h2>
+
+        <!-- start breadcrumb -->
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="flex">
+                <li><a href="#" class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">
+                    {{'home' | transloco}}
+                </a>
+                </li>
+                <li><a href="#"
+                        class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">
+                        {{'coupons' | transloco}}</a>
+                </li>
+                <li class="text-primary" aria-current="page">{{'coupons.title' | transloco}}</li>
+            </ol>
+        </nav>
+        <!-- end breadcrumb -->
+
+        <div class="flex items-center justify-between mt-4">
+            <div class="relative px-0.5">
+                <input type="text" class="custom-input ps-8 w-64" placeholder="Search">
+                <!-- icon -->
+                <div class="absolute top-4 left-3 cursor-pointer">
+                    <span class="icon icon-search text-gray-400"></span>
+                </div>
+            </div>
+            <div>
+                <button [routerLink]="['/Products/Coupons/New']" routerLinkActive="router-link-active"  type="button" class="custom-button filled-button">
+                    <span class="icon icon-plus text-xs"></span>
+                    <span class="text-sm"> {{'coupons.no_coupon.btnText' | transloco}} </span>
+                </button>
+            </div>
+        </div>
+
+
+        <ng-container *ngIf="(coupons$ | async) as coupons; else loadingOrError;">
+
+            <ng-container *ngIf="coupons.items.length && !showError; else noCoupons">
+                <div class="mt-8">
+                          <app-table
+                            [filter]="filterCriteria"
+                            [columns]="columns"
+                            [rows]="coupons"
+                            (setLimitEvent)="setLimit($event)"
+                            (actionEmitter)="actionClicked($event)"
+                            (setPageEvent)="setPage($event)"
+                          ></app-table>
+                </div>
+            </ng-container>
+        </ng-container>
+
+
+        <!-- Loading template -->
+        <ng-template #loadingOrError>
+            <div class="mt-8" *ngIf="!showError">
+                Loading...
+            </div>
+
+            <ng-container *ngIf="showError">
+                <app-error-loading [error_msg]="error_msg"></app-error-loading>
+            </ng-container>
+        </ng-template>
+<!-- No Coupons template -->
+        <ng-template #noCoupons>
+            <div class="mt-8">
+                <app-empty-state [emptyStateData]="emptyStateData"></app-empty-state>
+            </div>
+        </ng-template>
+
+    </main>
+
+</div>

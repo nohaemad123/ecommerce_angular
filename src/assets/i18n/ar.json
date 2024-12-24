@@ -1,0 +1,33 @@
+{
+  "dashboard": "لوحه التحكم",
+  "auth": "المصادقة",
+  "signIn": "تسجيل دخول",
+  "signUp": "تسجيل",
+  "forgot_password": "هل نسيت كلمه المرور",
+  "Settings": "الاعدادات",
+  "categories": "كل الاصناف",
+  "new_category": "اضافة صنف جديد",
+  "email": "Email",
+  "verify": "Verify",
+  "brands": "العلامه التجارية",
+  "new_brand": "علامه تجارية جديدة",
+  "settings": "الاعدادات",
+  "coupons":"كوبون",
+  "new_coupon":"كوبون جديد",
+  "home":"الرئيسية",
+  "ar": "العربية",
+  "en": "English",
+  "theme_builder":"بناء الموقع",
+  "logout_success_message": {
+    "title": "تم تسجيل خروج بنجاح",
+    "subTitle": "يمكنك تسجيل الدخول مرة أخرى"
+  },
+  "no_brands": {
+    "title": "لا يوجد اي علامات تجارية",
+    "description": "برجاء اضافة علامة تجارية",
+    "btnText": "اضافة علامة تجارية"
+  },
+  "general_upload": {
+    "placeholder": "انقر أو اسحب الصور هنا للتحميل"
+  }
+}

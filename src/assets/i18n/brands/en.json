@@ -1,0 +1,63 @@
+{
+        "title": "All Brands",
+        "breadcrumb": {
+            "brands": "Brands",
+            "list": "List"
+        },
+        "add_brands": "new Brand",
+        "search": "Search",
+        "no_brands": {
+            "title": "Brands is empty",
+            "description": "Please add Brand",
+            "btnText": "Add Brand"
+        },
+        "table":{
+            "thead":{
+                "code":"Code",
+                "name":"Name",
+                "status":"Status",
+                "actions":"Actions"
+            }
+        },
+        "delete_brand":{
+            "title":"Brand is deleted",
+            "subtitle":"Brand delete successfully"
+        },
+
+        "add_brand":{
+            "title":"Brand is Added",
+            "subtitle":"Brand Added successfully"
+        },
+        "edit_brand":{
+            "title":"Brand is edited",
+            "subtitle":"Brand edited successfully"
+        },
+
+    "new_brand":{
+        "title": "New Brand",
+
+        "form": {
+            "labels": {
+                "title_en": "Title (English)",
+                "title_ar": "Title (Arabic)",
+                "img": "Image",
+                "action": "Action",
+                "status": "Status"
+            },
+            "placeholders": {
+                "title_en": "Please Enter English Title",
+                "title_ar": "Please Enter Arabic Title"
+            },
+            "messages": {
+                "password_required": "Please enter your password"
+            }
+        }
+    },
+    "common_fields": {
+        "submit_button": "Submit",
+        "required_messages": "this field is required"
+
+    },
+    "brands_error_loading":"An error occurred while fetching brands"
+
+}

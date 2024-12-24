@@ -1,0 +1,40 @@
+<button type="button" #modelOpenBtn class="hidden btn btn-primary"
+	data-hs-overlay="#delivery-estimation-modal"></button>
+
+<div id="delivery-estimation-modal" class="hidden hs-overlay">
+	<div class="hs-overlay__content alert-modal">
+		<div class="box">
+			<header class="header">
+				<h3 class="mb-0 font-bold text-gray-800">
+					{{
+					'orders.DeliveryEstimation' | transloco
+					}}
+				</h3>
+				<button type="button" class="btn" data-hs-overlay="#delivery-estimation-modal">
+					<span class="sr-only">Close</span>
+					<span class="close"></span>
+				</button>
+			</header>
+			<main class="px-4 py-8 overflow-y-auto">
+				<input type="text" [owlDateTime]="startDate" [min]="minDate" [owlDateTimeTrigger]="startDate"
+					placeholder="Delivery Estimation" autocomplete="off" [(ngModel)]="deliveryDate"
+					class="px-4 py-6 custom-input w-100">
+				<owl-date-time #startDate [pickerType]="'calendar'"></owl-date-time>
+			</main>
+			<footer class="footer">
+				<button type="button" #modelCloseBtn (click)="close()" class="custom-button"
+					data-hs-overlay="#delivery-estimation-modal">
+					{{
+					'orders.Cancel' | transloco
+					}} </button>
+				<button type="button" class="custom-button" [disabled]="!deliveryDate || loading" (click)="onConfirm()">
+					<span  *ngIf="!loading">{{
+						'orders.Confirm' | transloco
+						}}</span>
+					<span *ngIf="loading" class="ml-1 mr-1 spinner-border spinner-border-sm">
+						loading...</span>
+				</button>
+			</footer>
+		</div>
+	</div>
+</div>

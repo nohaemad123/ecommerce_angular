@@ -1,0 +1,97 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main - Categories -->
+    <div class="flex flex-col flex-auto">
+
+        <!-- Title -->
+        <div class="text-lg font-medium tracking-normal leading-none">{{"reporting.category_sale.title"|transloco}}
+        </div>
+
+        <!-- start breadcrumb -->
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="flex">
+                <li><a href="#"
+                        class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">{{"reporting.category_sale.breadcrumb.home"|transloco}}</a>
+                </li>
+                <li><a href="#"
+                        class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">{{"reporting.category_sale.breadcrumb.reporting"|transloco}}</a>
+                </li>
+                <li class="text-primary" aria-current="page">
+                    <a href="#" class="text-gray-800 hover:text-primary text-xs">
+                        {{"reporting.category_sale.title"|transloco}}
+                    </a>
+                </li>
+            </ol>
+        </nav>
+
+        <form [formGroup]="reportForm" (ngSubmit)="onShowReport()">
+            <div class="flex items-center justify-between gap-4">
+                <div class="w-4/5">
+                    <label>{{"reporting.category_sale.show_report.select_category"|transloco}}</label>
+                    <select formControlName="categoryId" class="custom-input">
+                        <ng-container *ngIf="(categories$ | async) as categories">
+                            <option *ngFor="let category of categories?.items" [value]="category?.value">
+                                {{ category?.name }}
+                            </option>
+                        </ng-container>
+                    </select>
+
+                </div>
+                <div class="w-4/5">
+                    <div class="form-group">
+                        <label>{{"reporting.category_sale.show_report.date_from"|transloco}}</label>
+                        <input
+                            [ngClass]="{ 'border-red-500': (reportForm.controls['startDate'].errors && reportForm.controls['startDate'].touched)}"
+                            type="text" [owlDateTime]="startDate" [owlDateTimeTrigger]="startDate"
+                            placeholder="{{'reporting.category_sale.show_report.date_from'|transloco}}" autocomplete="off"
+                            formControlName="startDate" class="custom-input py-6 px-4">
+                        <owl-date-time #startDate [pickerType]="'calendar'"></owl-date-time>
+                    </div>
+                </div>
+                <div class="w-4/5">
+                    <div class="form-group">
+                        <label>{{"reporting.category_sale.show_report.date_to"|transloco}}</label>
+                        <input
+                            [ngClass]="{ 'border-red-500': (reportForm.controls['endDate'].errors && reportForm.controls['endDate'].touched)}"
+                            type="text" [owlDateTime]="endDate" [owlDateTimeTrigger]="endDate"
+                            placeholder="{{'reporting.category_sale.show_report.date_to'|transloco}}" autocomplete="off"
+                            formControlName="endDate" class="custom-input py-6 px-4">
+                        <owl-date-time #endDate [pickerType]="'calendar'"></owl-date-time>
+
+                    </div>
+                </div>
+                <div class="w-4/5 mt-5">
+                    <button type="submit" [disabled]="!reportForm.valid" class="custom-button filled-button">
+                        <span class="text-xs icon icon-plus"></span>
+                        <span class="text-sm"> Show Report</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <ng-container *ngIf="(categorySales$ | async) as categorySale; else loading">
+            <ng-container *ngIf="categorySale.items?.length; else noReport">
+                <div class="mt-8">
+                    <app-table [filter]="filterCriteria" [columns]="columns" [rows]="categorySale"
+                        (setLimitEvent)="setLimit($event)" (setPageEvent)="setPage($event)"></app-table>
+                </div>
+            </ng-container>
+        </ng-container>
+
+
+        <ng-template #loading>
+            <div class="mt-8" *ngIf="!reportsError">
+                Loading...
+            </div>
+
+            <ng-container *ngIf="reportsError">
+                <app-error-loading [error_msg]="error_msg"></app-error-loading>
+            </ng-container>
+        </ng-template>
+
+        <ng-template #noReport>
+            <div class="mt-8">
+                <app-empty-state [emptyStateData]="emptyStateData"></app-empty-state>
+            </div>
+        </ng-template>
+    </div>
+</div>

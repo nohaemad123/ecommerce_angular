@@ -1,0 +1,315 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main - add brand -->
+    <main class="flex flex-col flex-auto">
+
+        <!-- Title -->
+        <h2 class="text-lg font-medium tracking-normal leading-none">{{'coupons.title' | transloco}}</h2>
+        <!-- start breadcrumb -->
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="flex">
+                <li><a href="#" class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">Home</a>
+                </li>
+                <li><a href="#"
+                        class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">{{'coupons.title'
+                        | transloco}}</a>
+                </li>
+                <li class="text-primary" aria-current="page">List</li>
+            </ol>
+        </nav>
+        <!-- end breadcrumb -->
+
+        <form class="space-y-6" [formGroup]="newCouponForm" (ngSubmit)="onSubmitNewCoupon()">
+            <div class="bg-neutral-50 px-5 py-7 mt-6   rounded-lg mb-6">
+
+                <ul class="flex list-none gap-8 mb-6">
+                    <li class="text-center flex items-center gap-2">
+                        <img src="../../../../assets/images/en.png" class="w-5 h-5 rounded-full" alt="">
+                        <a class="text-sm uppercase rounded block leading-normal cursor-pointer" (click)="toggleTabs(1)"
+                            [ngClass]="{'text-gray-400': openTab !== 1, 'text-sky-600 underline': openTab === 1}">
+                            English
+                        </a>
+                    </li>
+                    <li class="text-center flex items-center gap-2">
+                        <img src="../../../../assets/images/SA.png" class="w-5 h-5 rounded-full" alt="">
+                        <a class="text-sm uppercase rounded block leading-normal cursor-pointer" (click)="toggleTabs(2)"
+                            [ngClass]="{'text-gray-400': openTab !== 2, 'text-sky-600 underline': openTab === 2}">
+                            Arabic
+                        </a>
+                    </li>
+                </ul>
+
+                <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
+                    <div class="form-group mb-6">
+                        <label for="login-email"
+                            class="block text-base text-gray-900 mb-2 font-normal">{{"coupons.new_coupon.form.labels.title_en"|transloco}}</label>
+                        <input type="text" [ngClass]="
+                        { '': (newCouponForm.controls['nameEn'].errors)}"
+                            name="nameEn" placeholder="{{'coupons.new_coupon.form.placeholders.title_en'|transloco}}"
+                            autocomplete="off" formControlName="nameEn" class="custom-input">
+                        <div *ngIf="(newCouponForm.controls['nameEn'].touched && newCouponForm.controls['nameEn'].invalid)"
+                            class="invalid-feedback mt-2">
+                            <div *ngIf="newCouponForm.controls['nameEn'].errors?.['required']"
+                                class="text-dangerDark font-normal text-sm">
+                                {{'coupons.common_fields.required_messages'|transloco}}</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
+                    <div class="form-group mb-6">
+                        <label
+                            class="block text-base text-gray-900 mb-2 font-normal">{{"coupons.new_coupon.form.labels.title_ar"|transloco}}</label>
+                        <input type="text" [ngClass]="{ '': (newCouponForm.controls['nameAr'].errors)}"
+                            placeholder="{{'coupons.new_coupon.form.placeholders.title_en'|transloco}}"
+                            autocomplete="off" formControlName="nameAr" class="custom-input">
+                        <div *ngIf="(newCouponForm.controls['nameAr'].touched)" class="invalid-feedback mt-2">
+                            <div *ngIf="newCouponForm.controls['nameAr'].errors?.['required']"
+                                class="text-dangerDark font-normal text-sm">
+                                {{'coupons.common_fields.required_messages'|transloco}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group flex-1">
+                    <label
+                        class="text-sm mb-3 text-gray-600 block">{{"coupons.new_coupon.form.labels.action"|transloco}}</label>
+                    <div class="flex w-full gap-6 justify-between">
+                        <label class="inline-flex items-center cursor-pointer w-full">
+                            <input type="checkbox" [ngClass]="statusChecked ? 'checked' : ''" [checked]="statusChecked"
+                                (change)="toggleCheck($event)" formControlName="status" value="" class="sr-only peer">
+                            <div class="checkbox">
+                            </div>
+                            <span
+                                class="ms-3 text-sm font-normal text-gray-400 dark:text-gray-300">{{"coupons.new_coupon.form.labels.active"|transloco}}</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="flex gap-6 flex-wrap">
+                    <div class="form-group w-8/12">
+                        <label for="login-email"
+                            class="block text-base text-gray-900 mb-2 font-normal">{{"coupons.new_coupon.form.labels.code"|transloco}}</label>
+                        <input type="text" readonly
+                            [ngClass]="{ '': (newCouponForm.controls['code'].touched && newCouponForm.controls['code'].errors)}"
+                            name="email" placeholder="{{'coupons.new_coupon.form.placeholders.code'|transloco}}"
+                            autocomplete="off" formControlName="code" class="custom-input">
+
+                        <div *ngIf="(newCouponForm.controls['code'].touched && newCouponForm.controls['code'].invalid)"
+                            class="invalid-feedback mt-2">
+                            <div *ngIf="newCouponForm.controls['code'].errors?.['required']"
+                                class="text-dangerDark font-normal text-sm">
+                                {{'coupons.common_fields.required_messages'|transloco}}</div>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="mt-6 text-primary-300 underline" (click)="createCode()"> Create Code</a>
+                        <p class="text-gray-400 text-sm">Please Click on Create Coupon Link</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bg-neutral-50 px-5 py-7   rounded-lg mb-6">
+                <h2 class="mb-4 text-lg">Coupon Details</h2>
+                <div class="flex gap-6 mb-8">
+                    <div class="form-group ">
+                        <label
+                            class="block  text-base text-gray-600 mb-2 font-normal">{{"coupons.new_coupon.form.labels.couponDiscountTypeId"|transloco}}</label>
+
+                        <select class="cursor-pointer w-100 rounded-md border-primary-300"
+                            formControlName="couponDiscountTypeId">
+                            <option *ngFor="let item of _couponDiscountTypeId | async" [value]="item.id">{{item.name}}
+                            </option>
+
+                        </select>
+
+                    </div>
+                    <div class="form-group ">
+                        <label class="block  text-base text-gray-600 mb-2 font-normal">Coupon amount</label>
+
+                        <input type="number"
+                            [ngClass]="{ 'border-gray-300': (newCouponForm.controls['couponAmount'].errors)}"
+                            name="email" placeholder="{{(newCouponForm.value.couponDiscountTypeId == 1 ?
+                        'coupons.new_coupon.form.labels.couponAmount' :
+                        'coupons.new_coupon.form.labels.couponAmount')  |transloco}}" autocomplete="off"
+                            formControlName="couponAmount" class="custom-input w-100">
+                        <div *ngIf="(newCouponForm.controls['couponAmount'].touched)" class="invalid-feedback mt-2">
+                            <div *ngIf="newCouponForm.controls['couponAmount'].errors?.['required']"
+                                class="text-dangerDark font-normal text-sm">
+                                {{'coupons.common_fields.required_messages'|transloco}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-10">
+
+                    <div class="flex gap-6">
+
+                        <div class="form-group relative">
+                            <label
+                                class="block text-base text-gray-600 mb-2 font-normal">{{"coupons.new_coupon.form.labels.start_date"|transloco}}</label>
+                            <input [ngClass]="{ '': (newCouponForm.controls['startDate'].errors)}"
+                                type="text" [owlDateTime]="startDate" [owlDateTimeTrigger]="startDate"
+                                placeholder="{{'coupons.new_coupon.form.labels.start_date'|transloco}}"
+                                autocomplete="off" formControlName="startDate" class="custom-input py-6 px-4 w-100">
+                            <owl-date-time #startDate [pickerType]="'calendar'"></owl-date-time>
+                            <span class="absolute  inset-y-14 right-0 flex items-center pe-3">
+                                <span class="icon text-primary-500 icon-date"></span>
+                            </span>
+                            <div *ngIf="(newCouponForm.controls['startDate'].touched)" class="invalid-feedback mt-2">
+                                <div *ngIf="newCouponForm.controls['startDate'].errors?.['required']"
+                                    class="text-dangerDark font-normal text-sm">
+                                    {{'coupons.common_fields.required_messages'|transloco}}</div>
+                            </div>
+                        </div>
+                        <div class="form-group relative">
+                            <label
+                                class="block text-base text-gray-600 mb-2 font-normal">{{"coupons.new_coupon.form.labels.end_date"|transloco}}</label>
+                            <input type="text" [owlDateTime]="endDate" [owlDateTimeTrigger]="endDate"
+                                [ngClass]="{ '': (newCouponForm.controls['expiryDate'].errors && newCouponForm.controls['expiryDate'].touched)}"
+                                placeholder="{{'coupons.new_coupon.form.labels.end_date'|transloco}}" autocomplete="off"
+                                formControlName="expiryDate" class="custom-input py-6 px-4 w-100">
+                            <owl-date-time #endDate [pickerType]="'calendar'"></owl-date-time>
+                            <span class="absolute inset-y-14 right-0 flex items-center pe-3">
+                                <span class="icon text-primary-500 icon-date"></span>
+                            </span>
+                            <div *ngIf="(newCouponForm.controls['expiryDate'].touched)" class="invalid-feedback mt-2">
+                                <div *ngIf="newCouponForm.controls['expiryDate'].errors?.['required']"
+                                    class="text-dangerDark font-normal text-sm">
+                                    {{'coupons.common_fields.required_messages'|transloco}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <label
+                            class="text-sm mb-3 text-gray-600 block">{{"coupons.new_coupon.form.labels.action"|transloco}}</label>
+
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" formControlName="allowFreeShipping" value="" class="sr-only peer">
+                            <div class="checkbox">
+                            </div>
+                            <span class="ms-3 text-sm font-normal text-gray-400 dark:text-gray-300">Allow Free
+                                Shipping</span>
+                        </label>
+
+                        <div *ngIf="(newCouponForm.controls['allowFreeShipping'].touched && newCouponForm.controls['allowFreeShipping'].invalid)"
+                            class="invalid-feedback mt-2">
+                            <div *ngIf="newCouponForm.controls['allowFreeShipping'].errors?.['required']"
+                                class="text-dangerDark font-normal text-sm">
+                                {{'coupons.common_fields.required_messages'|transloco}}</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="bg-neutral-50 px-5 py-7  rounded-lg mb-6">
+                <h2 class="mb-4 text-lg">Usage Restriction</h2>
+
+                <div class="form-group">
+                    <label
+                        class="block text-base text-gray-600 mb-2 font-normal">{{"coupons.new_coupon.form.labels.maximumDicount"|transloco}}</label>
+                    <div class="flex w-full gap-6">
+                        <input type="number"
+                            [ngClass]="{ 'border-gray-300': (newCouponForm.controls['maximumSpend'].errors)}"
+                            name="number"
+                            placeholder="{{'coupons.new_coupon.form.placeholders.maximumDicount'|transloco}}"
+                            autocomplete="off" formControlName="maximumSpend" class="custom-input">
+                        <div *ngIf="(newCouponForm.controls['maximumSpend'].touched)" class="invalid-feedback mt-2">
+                            <div *ngIf="newCouponForm.controls['maximumSpend'].errors?.['required']"
+                                class="text-dangerDark font-normal text-sm">
+                                {{'coupons.common_fields.required_messages'|transloco}}</div>
+                        </div>
+                        <div class="bg-primary-50 border border-gray-200 text-sm text-gray-800 rounded-lg p-4 dark:bg-white/10 dark:border-white/20 dark:text-white"
+                            role="alert">
+                            Minimum Spend Must Be Bigger Than Coupon Value
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group flex-1">
+                    <label
+                        class="text-sm mb-3 text-gray-600 block">{{"coupons.new_coupon.form.labels.action"|transloco}}</label>
+                    <div class="flex w-full gap-6 justify-between">
+                        <label class="inline-flex items-center cursor-pointer w-full">
+                            <input type="checkbox" formControlName="excludeSaleProducts" value="" class="sr-only peer">
+                            <div class="checkbox">
+                            </div>
+                            <span
+                                class="ms-3 text-sm font-normal text-gray-400 dark:text-gray-300">{{"coupons.new_coupon.form.labels.excludeSaleProducts"|transloco}}</span>
+                        </label>
+
+                        <div *ngIf="(newCouponForm.controls['excludeSaleProducts'].touched && newCouponForm.controls['excludeSaleProducts'].invalid)"
+                            class="invalid-feedback mt-2">
+                            <div *ngIf="newCouponForm.controls['excludeSaleProducts'].errors?.['required']"
+                                class="text-dangerDark font-normal text-sm">
+                                {{'coupons.common_fields.required_messages'|transloco}}</div>
+                        </div>
+                        <div class="bg-primary-50 border border-gray-200 text-sm text-gray-800 rounded-lg p-4 dark:bg-white/10 dark:border-white/20 dark:text-white"
+                            role="alert">
+                            Prevent This Coupon To Apply To Products On Sale
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="bg-neutral-50 px-5 py-7   rounded-lg mb-6">
+                <h2 class="mb-4 text-lg">Usage Limit</h2>
+                <div class="flex gap-6">
+                    <div class="form-group">
+                        <label
+                            class="block text-base text-gray-600 mb-2 font-normal">{{"coupons.new_coupon.form.labels.usageLimit"|transloco}}</label>
+                        <input type="number"
+                            [ngClass]="{ 'border-gray-300': (newCouponForm.controls['usageLimitPerCoupon'].errors)}"
+                            name="number" placeholder="{{'coupons.new_coupon.form.placeholders.usageLimit'|transloco}}"
+                            autocomplete="off" formControlName="usageLimitPerCoupon" class="custom-input w-100">
+                        <div *ngIf="(newCouponForm.controls['usageLimitPerCoupon'].touched)"
+                            class="invalid-feedback mt-2">
+                            <div *ngIf="newCouponForm.controls['usageLimitPerCoupon'].errors?.['required']"
+                                class="text-dangerDark font-normal text-sm">
+                                {{'coupons.common_fields.required_messages'|transloco}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label
+                            class="block text-base text-gray-600 mb-2 font-normal">{{"coupons.new_coupon.form.labels.usageLimitPerCustomer"|transloco}}</label>
+
+                        <input type="number"
+                            [ngClass]="{ 'border-gray-300': (newCouponForm.controls['usageLimitPerCustomer'].errors)}"
+                            name="number"
+                            placeholder="{{'coupons.new_coupon.form.placeholders.usageLimitPerCustomer'|transloco}}"
+                            autocomplete="off" formControlName="usageLimitPerCustomer" class="custom-input w-100">
+                        <div *ngIf="(newCouponForm.controls['usageLimitPerCustomer'].touched)"
+                            class="invalid-feedback mt-2">
+                            <div *ngIf="newCouponForm.controls['usageLimitPerCustomer'].errors?.['required']"
+                                class="text-dangerDark font-normal text-sm">
+                                {{'coupons.common_fields.required_messages'|transloco}}</div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group flex-1">
+                        <p class="text-gray-600">Message</p>
+                        <div class="bg-primary-50  border border-gray-200 text-sm text-gray-800 rounded-lg p-4 dark:bg-white/10 dark:border-white/20 dark:text-white"
+                            role="alert">
+                            Usage Limit Per Coupon Must Not Be Bigger Than Or Equal Usage Limit Per Customer
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- actions -->
+            <div class="flex flex-row-reverse">
+                <button type="submit" class="custom-button filled-button w-40" [disabled]="newCouponForm.invalid">
+                    <span *ngIf="submitLoading" class="spinner-border spinner-border-sm mr-1 ml-1">
+                        loading...</span>
+                    <span *ngIf="!submitLoading">
+                        {{"coupons.common_fields.submit_button"|transloco}}
+                    </span>
+                </button>
+
+            </div>
+        </form>
+
+
+    </main>
+
+</div>

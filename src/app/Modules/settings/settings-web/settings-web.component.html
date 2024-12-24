@@ -1,0 +1,226 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main - add product -->
+    <main>
+        <!-- Title -->
+        <h2 class="text-lg font-medium leading-none tracking-normal">Settings</h2>
+        <!-- start breadcrumb -->
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="flex">
+                <li><a href="#" class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">Home</a>
+                </li>
+                <li class="text-primary" aria-current="page">Settings</li>
+            </ol>
+        </nav>
+
+        <!-- content -->
+        <div class="flex items-start gap-7">
+            <div class="flex-1 p-8 mt-5 rounded-md bg-neutral-50">
+                <div class="tabs">
+                    <nav class="flex space-x-2 rtl:space-x-reverse" aria-label="Tabs" role="tablist">
+                        <button type="button" class="tabs__btn active" id="tabs-with-underline-item-1"
+                            data-hs-tab="#tabs-with-underline-1" aria-controls="tabs-with-underline-1" role="tab">
+                            General
+                        </button>
+                        <button type="button" class="tabs__btn" id="tabs-with-underline-item-2"
+                            data-hs-tab="#tabs-with-underline-2" aria-controls="tabs-with-underline-2" role="tab">
+                            Store
+                        </button>
+                    </nav>
+                </div>
+
+                <div class="mt-3">
+                    <div id="tabs-with-underline-1" role="tabpanel" aria-labelledby="tabs-with-underline-item-1">
+                        <div class="mt-6">
+                            <h2 class="text-base text-neutral-600 mb-7">General Settings</h2>
+                            <div class="space-y-6">
+                                <div class="w-full form-group">
+                                    <label for="login-email" class="input-lable">Meta Title *</label>
+                                    <input type="text" name="email" placeholder="Enter your Name" autocomplete="off"
+                                        class="custom-input">
+                                </div>
+                                <div class="w-full form-group">
+                                    <label for="login-email" class="input-lable">Meta Tage Description</label>
+                                    <textarea type="text" name="email" placeholder="Enter description"
+                                        autocomplete="off" class="h-auto custom-input" rows="5">
+                                </textarea>
+                                </div>
+                                <div class="w-full form-group">
+                                    <label for="login-email" class="input-lable">Meta Keywords</label>
+                                    <input type="text" name="email" placeholder="Enter your Name" autocomplete="off"
+                                        class="custom-input">
+                                </div>
+
+                                <!-- actions -->
+                                <div class="text-end">
+                                    <button class="w-32 custom-button filled-button" data-hs-stepper-next-btn>
+                                        <span class="text-sm">Save</span>
+                                    </button>
+                                </div>
+                                <!-- End Button Group -->
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tabs-with-underline-2" class="hidden" role="tabpanel"
+                        aria-labelledby="tabs-with-underline-item-2">
+                        <div class="mt-6">
+                            <h2 class="text-base text-neutral-600 mb-7">Store data</h2>
+                            <div class="space-y-6">
+                                <div class="w-full form-group">
+                                    <label for="login-email" class="input-lable">Store id *</label>
+                                    <input type="text" name="email" placeholder="Enter id" autocomplete="off"
+                                        class="custom-input">
+                                </div>
+                                <div class="w-full form-group">
+                                    <label for="login-email" class="input-lable">Store Name *</label>
+                                    <input type="text" name="email" placeholder="Enter Store Name " autocomplete="off"
+                                        class="custom-input">
+                                </div>
+                                <div class="w-full form-group">
+                                    <label for="login-email" class="input-lable">Store Owner *</label>
+                                    <input type="text" name="email" placeholder="Enter Store Owner" autocomplete="off"
+                                        class="custom-input">
+                                </div>
+                                <div class="w-full form-group">
+                                    <label for="login-email" class="input-lable">address</label>
+                                    <textarea type="text" name="email" placeholder="Enter your address"
+                                        autocomplete="off" class="h-auto custom-input" rows="5">
+                                </textarea>
+                                </div>
+                                <div class="w-full form-group">
+                                    <label for="login-email" class="input-lable">Geocode</label>
+                                    <input type="text" name="email" placeholder="Enter Geocode" autocomplete="off"
+                                        class="custom-input">
+                                </div>
+                                <div class="w-full form-group">
+                                    <label for="login-email" class="input-lable">Email *</label>
+                                    <input type="text" name="email" placeholder="Enter your Email " autocomplete="off"
+                                        class="custom-input">
+                                </div>
+                                <div class="w-full form-group">
+                                    <label for="login-email" class="input-lable">Phone *</label>
+                                    <input type="text" name="email" placeholder="Enter your Phone " autocomplete="off"
+                                        class="custom-input">
+                                </div>
+                                <div class="w-full form-group">
+                                    <label for="login-email" class="input-lable">Bank account number *</label>
+                                    <input type="text" name="email" placeholder="Enter your Bank account number"
+                                        autocomplete="off" class="custom-input">
+                                </div>
+                                <!-- white-space -->
+                                <div class="h-8 -mx-8 bg-white"></div>
+
+                                <!-- Localization -->
+                                <div>
+                                    <h2 class="text-base text-neutral-600 mb-7">Localization</h2>
+                                    <div class="space-y-6">
+                                        <div class="flex_c gap-7">
+                                            <div class="flex-1 w-full form-group">
+                                                <label class="input-lable">Country</label>
+                                                <div class="">
+                                                    <ng-select class="relative selectBox" placeholder="Enter Country">
+                                                        <ng-option>Saudi Arabia</ng-option>
+                                                        <ng-option>Egypt</ng-option>
+                                                    </ng-select>
+                                                </div>
+                                            </div>
+                                            <div class="flex-1 w-full form-group">
+                                                <label class="input-lable">language</label>
+                                                <div class="">
+                                                    <ng-select class="relative selectBox" placeholder="Enter language">
+                                                        <ng-option>Arabic</ng-option>
+                                                        <ng-option>English</ng-option>
+                                                    </ng-select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-1 w-full form-group">
+                                            <label class="input-lable">language</label>
+                                            <div class="">
+                                                <ng-select class="relative selectBox" placeholder="Enter language">
+                                                    <ng-option>Arabic</ng-option>
+                                                    <ng-option>English</ng-option>
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- white-space -->
+                                <div class="h-8 -mx-8 bg-white"></div>
+
+                                <!-- Localization -->
+                                <div>
+                                    <h2 class="text-base text-neutral-600 mb-7">Tax Settings</h2>
+                                    <div class="space-y-6">
+                                        <div class="gap-10 flex_c">
+                                            <p class="text-sm text-neutral-500">Display price With Tax</p>
+                                            <label class="inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" value="" class="sr-only peer">
+                                                <div class="checkbox">
+                                                </div>
+                                                <span
+                                                    class="text-sm font-normal text-gray-400 ms-2 dark:text-gray-300">Yes</span>
+                                            </label>
+                                            <label class="inline-flex items-center cursor-pointer">
+                                                <input type="checkbox" value="" class="sr-only peer">
+                                                <div class="checkbox">
+                                                </div>
+                                                <span
+                                                    class="text-sm font-normal text-gray-400 ms-2 dark:text-gray-300">No</span>
+                                            </label>
+                                        </div>
+                                        <div class="gap-10 flex_c">
+                                            <div class="w-full form-group">
+                                                <label for="login-email" class="input-lable">Default Tax Rate *</label>
+                                                <input type="text" name="email" placeholder="Enter Tax"
+                                                    autocomplete="off" class="custom-input">
+                                            </div>
+                                            <div class="w-full form-group">
+                                                <label for="login-email" class="input-lable">Default Tax Rate *</label>
+                                                <input type="text" name="email" placeholder="Enter Shipping rate"
+                                                    autocomplete="off" class="custom-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="h-8 -mx-8 bg-white"></div>
+
+                                 <!-- OTO -->
+                                 <div>
+                                    <h2 class="text-base text-neutral-600 mb-7">OTO Settings</h2>
+                                    <div class="space-y-6">
+                                        <div class="gap-10 flex_c">
+                                            <div class="w-full form-group">
+                                                <label for="login-email" class="input-lable">OTO Refresh Token</label>
+                                                <input type="text" name="email" placeholder="OTO Refresh Token" formControlName="otoId"
+                                                    autocomplete="off" class="custom-input">
+                                            </div>
+                                            <div class="w-full form-group">
+                                                <label for="login-email" class="input-lable">OTO Email</label>
+                                                <input type="email" name="email" placeholder="OTO Email" formControlName="otoEmail"
+                                                    autocomplete="off" class="custom-input">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- actions -->
+                        <div class="mt-4 text-end">
+                            <button class="w-32 custom-button filled-button" data-hs-stepper-next-btn>
+                                <span class="text-sm">Save</span>
+                            </button>
+                        </div>
+                        <!-- End Button Group -->
+                    </div>
+                </div>
+            </div>
+            <div class="p-8 mt-5 rounded-md bg-neutral-50 min-w-80">
+                <h2 class="mb-4 text-base text-neutral-600">logo Website</h2>
+                <upload-image [folderName]="'test'"></upload-image>
+            </div>
+        </div>
+    </main>
+</div>

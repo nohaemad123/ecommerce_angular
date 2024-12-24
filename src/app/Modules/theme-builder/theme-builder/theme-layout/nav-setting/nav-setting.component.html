@@ -1,0 +1,207 @@
+
+
+<!-- <pre>
+
+    {{setting | json}}
+</pre> -->
+
+<form [formGroup]="pageSettingForm" (ngSubmit)="onSubmitPageSetting()">
+    <div class="flex w-full">
+        <button type="submit" class="custom-button w-full filled-button" [disabled]="pageSettingForm.invalid">
+            <span *ngIf="submitLoading" class="spinner-border spinner-border-sm mr-1 ml-1">
+                loading...
+            </span>
+            <span *ngIf="!submitLoading">
+                Save & Back
+            </span>
+        </button>
+    </div>
+
+    <div class="border-b border-gray-200 dark:border-neutral-700">
+        <nav class="flex space-x-1" aria-label="Tabs" role="tablist">
+          <button type="button" class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500 active" id="tabs-with-underline-item-1" data-hs-tab="#tabs-with-underline-1" aria-controls="tabs-with-underline-1" role="tab">
+           ENGLISH
+          </button>
+          <button type="button" class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500" id="tabs-with-underline-item-2" data-hs-tab="#tabs-with-underline-2" aria-controls="tabs-with-underline-2" role="tab">
+            ARABIC
+          </button>
+        </nav>
+      </div>
+
+      <div class="mt-3">
+        <div id="tabs-with-underline-1" role="tabpanel" aria-labelledby="tabs-with-underline-item-1">
+
+          <div class="form-group">
+            <label for="login-email"
+                class="block text-base text-gray-900 mb-2 font-normal">{{"themeBuilder.nav_settings.form.page_edit_title_en"|transloco}}</label>
+            <input type="text"
+                [ngClass]="{ 'border-red-500': (pageSettingForm.controls['titleEn'].touched && pageSettingForm.controls['titleEn'].errors?.['required'])}"
+                name="email"
+                placeholder="{{'themeBuilder.nav_settings.form.page_edit_title_en'|transloco}}"
+                autocomplete="off" formControlName="titleEn" class="custom-input">
+            <div *ngIf="(pageSettingForm.controls['titleEn'].touched && pageSettingForm.controls['titleEn'].invalid)"
+                class=" mt-2">
+                <div *ngIf="pageSettingForm.controls['titleEn'].errors?.['required']"
+                    class="text-dangerDark invalid-feedback font-normal text-sm">
+                    {{'common_fields.required_messages'|transloco}}</div>
+            </div>
+        </div>
+        </div>
+        <div id="tabs-with-underline-2" class="hidden" role="tabpanel" aria-labelledby="tabs-with-underline-item-2">
+
+          <div class="form-group">
+            <label
+                class="block text-base text-gray-900 mb-2 font-normal">{{"themeBuilder.nav_settings.form.page_edit_title_ar"|transloco}}</label>
+            <input type="text"
+                [ngClass]="{ 'border-red-500': (pageSettingForm.controls['title'].touched)}"
+                name="title"
+                placeholder="{{'themeBuilder.nav_settings.form.page_edit_title_ar'|transloco}}"
+                autocomplete="off" formControlName="title" class="custom-input">
+            <div *ngIf="(pageSettingForm.controls['title'].touched)" class="invalid-feedback mt-2">
+                <div *ngIf="pageSettingForm.controls['title'].errors?.['required']"
+                    class="text-dangerDark font-normal text-sm">
+                    {{'common_fields.required_messages'|transloco}}</div>
+            </div>
+        </div>
+        </div>
+
+      </div>
+
+      <div class="flex mt-2">
+         <input type="checkbox" (click)="customURL = !customURL" class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox" checked="">
+        <label for="hs-checked-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Custom URL</label>
+      </div>
+
+      <div class="form-group mt-2" *ngIf="customURL">
+        <label for="login-email"
+            class="block text-base text-gray-900 mb-2 font-normal">{{"themeBuilder.nav_settings.form.name_url"|transloco}}</label>
+        <input type="text"
+            [ngClass]="{ 'border-red-500': (pageSettingForm.controls['nameURL'].touched)}"
+            name="email"
+            placeholder="{{'themeBuilder.nav_settings.form.name_url'|transloco}}"
+            autocomplete="off" formControlName="nameURL" class="custom-input">
+        <div *ngIf="(pageSettingForm.controls['nameURL'].touched && pageSettingForm.controls['nameURL'].invalid)"
+            class="invalid-feedback mt-2">
+            <div *ngIf="pageSettingForm.controls['nameURL'].errors?.['required']"
+                class="text-dangerDark font-normal text-sm">
+                {{'common_fields.required_messages'|transloco}}</div>
+        </div>
+    </div>
+    <div class="flex mt-2">
+        <div class="w-full">
+            <div class="px-2 py-3 rounded-lg">
+                <div class="form-group">
+                    <label class="flex justify-between cursor-pointer">
+                        <input type="checkbox" formControlName="showInNavigation" value="" class=" sr-only peer">
+                        <span
+                            class="ms-3 text-sm font-normal text-gray-400 dark:text-gray-300">{{"themeBuilder.nav_settings.form.show_in_navigation"|transloco}}</span>
+                        <div class="checkbox"></div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mt-2 px-2 py-3 rounded-lg">
+                <div class="form-group">
+                    <label class="flex justify-between cursor-pointer">
+                        <input type="checkbox" formControlName="showInFooter" value="" class=" sr-only peer">
+                        <span
+                            class="ms-3 text-sm font-normal text-gray-400 dark:text-gray-300">{{"themeBuilder.nav_settings.form.show_in_footer"|transloco}}</span>
+                        <div class="checkbox"></div>
+                    </label>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <!-- actions -->
+
+</form>
+
+<div class="bg-white flex items-baseline justify-between mt-3 px-4 py-2 rounded-lg">
+    <p >
+        page Section
+    </p>
+    <div *ngIf="setting.canBeDeleted">
+
+        <button type="button"  data-hs-overlay="#section-Add" class="font-semibold inline-flex items-center text-blue-600 text-sm">
+            <i size="18" class="icon icon-plus"></i>
+        </button>
+    </div>
+
+
+</div>
+
+<div *ngFor="let page of setting.sections">
+
+    <div class="bg-neutral-200 flex items-baseline justify-between mt-3 px-4 py-2 rounded-lg">
+        <p >
+            {{ (currentLang | async) === 'en'? page.titleEn:page.title }}
+        </p>
+        <p class="flex gap-2">
+            <button type="button" title="delete" (click)="deleteSection(page)" class="font-semibold inline-flex py-2">
+                <i size="30" class="icon icon-trash-o text-red-600"></i>
+            </button>
+            <button type="button" title="edit" (click)="editSection(page)" data-hs-overlay="#section-edit" class="font-semibold inline-flex py-2">
+                <i size="30" class="icon icon-edit text-primary-600"></i>
+            </button>
+
+        </p>
+    </div>
+</div>
+
+
+
+
+  <div id="section-Add" class="hs-overlay hs-overlay-open:translate-x-0 hidden -translate-x-full fixed start-0 transition-all duration-300 transform h-full max-w-md w-full z-[80] bg-white border-e dark:bg-neutral-800 dark:border-neutral-700" tabindex="-1">
+    <div class="flex justify-between items-center py-3 px-4 border-b dark:border-neutral-700">
+      <h3 class="font-bold text-gray-800 dark:text-white">
+        Add
+      </h3>
+      <button type="button" id="section-edit-close" class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700" data-hs-overlay="#section-edit">
+        <span class="sr-only">Close</span>
+        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="p-4 grid grid-cols-12 gap-6">
+        <div *ngFor="let section of sections; let i = index;" class="bg-neutral-200 col-span-6 flex flex-col items-center p-4 rounded-lg">
+            <div class="cursor-pointer flex flex-col items-center" (click)="addSection(section)">
+
+                <img [src]="section.image" [alt]="section.name" class="size-12">
+                <p class="font-semibold">
+                    {{section.name | transloco}}
+                </p>
+            </div>
+       </div>
+    </div>
+  </div>
+
+  <div id="section-edit" class="hs-overlay hs-overlay-open:translate-x-0 hidden -translate-x-full fixed start-0 transition-all duration-300 transform h-full max-w-md w-full z-[80] bg-white border-e dark:bg-neutral-800 dark:border-neutral-700" tabindex="-1">
+    <div class="flex justify-between items-center py-3 px-4 border-b dark:border-neutral-700">
+      <h3 class="font-bold text-gray-800 dark:text-white">
+        Edit
+      </h3>
+      <button type="button" id="section-edit-close" class="flex justify-center items-center size-7 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700" data-hs-overlay="#section-edit">
+        <span class="sr-only">Close</span>
+        <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="p-4">
+
+        <div *ngFor="let component of displayedSections; let i = index; trackBy:trackByFun">
+            <ng-container *ngComponentOutlet="getComponent(component.sectionTypeId);injector: component.injector;">
+            </ng-container>
+        </div>
+    </div>
+  </div>

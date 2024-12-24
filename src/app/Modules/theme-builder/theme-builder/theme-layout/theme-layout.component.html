@@ -1,0 +1,36 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main Coupon feed -->
+    <main class="flex flex-col flex-auto">
+        <!-- Title -->
+        <h2 class="text-lg font-medium tracking-normal leading-none">{{'themeBuilder.title' | transloco}}</h2>
+
+        <!-- start breadcrumb -->
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="flex">
+                <li><a href="#" class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">
+                        {{'home' | transloco}}
+                    </a>
+                </li>
+                <li><a href="#" class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">
+                        {{'themeBuilder.title' | transloco}}</a>
+                </li>
+                <li class="text-primary" aria-current="page">{{'themeBuilder.title' | transloco}}</li>
+            </ol>
+        </nav>
+        <!-- end breadcrumb -->
+        <div class="grid grid-cols-12 gap-3 mt-5">
+            <div class="col-span-3  p-4 rounded-lg bg-primary-50">
+                <ng-container *ngIf="showNavSettings$ | async; else dontShownav" >
+                    <nav-setting [setting]="(currentNavSettings$ | async)"></nav-setting>
+                </ng-container>
+                <ng-template #dontShownav>
+                    <theme-sidebar *ngIf="!(showNavSettings$ | async)"></theme-sidebar>
+                </ng-template>
+            </div>
+            <div class="col-span-9 bg-slate-600">
+                <theme-preview></theme-preview>
+            </div>
+        </div>
+    </main>
+</div>

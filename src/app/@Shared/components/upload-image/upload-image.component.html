@@ -1,0 +1,6 @@
+<dropzone class="upload-file" [config]="config" [disabled]="disabled" #DropzoneComponent
+     message="{{'general_upload.placeholder' | transloco}}" (init)="onUploadInit($event)"
+     (error)="onUploadError($event)" (success)="onUploadSuccess($event)" 
+     (removedFile)="onRemovedFile($event)"></dropzone>
+
+     

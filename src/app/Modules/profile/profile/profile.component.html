@@ -1,0 +1,406 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main - Brands feed -->
+    <main class="flex flex-col flex-auto">
+        <h2 class="text-lg font-medium leading-none tracking-normal">{{'profile.breadcrumb.title'|transloco}}</h2>
+        <!-- start breadcrumb -->
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="flex">
+                <li><a href="#"
+                        class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">{{'profile.breadcrumb.home'|transloco}}</a>
+                </li>
+                <li class="text-primary" aria-current="page">{{'profile.breadcrumb.title'|transloco}}</li>
+            </ol>
+        </nav>
+        <form class="space-y-6 mt-4" [formGroup]="updateStoreProfile" (ngSubmit)="onUpdateStoreProfile()">
+            <div class="flex gap-10">
+                <div class="w-full">
+                    <div class="bg-neutral-50 rounded-lg py-7 px-5">
+                        <h1 class="mb-4 text-xl">{{'profile.store_profile.titles.store_data'|transloco}}</h1>
+                        <div class="form-group w-full">
+                            <label
+                                class="input-lable">{{'profile.store_profile.form.labels.store_name'|transloco}}</label>
+                            <input type="text" [ngClass]="
+                        { '': (updateStoreProfile.controls['name'].errors)}" name="name" formControlName="name"
+                                placeholder="{{'profile.store_profile.form.placeholders.store_name'|transloco}}"
+                                autocomplete="off" class="custom-input">
+                            <div *ngIf="(updateStoreProfile.controls['name'].touched && updateStoreProfile.controls['name'].invalid)"
+                                class="invalid-feedback mt-2">
+                                <div *ngIf="updateStoreProfile.controls['name'].errors?.['required']"
+                                    class="text-dangerDark font-normal text-sm">
+                                    {{'profile.store_profile.form.messages.name_required'|transloco}}</div>
+                                <div *ngIf="updateStoreProfile.controls['name'].errors?.['maxlength']"
+                                    class="text-dangerDark font-normal text-sm">
+                                    {{'profile.store_profile.form.messages.name_maxlength'|transloco}}</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group w-full mt-6">
+                            <label
+                                class="input-lable">{{'profile.store_profile.form.labels.meta_description'|transloco}}</label>
+                            <textarea type="text" name="metaDescription" formControlName="metaDescription"
+                                [ngClass]="{ '': (updateStoreProfile.controls['metaDescription'].errors)}"
+                                placeholder="{{'profile.store_profile.form.placeholders.meta_description'|transloco}}"
+                                autocomplete="off" class="custom-input h-auto" rows="4">
+                        </textarea>
+                            <div *ngIf="(updateStoreProfile.controls['metaDescription'].touched && updateStoreProfile.controls['metaDescription'].invalid)"
+                                class="invalid-feedback mt-2">
+
+                                <div *ngIf="updateStoreProfile.controls['metaDescription'].errors?.['maxlength']"
+                                    class="text-dangerDark font-normal text-sm">
+                                    {{'profile.store_profile.form.messages.description_maxlength'|transloco}}</div>
+                            </div>
+                        </div>
+                        <div class="form-group w-full mt-6 relative">
+                            <label
+                                class="input-lable">{{'profile.store_profile.form.labels.location'|transloco}}</label>
+                            <input type="text" formControlName="location"
+                                placeholder="{{'profile.store_profile.form.placeholders.location'|transloco}}"
+                                autocomplete="off" class="custom-input h-auto" readonly>
+                            <button type="button" data-hs-overlay="#hs-large-modal"
+                                class="absolute  inset-y-12 end-0 flex items-center pe-3">
+                                <span class="icon text-primary-300">Edit</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="mt-4 bg-neutral-50 rounded-lg py-7 px-5">
+                        <h1 class="mb-4">{{'profile.store_profile.titles.technical_support'|transloco}}</h1>
+                        <div class="flex gap-10 mb-6">
+
+                            <div class="form-group w-full">
+                                <label for=""
+                                    class="input-lable">{{'profile.store_profile.form.labels.phone'|transloco}}asd</label>
+                                <div class="relative">
+                                    <input type="tel" name="tel"
+                                        placeholder="{{'profile.store_profile.form.placeholders.phone'|transloco}}"
+                                        class="custom-input invalid:border-red-500 pl-40" name="mobilePhone1"
+                                        [ngClass]="{ '': (updateStoreProfile.controls['mobilePhone1'].errors)}"
+                                        formControlName="mobilePhone1">
+                                    <div class="absolute top-0 left-0 cursor-pointer min-w-40 cuntery-select w-[80px]">
+                                        <ng-select [searchable]="false"
+                                            formControlName="mobileCountryId1" (change)="onSelectCountryCode($event)"
+                                        class="un-style py-3 px-4 pe-9  border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+                                            <ng-option *ngFor="let country of allCountries" [value]="country.id">
+                                                <div
+                                                class="flex items-center gap-2 hover:bg-gray-100 p-3 option cursor-pointer">
+                                                <img alt="" height="20" width="20" class="rounded-sm"
+                                                src="../../../../assets/images/{{country.countryNameCode}}.png" />
+                                                <span class="text-sm">{{country.countryNameCode}}({{
+                                                    country.countryPhoneCode
+                                                    }})</span>
+                                            </div>
+
+                                            </ng-option>
+
+                                          </ng-select>
+                                        <!-- <ng-select [searchable]="false" class="" name="mobileCountryId1"
+                                            formControlName="mobileCountryId1" (change)="onSelectCountryCode($event)">
+                                            <ng-option *ngFor="let country of allCountries" [value]="country.id">
+                                                <div
+                                                    class="flex items-center gap-2 hover:bg-gray-100 p-3 option cursor-pointer">
+                                                    <img alt="" height="20" width="20" class="rounded-sm"
+                                                        src="../../../../assets/images/{{country.countryNameCode}}.png" />
+                                                    <span class="text-sm">{{country.countryNameCode}}({{
+                                                        country.countryPhoneCode
+                                                        }})</span>
+                                                </div>
+
+                                            </ng-option>
+
+                                        </ng-select> -->
+                                    </div>
+                                </div>
+                                <div *ngIf="(updateStoreProfile.controls['mobilePhone1'].touched && updateStoreProfile.controls['mobilePhone1'].invalid)"
+                                    class="invalid-feedback mt-2">
+                                    <div *ngIf="updateStoreProfile.controls['mobilePhone1'].errors?.['required']"
+                                        class="text-dangerDark font-normal text-sm">
+                                        {{'profile.store_profile.form.messages.phone1_required'|transloco}}</div>
+                                    <div *ngIf="updateStoreProfile.controls['mobilePhone1'].errors?.['maxlength']"
+                                        class="text-dangerDark font-normal text-sm">
+                                        {{'profile.store_profile.form.messages.PHONE_NUMBER_LEAST' | transloco}}</div>
+                                    <div *ngIf="updateStoreProfile.controls['mobilePhone1'].errors?.['minlength']"
+                                        class="text-dangerDark font-normal text-sm">
+                                        {{'profile.store_profile.form.messages.PHONE_NUMBER_LEAST' | transloco}}</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.whatsapp_number'|transloco}}</label>
+                                <div class="relative">
+                                    <input type="tel" name="tel"
+                                        placeholder="{{'profile.store_profile.form.placeholders.whatsapp_number'|transloco}}"
+                                        class="custom-input invalid:border-red-500 pl-40" name="whatsAppNumber"
+                                        formControlName="whatsAppNumber">
+                                    <div class="absolute top-0 left-0 cursor-pointer min-w-40 cuntery-select w-[80px]">
+                                        <ng-select [searchable]="false"
+                                        formControlName="whatsAppCountryId" (change)="onSelectCountryCodeWhatsapp($event)"
+                                    class="un-style py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+                                        <ng-option *ngFor="let country of allCountries" [value]="country.id">
+                                            <div
+                                            class="flex items-center gap-2 hover:bg-gray-100 p-3 option cursor-pointer">
+                                            <img alt="" height="20" width="20" class="rounded-sm"
+                                                src="../../../../assets/images/{{country.countryNameCode}}.png" />
+                                            <span class="text-sm">{{country.countryNameCode}}({{
+                                                country.countryPhoneCode
+                                                }})</span>
+                                        </div>
+
+                                        </ng-option>
+
+                                      </ng-select>
+
+                                    </div>
+                                </div>
+                                <div *ngIf="(updateStoreProfile.controls['whatsAppNumber'].touched && updateStoreProfile.controls['whatsAppNumber'].invalid)"
+                                    class="invalid-feedback mt-2">
+
+                                    <div *ngIf="updateStoreProfile.controls['whatsAppNumber'].errors?.['maxlength']"
+                                        class="text-dangerDark font-normal text-sm">
+                                        {{'profile.store_profile.form.messages.WHATSAPP_NUMBER_LEAST' | transloco}}
+                                    </div>
+                                    <div *ngIf="updateStoreProfile.controls['whatsAppNumber'].errors?.['minlength']"
+                                        class="text-dangerDark font-normal text-sm">
+                                        {{'profile.store_profile.form.messages.WHATSAPP_NUMBER_LEAST' | transloco}}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="flex gap-10 mb-4">
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.phone'|transloco}}</label>
+                                <div class="relative">
+                                    <input type="tel" name="tel"
+                                        placeholder="{{'profile.store_profile.form.placeholders.phone'|transloco}}"
+                                        class="custom-input invalid:border-red-500 pl-40" name="mobilePhone2"
+                                        [ngClass]="{ '': (updateStoreProfile.controls['mobilePhone2'].errors)}"
+                                        formControlName="mobilePhone2">
+                                    <div class="absolute top-0 left-0 cursor-pointer min-w-40 cuntery-select w-[80px]">
+                                        <ng-select [searchable]="false"
+                                        formControlName="mobileCountryId2" (change)="onSelectCountryCodePhone2($event)"
+                                    class="un-style py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600">
+                                        <ng-option *ngFor="let country of allCountries" [value]="country.id">
+                                            <div
+                                            class="flex items-center gap-2 hover:bg-gray-100 p-3 option cursor-pointer">
+                                            <img alt="" height="20" width="20" class="rounded-sm"
+                                                src="../../../../assets/images/{{country.countryNameCode}}.png" />
+                                            <span class="text-sm">{{country.countryNameCode}}({{
+                                                country.countryPhoneCode
+                                                }})</span>
+                                        </div>
+
+                                        </ng-option>
+
+                                      </ng-select>
+
+                                    </div>
+                                </div>
+                                <div *ngIf="(updateStoreProfile.controls['mobilePhone2'].touched && updateStoreProfile.controls['mobilePhone2'].invalid)"
+                                    class="invalid-feedback mt-2">
+                                    <div *ngIf="updateStoreProfile.controls['mobilePhone2'].errors?.['required']"
+                                        class="text-dangerDark font-normal text-sm">
+                                        {{'profile.store_profile.form.messages.phone1_required'|transloco}}</div>
+                                    <div *ngIf="updateStoreProfile.controls['mobilePhone2'].errors?.['maxlength']"
+                                        class="text-dangerDark font-normal text-sm">
+                                        {{'profile.store_profile.form.messages.PHONE_NUMBER_LEAST' | transloco}}</div>
+                                    <div *ngIf="updateStoreProfile.controls['mobilePhone2'].errors?.['minlength']"
+                                        class="text-dangerDark font-normal text-sm">
+                                        {{'profile.store_profile.form.messages.PHONE_NUMBER_LEAST' | transloco}}</div>
+                                </div>
+                            </div>
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.email'|transloco}}</label>
+                                <input type="email" name="email" formControlName="email"
+                                    [ngClass]="{ '': (updateStoreProfile.controls['email'].errors)}"
+                                    placeholder="{{'profile.store_profile.form.placeholders.email'|transloco}}"
+                                    autocomplete="off" class="custom-input h-auto">
+                                <div *ngIf="(updateStoreProfile.controls['email'].touched && updateStoreProfile.controls['email'].invalid)"
+                                    class="invalid-feedback mt-2">
+                                    <div *ngIf="updateStoreProfile.controls['email'].errors?.['required']"
+                                        class="text-dangerDark font-normal text-sm">
+                                        {{'profile.store_profile.form.messages.email_required'|transloco}}</div>
+                                    <div *ngIf="updateStoreProfile.controls['email'].errors?.['email']"
+                                        class="text-dangerDark font-normal text-sm">
+                                        username@el-nusyan.com</div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="mt-4 bg-neutral-50 rounded-lg py-7 px-5">
+                        <h1 class="mb-4">{{'profile.store_profile.titles.buisness_platform'|transloco}}* </h1>
+                        <div class="form-group w-full">
+                            <label
+                                class="input-lable">{{'profile.store_profile.form.labels.authentication_number'|transloco}}
+                                *</label>
+                            <input type="text" name="localTelephone" formControlName="localTelephone"
+                                [ngClass]="{ '': (updateStoreProfile.controls['localTelephone'].errors)}"
+                                placeholder="{{'profile.store_profile.form.placeholders.authentication_number'|transloco}}"
+                                autocomplete="off" class="custom-input">
+                            <div *ngIf="(updateStoreProfile.controls['localTelephone'].touched && updateStoreProfile.controls['email'].invalid)"
+                                class="invalid-feedback mt-2">
+                                <div *ngIf="updateStoreProfile.controls['localTelephone'].errors?.['required']"
+                                    class="text-dangerDark font-normal text-sm">
+                                    {{'profile.store_profile.form.messages.authentication_number_required'|transloco}}
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="mt-4 bg-neutral-50 rounded-lg py-7 px-5">
+                        <h1 class="mb-4">{{'profile.store_profile.titles.social_media'|transloco}}</h1>
+
+                        <div class="flex gap-10 mb-6">
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.instagram'|transloco}}</label>
+                                <input name="instagramLink" formControlName="instagramLink" type="text"
+                                    placeholder="{{'profile.store_profile.form.placeholders.instagram'|transloco}}"
+                                    autocomplete="off" class="custom-input">
+                            </div>
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.twitter'|transloco}}</label>
+                                <input name="twitterLink" formControlName="twitterLink" type="text"
+                                    placeholder="{{'profile.store_profile.form.placeholders.twitter'|transloco}}"
+                                    autocomplete="off" class="custom-input">
+                            </div>
+                        </div>
+                        <div class="flex gap-10 mb-6">
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.facebook'|transloco}}</label>
+                                <input name="facebookLink" formControlName="facebookLink" type="text"
+                                    placeholder="{{'profile.store_profile.form.placeholders.facebook'|transloco}}"
+                                    autocomplete="off" class="custom-input">
+                            </div>
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.youtube'|transloco}}</label>
+                                <input name="youtubeLink" formControlName="youtubeLink" type="text"
+                                    placeholder="{{'profile.store_profile.form.placeholders.youtube'|transloco}}"
+                                    autocomplete="off" class="custom-input">
+                            </div>
+                        </div>
+
+                        <div class="flex gap-10 mb-6">
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.snapchat'|transloco}}</label>
+                                <input name="snapchatLink" formControlName="snapchatLink" type="text"
+                                    placeholder="{{'profile.store_profile.form.placeholders.snapchat'|transloco}}"
+                                    autocomplete="off" class="custom-input">
+                            </div>
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.tiktok'|transloco}}</label>
+                                <input name="tiktokLink" formControlName="tiktokLink" type="text"
+                                    placeholder="{{'profile.store_profile.form.placeholders.tiktok'|transloco}}"
+                                    autocomplete="off" class="custom-input">
+                            </div>
+
+                        </div>
+                        <div class="form-group w-full">
+                            <label
+                                class="input-lable">{{'profile.store_profile.form.labels.telegram'|transloco}}</label>
+                            <input name="telegramLink" formControlName="telegramLink" type="text"
+                                placeholder="{{'profile.store_profile.form.placeholders.telegram'|transloco}}"
+                                autocomplete="off" class="custom-input">
+                        </div>
+
+                    </div>
+
+                    <div class="mt-4 mb-4 bg-neutral-50 rounded-lg py-7 px-5">
+                        <h1 class="mb-4">{{'profile.store_profile.titles.application_links'|transloco}}</h1>
+
+
+                        <div class="flex gap-10 mb-6">
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.iphone_link'|transloco}}</label>
+                                <input name="iphoneLink" formControlName="iphoneLink" type="text"
+                                    placeholder="{{'profile.store_profile.form.placeholders.iphone_link'|transloco}}"
+                                    autocomplete="off" class="custom-input">
+                            </div>
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.android_link'|transloco}}</label>
+                                <input name="androidLink" formControlName="androidLink" type="text"
+                                    placeholder="{{'profile.store_profile.form.placeholders.iphone_link'|transloco}}"
+                                    autocomplete="off" class="custom-input">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="mt-4 mb-4 bg-neutral-50 rounded-lg py-7 px-5">
+                        <h1 class="mb-4">{{'profile.store_profile.titles.maarof_data'|transloco}}</h1>
+
+
+                        <div class="flex gap-10 mb-6">
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.maarof_phone'|transloco}}</label>
+                                <input name="maroofNumber" formControlName="maroofNumber" type="text"
+                                    placeholder="{{'profile.store_profile.form.placeholders.maarof_phone'|transloco}}"
+                                    autocomplete="off" class="custom-input">
+                            </div>
+                            <div class="form-group w-full">
+                                <label
+                                    class="input-lable">{{'profile.store_profile.form.labels.maarof_link'|transloco}}</label>
+                                <input name="maroofLink" formControlName="maroofLink" type="text"
+                                    placeholder="{{'profile.store_profile.form.placeholders.maarof_link'|transloco}}"
+                                    autocomplete="off" class="custom-input">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="py-7 px-5">
+                    <div class="w-80">
+                        <span
+                            class="text-lg  text-gray-500">{{'profile.store_profile.titles.logo_website'|transloco}}</span>
+                        <upload-image [folderName]="FOLDERNAME" [imgURL]="logoImg !== undefined ? logoImg : ''"
+                            (onUpload)="onUploadLogo($event)">
+
+                        </upload-image>
+
+                    </div>
+                    <div class="mt-12 w-80">
+                        <span
+                            class="text-lg text-gray-500">{{'profile.store_profile.titles.icon_logo'|transloco}}</span><br>
+                        <upload-image [folderName]="FOLDERNAME" [imgURL]="iconImg !== undefined ? iconImg : ''"
+                            (onUpload)="onUploadIcon($event)">
+
+                        </upload-image>
+
+                    </div>
+                </div>
+            </div>
+            <div class="flex ltr:justify-end rtl:justify-start">
+                <button routerLinkActive="router-link-active" type="submit"
+                    class="custom-button filled-button mt-4 w-30 ">
+                    <span class="text-sm">{{'profile.store_profile.save'|transloco}}</span>
+                </button>
+            </div>
+        </form>
+        <app-profile-location></app-profile-location>
+    </main>
+
+</div>

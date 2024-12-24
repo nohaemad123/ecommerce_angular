@@ -1,0 +1,8 @@
+dropzone ::ng-deep .dropzone.dz-wrapper.dz-single .dz-message{
+    height: 150px !important;
+}
+
+dropzone ::ng-deep .dropzone.dz-wrapper.dz-single .dz-preview{
+    width: auto;
+    height: 150px;
+}

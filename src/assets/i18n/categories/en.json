@@ -1,0 +1,89 @@
+{
+    "categories": "Home",
+    "categories": "All Categories",
+    "list": {
+        "breadcrumb": {
+            "categories": "categories",
+            "list": "List"
+        },
+        "add_category": "Add category",
+        "search": "Search",
+        "no_categories": {
+            "title": "Categoris is empty",
+            "description": "Please add category",
+            "btnText": "Add category"
+        },
+        "table": {
+            "thead": {
+                "code": "Code",
+                "categories": "Categories",
+                "parent_category":"Parent category",
+                "status": "Status",
+                "actions": "Actions"
+            }
+        },
+        "delete_category": {
+            "title": "Category is deleted",
+            "subtitle": "Category delete successfully"
+        }
+    },
+    "add_edit": {
+        "save": "Save",
+        "breadcrumb": {
+            "add_category": "Add category"
+        },
+        "english": "English",
+        "arabic": "Arabic",
+        "form": {
+            "labels": {
+                "name_en": "Name (English)",
+                "name_ar": "Name (Arabic)",
+                "description_en": "Description (English)",
+                "description_ar": "Description (Arabic)",
+                "add_parent": "Add parent category",
+                "parent_category": "Parent category",
+                "status": "Status",
+                "icon":"Icon",
+                "meta_title_en": "Meta title (English)",
+                "meta_title_ar": "Meta title (Arabic)",
+                "meta_description_en": "Meta description (English)",
+                "meta_description_ar": "Meta description (Arabic)"
+            },
+            "placeholders": {
+                "name_en": "Enter name (English)",
+                "name_ar": "Enter name (Arabic)",
+                "description_en": "Enter description (English)",
+                "description_ar": "Enter description (Arabic)",
+                "meta_title_en": "Enter meta title (English)",
+                "meta_title_ar": "Enter meta title (Arabic)",
+                "meta_description_en": "Enter meta description (English)",
+                "meta_description_ar": "Enter meta description (Arabic)"
+            },
+            "messages": {
+                "name_en": "please enter name (English)",
+                "name_ar": "Please enter name (Arabic)",
+                "description_en": "Please enter description (English)",
+                "description_ar": "Please enter description (Arabic)"
+            },
+
+            "add_category_success": {
+                "title": "category is added",
+                "subtitle": "category added successfully"
+            },
+            "add_sub_category_success": {
+                "title": "Sub category is added",
+                "subtitle": "Sub category added successfully"
+            },
+
+            "edit_category_success": {
+                "title": "category is edited",
+                "subtitle": "category edited successfully"
+            },
+            "edit_sub_category_success": {
+                "title": "Sub category is edited",
+                "subtitle": "Sub category edited successfully"
+            }
+        }
+    },
+    "categories_error_loading":"An error occurred while fetching categories"
+}

@@ -1,0 +1,48 @@
+{
+    "title": "Theme Builder",
+    "nav_settings": {
+        "form":{
+            "page_edit_title_en":  "English Title",
+            "page_edit_title_ar":  "Arabic Title",
+            "page_edit_desc_en":  "English Description",
+            "page_edit_desc_ar":  "Arabic Description",
+            "link":"Link",
+            "name_url": "Name URL",
+            "show_in_navigation": "Show Navigation",
+            "show_in_footer": "Show In Footer",
+            "is_external": "Is External",
+            "banner_image": "Banner Image"
+        },
+        "components": {
+            "carousel": "Carousel",
+            "brand_slider": "Brand Slider",
+            "category_slider": "Category Slider",
+            "big_banner":"Big Banner",
+            "site_features": "Site Features",
+            "products":"Product"
+        }
+    },
+
+    "component_category_slider": {
+        "page_updated": "Page Updated successfully",
+        "page_deleted": "Page Deleted successfully",
+        "section_category_updated": "Category Slider Updated successfully",
+        "section_brand_updated": "Brand Slider Updated successfully",
+        "section_carousel_updated": "Carousel Slider Updated successfully",
+        "section_big_banner_updated": "Brand Slider Updated successfully",
+        "section_site_feature_updated": "Site Features Updated successfully",
+        "section_products_updated": "Products Updated successfully",
+        "required_category":"you must select a category",
+        "required_brand":"you must select a brand"
+    },
+    "sections":{
+        "carousel":"Carousel",
+        "brand_slider":"Brand Slider",
+        "category_slider":"Category Slider",
+        "big_banner":"Big Banner",
+        "site_features":"Site Features",
+        "products":"Product",
+        "required_brand":"you must select a brand",
+        "required_products": "you must select products"
+    }
+}

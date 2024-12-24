@@ -1,0 +1,109 @@
+{
+    "breadcrumb": {
+        "title": "Profile",
+        "home": "Home"
+    },
+    "store_profile": {
+        "save": "Save",
+        "titles": {
+            "store_data": "Store data",
+            "technical_support": "Technical support",
+            "buisness_platform": "Buisness Platform Authentication Certificate",
+            "social_media": "Social media account",
+            "application_links": "Application links",
+            "maarof_data": "Maarof data",
+            "logo_website": "Logo website",
+            "icon_logo": "Icon logo"
+        },
+        "form": {
+            "labels": {
+                "store_name": "Store name",
+                "meta_description": "Description",
+                "location": "Location",
+                "phone": "Phone number",
+                "whatsapp_number": "Whatsapp number",
+                "email": "Email",
+                "authentication_number": "Authentication number",
+                "instagram": "Instagram",
+                "facebook": "Facebook",
+                "twitter": "Twitter",
+                "youtube": "Youtube",
+                "snapchat": "Snapchat",
+                "tiktok": "Tiktok",
+                "telegram": "Telegram",
+                "iphone_link": "Iphone application link",
+                "android_link": "Android application link",
+                "maarof_phone": "Maarof number",
+                "maarof_link": "Maarof link"
+            },
+            "placeholders": {
+                "store_name": "Enter store name",
+                "meta_description": "Enter description",
+                "location": "Enter location",
+                "phone": "Enter phone number",
+                "whatsapp_number": "Enter whatsapp number",
+                "email": "Enter email",
+                "authentication_number": "Enter authentication number",
+                "instagram": "Enter instagram link",
+                "facebook": "Enter facebook link",
+                "twitter": "Enter twitter link",
+                "youtube": "Enter youtube link",
+                "snapchat": "Enter snapchat link",
+                "tiktok": "Enter tiktok link",
+                "telegram": "Enter telegram link",
+                "iphone_link": "Enter iphone application link",
+                "android_link": "Enter android application link",
+                "maarof_phone": "Enter maarof number",
+                "maarof_link": "Enter maarof link"
+            },
+            "messages": {
+                "name_required": "Please enter store name",
+                "name_maxlength": "The store name must not exceed 300 characters",
+                "description_maxlength": "The store description must not exceed 300 characters",
+                "phone1_required": "Please enter phone number",
+                "email_required": "Please enter email",
+                "authentication_number_required": "Please enter authentication number",
+                "PHONE_NUMBER_LEAST": "phone number should be {{ number }} digits",
+                "WHATSAPP_NUMBER_LEAST": "whatsapp number should be {{ number }} digits"
+            }
+        },
+        "success_message": {
+            "title": "store profile updated",
+            "subtitle": "store profile updated successfully"
+        }
+    },
+    "store_address": {
+        "title": "Edit Store Branch",
+        "form": {
+            "labels": {
+                "country": "Country",
+                "city": "City",
+                "address": "Address",
+                "postal_code": "Postal code",
+                "street": "Street",
+                "neighborhood": "Neighborhood",
+                "number": "Number",
+                "building_number": "Building number"
+            },
+            "placeholders": {
+                "address": "Enter address",
+                "postal_code": "Enter postal code",
+                "street": "Enter street",
+                "neighborhood": "Enter neighborhood",
+                "number": "Enter number",
+                "building_number": "Enter building number"
+            },
+            "messages": {
+                "postal_code": "Please enter postal code",
+                "street": "Please enter street",
+                "neighborhood": "Please enter neighborhood",
+                "number": "Please enter number",
+                "building_number": "Please enter building number"
+            }
+        },
+        "success_message": {
+            "title": "store address updated",
+            "subtitle": "store address updated successfully"
+        }
+    }
+}

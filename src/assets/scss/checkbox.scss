@@ -1,0 +1,53 @@
+.checkbox {
+    @apply relative;
+    @apply w-11;
+    @apply h-6;
+    @apply bg-gray-200;
+    @apply peer-focus:outline-none;
+    @apply peer-focus:ring-4;
+    @apply peer-focus:ring-blue-300;
+    @apply dark:peer-focus:ring-blue-800;
+    @apply rounded-full;
+    @apply dark:bg-gray-700;
+    @apply peer-checked:after:translate-x-full;
+    @apply rtl:peer-checked:after:-translate-x-full;
+    @apply peer-checked:after:border-white;
+    @apply after:content-[''];
+    @apply after:absolute;
+    @apply after:top-[2px];
+    @apply after:start-[2px];
+    @apply after:bg-white;
+    @apply after:border-gray-300;
+    @apply after:border;
+    @apply after:rounded-full;
+    @apply after:h-5;
+    @apply after:w-5;
+    @apply after:transition-all;
+    @apply dark:border-gray-600;
+    @apply peer-checked:bg-blue-600;
+}
+
+.unchecked {
+    @apply relative;
+    @apply w-11;
+    @apply h-6;
+    @apply bg-gray-200;
+    @apply peer-focus:outline-none;
+    @apply peer-focus:ring-4;
+    @apply peer-focus:ring-blue-300;
+    @apply dark:peer-focus:ring-blue-800;
+    @apply rounded-full;
+    @apply dark:bg-gray-700;
+    @apply after:content-[''];
+    @apply after:absolute;
+    @apply after:top-[2px];
+    @apply after:start-[2px];
+    @apply after:bg-white;
+    @apply after:border-gray-300;
+    @apply after:border;
+    @apply after:rounded-full;
+    @apply after:h-5;
+    @apply after:w-5;
+    @apply after:transition-all;
+    @apply dark:border-gray-600;
+}

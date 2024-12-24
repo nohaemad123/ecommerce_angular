@@ -1,0 +1,43 @@
+{
+  "home":"Home",
+  "dashboard": "dashboard",
+  "auth": "Auth",
+  "signIn": "Sign In",
+  "signUp": "Sign Up",
+  "email": "Email",
+  "verify": "Verify",
+  "settings": "Settings",
+  "brands": "Brands",
+  "newBrand": "New Brand",
+  "categories": "Categoris",
+  "new_category": "New Category",
+  "coupons":"Coupons",
+  "new_coupon":"New Coupon",
+  "product-sales": "Product Sales",
+  "categories-sales": "Categories Sales",
+  "brands-sales": "Brands Sales",
+  "coupons-sales": "Coupons Sales",
+  "cities-sales": "Cities Sales",
+  "en": "English",
+  "ar": "العربية",
+  "theme_builder":"Theme Builder",
+  "logout_success_message": {
+    "title": "logout is successefully ",
+    "subTitle": "you can login again"
+  },
+  "no_brands": {
+    "title": "Brands is empty",
+    "description": "Please add brand",
+    "btnText": "Add brand"
+  },
+  "forgot_password": "Forgot Password",
+  "forgot_password_subHeader": "Enter your Email to Receive a Verification Code",
+  "new_brand": "New Brand",
+  "general_upload": {
+    "placeholder": "Click or drag images here to upload"
+  },
+  "common_fields": {
+    "submit_button": "Submit",
+    "required_messages": "this field is required"
+  }
+}

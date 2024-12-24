@@ -1,0 +1,2 @@
+The core module contains everything central to and common across the application. These include components like the header and pages like the 404 page.
+Services responsible for authentication and session management also fall here, as well as app-wide interceptors and guards.

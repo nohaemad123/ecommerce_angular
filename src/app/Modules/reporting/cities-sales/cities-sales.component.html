@@ -1,0 +1,98 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main - Categories -->
+    <div class="flex flex-col flex-auto">
+
+        <!-- Title -->
+        <div class="text-lg font-medium tracking-normal leading-none">{{"reporting.city_sale.title"|transloco}}
+        </div>
+
+        <!-- start breadcrumb -->
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="flex">
+                <li><a href="#"
+                        class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">{{"reporting.city_sale.breadcrumb.home"|transloco}}</a>
+                </li>
+                <li><a href="#"
+                        class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">{{"reporting.city_sale.breadcrumb.reporting"|transloco}}</a>
+                </li>
+                <li class="text-primary" aria-current="page">
+                    <a href="#" class="text-gray-800 hover:text-primary text-xs">
+                        {{"reporting.city_sale.title"|transloco}}
+                    </a>
+                </li>
+            </ol>
+        </nav>
+
+
+        <form [formGroup]="reportForm" (ngSubmit)="onShowReport()">
+            <div class="flex items-center justify-between gap-4">
+                <div class="w-4/5">
+                    <label>{{"reporting.city_sale.show_report.select_city"|transloco}}</label>
+                    <select formControlName="cityId" class="custom-input">
+                        <ng-container *ngIf="(cities$ | async) as cities">
+                            <option *ngFor="let city of cities" [value]="city?.value">
+                                {{ city?.name }}
+                            </option>
+                        </ng-container>
+                    </select>
+
+                </div>
+                <div class="w-4/5">
+                    <div class="form-group">
+                        <label>{{"reporting.city_sale.show_report.date_from"|transloco}}</label>
+                        <input
+                            [ngClass]="{ 'border-red-500': (reportForm.controls['startDate'].errors && reportForm.controls['startDate'].touched)}"
+                            type="text" [owlDateTime]="startDate" [owlDateTimeTrigger]="startDate"
+                            placeholder="{{'reporting.city_sale.show_report.date_from'|transloco}}" autocomplete="off"
+                            formControlName="startDate" class="custom-input py-6 px-4">
+                        <owl-date-time #startDate [pickerType]="'calendar'"></owl-date-time>
+                    </div>
+                </div>
+                <div class="w-4/5">
+                    <div class="form-group">
+                        <label>{{"reporting.city_sale.show_report.date_to"|transloco}}</label>
+                        <input
+                            [ngClass]="{ 'border-red-500': (reportForm.controls['endDate'].errors && reportForm.controls['endDate'].touched)}"
+                            type="text" [owlDateTime]="endDate" [owlDateTimeTrigger]="endDate"
+                            placeholder="{{'reporting.city_sale.show_report.date_to'|transloco}}" autocomplete="off"
+                            formControlName="endDate" class="custom-input py-6 px-4">
+                        <owl-date-time #endDate [pickerType]="'calendar'"></owl-date-time>
+
+                    </div>
+                </div>
+                <div class="w-4/5 mt-5">
+                    <button type="submit" [disabled]="!reportForm.valid" class="custom-button filled-button">
+                        <span class="text-xs icon icon-plus"></span>
+                        <span class="text-sm"> Show Report</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <ng-container *ngIf="(citySales$ | async) as citySale; else loading">
+            <ng-container *ngIf="citySale.items?.length; else noReport">
+                <div class="mt-8">
+                    <app-table [filter]="filterCriteria" [columns]="columns" [rows]="citySale"
+                        (setLimitEvent)="setLimit($event)" (setPageEvent)="setPage($event)"></app-table>
+                </div>
+            </ng-container>
+        </ng-container>
+
+
+        <ng-template #loading>
+            <div class="mt-8" *ngIf="!reportsError">
+                Loading...
+            </div>
+
+            <ng-container *ngIf="reportsError">
+                <app-error-loading [error_msg]="error_msg"></app-error-loading>
+            </ng-container>
+        </ng-template>
+
+        <ng-template #noReport>
+            <div class="mt-8">
+                <app-empty-state [emptyStateData]="emptyStateData"></app-empty-state>
+            </div>
+        </ng-template>
+    </div>
+</div>

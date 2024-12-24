@@ -1,0 +1,109 @@
+{
+    "home": "الرئيسية",
+    "shipping": "الشحن",
+    "shippingMethodSuccess": "تم اختيار طريقة الشحن",
+    "orderSentForShipping": "تم إرسال طلب الشحن إلى OTO",
+    "DeliveryEstimation": "وقت التوصيل المتوقع",
+    "Cancel": "إلغاء",
+    "Confirm": "تأكيد",
+    "Success": "تم بنجاح",
+    "DeliveryEstimationText": "تم اختيار وقت التوصيل المتوقع بنجاح!",
+
+    "no_orders": {
+        "title": "الطلبات فارغة"
+    },
+    "table": {
+        "thead": {
+            "id": "رقم الطلب",
+            "tracking_number": "رقم التتبع"
+        }
+    },
+    "list": {
+        "breadcrumb": {
+            "categories": "الطلبات",
+            "list": "كل الطلبات"
+        }
+    },
+    "view_order": {
+        "breadcrumb": {
+            "orders": "الطلبات",
+            "view_order": "تفاصيل الاوردر"
+        },
+        "tabs": {
+            "order_details": "تفاصيل الاوردر",
+            "order_history": "تاريخ الاوردر"
+        },
+        "order_date": "تاريخ الاوردر",
+        "payment_method": "طريقة الدفع",
+        "shipping_method": "طريقة الشحن",
+        "documents": "المستندات",
+        "invoice_receipt": "رقم الفاتورة",
+        "shipping": "الشحن",
+        "rewards_points": "نقاط الكافأت",
+        "shipping_address": "عنوان الشحن",
+        "name": "الاسم",
+        "phone": "رقم الهاتف",
+        "country": "الدولة",
+        "street_address": "الشارع",
+        "city": "المدينة",
+        "building_number": "رقم المبنى",
+        "tracking": "التتبع",
+        "tracking_number": "رقم التتبع",
+        "status": "الحالة",
+        "summary": "Summary",
+        "sub_total": "السعر قبل الضريبة",
+        "discount": "الخصم",
+        "tax": "ضريبة القيمة المضافة",
+        "total": "المبلغ الاجمالي",
+        "action_buttons": {
+            "make_prepared": "تحضير الطلب",
+            "make_revised": "مراجعة الطلب",
+            "reject": "رفض الطلب"
+        },
+        "StatusCode": {
+            "Revised": "تم مراجعته",
+            "Prepared": "تم تحضيره",
+            "Activated": "مفعل",
+            "Locked": "مغلق",
+            "Canceled": "تم الإلغاء",
+            "Completed": "مكتمل",
+            "Delivered": "تم التسليم",
+            "Delivering": "التسليم",
+            "Denied": "مرفوض",
+            "Expired": "منتهية الصلاحية",
+            "Failed": "فشلت",
+            "Pending": "في انتظار المراجعة",
+            "Processing": "يتم فحص الطلب",
+            "Refunded": "تم رد الطلب"
+        },
+        "order_details_table": {
+            "thead": {
+                "id": "رقم الطلب",
+                "product_name": "اسم المنتج",
+                "quantity": "الكمية",
+                "unit_price": "سعر الوحدة",
+                "total_price": "السعر الاجمالي"
+            }
+        },
+        "order_history_table": {
+            "thead": {
+                "id": "رقم الطلب",
+                "customer_nodified":"اخطار العميل",
+                "order_status":"حالة الطلب"
+
+            }
+        },
+        "prepare_order_success":{
+            "title":"تم تحضير الطلب",
+            "subtitle":"تم تحضير الطلب بنجاح"
+        },
+        "revise_order_success":{
+            "title":"تمت مراجعة الطلب",
+            "subtitle":"تمت مراجعة الطلب بنجاح"
+        },
+        "reject_order_success":{
+            "title":"تم الغاء الطلب",
+            "subtitle":"تم الغاء الطلب بنجاح"
+        }
+    }
+}

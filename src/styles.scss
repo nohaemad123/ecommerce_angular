@@ -1,0 +1,54 @@
+// tailwind styles - main styles for application
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * third party styles
+ */
+//Styles
+@import "assets/scss/general.scss";
+@import "assets/scss/icons.scss";
+@import "assets/scss/button.scss";
+@import "assets/scss/lable.scss";
+@import "assets/scss/selectBox.scss";
+@import "assets/scss/scrollBar.scss";
+@import "assets/scss/carousel.scss";
+@import "assets/scss/fonts.scss";
+@import "assets/scss/toastr.scss";
+@import "assets/scss/checkbox.scss";
+@import "assets/scss/table.scss";
+@import "assets/scss/stepper.scss";
+@import "assets/scss/input.scss";
+@import "assets/scss/tabs.scss";
+@import "assets/scss/modal.scss";
+
+// OWL Carousel styles
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
+// ng -datepicker
+@import "@danielmoncada/angular-datetime-picker/assets/style/picker.min.css";
+
+body {
+  font-family: 'Omnes Arabic',sans-serif;;
+  [dir=rtl] & {
+    font-family: "Cairo", sans-serif;
+  }
+}
+
+.flex-2{
+  flex: 2 2 0%;
+}
+
+
+.required::after {
+  content: '*';
+  color: red;
+}
+
+.toast-close-button{
+  margin-inline-end: 10px;
+}
+
+

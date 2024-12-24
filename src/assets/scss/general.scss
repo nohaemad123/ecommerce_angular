@@ -1,0 +1,16 @@
+// flexBox
+.flex_c_b {
+    @apply flex items-start lg:items-center justify-between flex-col lg:flex-row;
+  }
+  
+  .flex_c_e {
+    @apply flex items-start lg:items-center justify-end flex-col lg:flex-row;
+  }
+  
+  .flex_c {
+    @apply flex items-start lg:items-center flex-col lg:flex-row;
+  }
+  
+  .flex_c_c {
+    @apply flex items-start lg:items-center justify-center
+  }

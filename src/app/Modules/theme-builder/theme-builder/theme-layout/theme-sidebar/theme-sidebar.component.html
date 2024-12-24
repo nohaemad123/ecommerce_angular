@@ -1,0 +1,39 @@
+<div class="relative flex flex-col flex-auto">
+
+    <!-- Title -->
+    <h2 class="text-lg font-medium tracking-normal leading-none">Website Pages</h2>
+
+    <button class="custom-button my-4" (click)="addNewPage()">add new page</button>
+
+
+    <ng-container *ngIf="(pageList$ | async) as pages;">
+
+    <div *ngFor="let page of pages" class="mt-2">
+        <div class="bg-white p-2 rounded-md flex justify-between mt-2">
+            <p class="text-primary-600 font-medium">
+                {{ (currentLang | async) === 'en'? page.titleEn:page.title }}
+            </p>
+            <div class="gap-2 flex">
+                <button (click)="deletePage(page)">
+                    <i size="30" class="icon icon-trash-o text-red-600"></i>
+                </button>
+                <button (click)="pageConfig(page)">
+                    <i size="30" class="icon icon-setting"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    </ng-container>
+
+
+
+    <!-- Loading template -->
+         <div class="mt-8" *ngIf="!showError && (pageList$ | async)?.length == 0">
+            Loading...
+        </div>
+
+        <ng-container *ngIf="showError">
+            error accord while loading data
+        </ng-container>
+ </div>

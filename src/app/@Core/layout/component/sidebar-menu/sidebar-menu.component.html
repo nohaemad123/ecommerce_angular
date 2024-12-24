@@ -1,0 +1,84 @@
+<div class="first:border-primary-300 first:mt-6"
+  [ngClass]="menuService.showSideBar ? 'pt-4 first:border-y-2 first:pb-5':'pt-0 first:border-0 first:pb-0'"
+  *ngFor="let menu of menuService.pagesMenu">
+  <div class="mx-1 flex items-center justify-between " [ngClass]="menuService.showSideBar ? ' mb-5':'mb-2'">
+    <small [ngClass]="{ hidden: !menuService.showSideBar }" class="text-base font-medium text-white/50 uppercase">
+      {{ menu.group }}
+    </small>
+  </div>
+  <ul class="flex flex-col space-y-4">
+    <!-- List items -->
+    <li *ngFor="let item of menu.items">
+      <!-- Menu List -->
+      <div (click)="toggleMenu(item)" class="group relative text-gray-400">
+        <!-- Icon -->
+        <!-- <mat-icon class="mat-18">icon</mat-icon> -->
+
+        <!-- Condition -->
+        <ng-container [ngTemplateOutlet]="item.children ? childMenu : parentMenu"
+          [ngTemplateOutletContext]="{ item: item }">
+        </ng-container>
+
+        <!-- Workaround:: Enable routerLink -->
+        <ng-template #parentMenu let-item="item">
+          <div routerLink="{{ item.route }}" routerLinkActive="bg-primary-500 rounded-md p-2"
+            [ngClass]="!menuService.showSideBar ? 'justify-center':'justify-start'"
+            class="flex items-center rounded text-white/50 gap-2 hover:text-white cursor-pointer">
+            <span class="{{item.icon}}"></span>
+            <a [ngClass]="{ hidden: !menuService.showSideBar}"
+              class="truncate text-sm font-medium tracking-wide focus:outline-none transition-all duration-500">
+              {{ item.label | transloco}}
+            </a>
+          </div>
+        </ng-template>
+
+
+        <!-- Workaround:: Disable routerLink -->
+        <ng-template #childMenu let-item="item">
+          <div [ngClass]="!menuService.showSideBar ? 'justify-center':'justify-between'"
+            routerLinkActive="bg-primary-500 rounded-md p-2" class="flex items-center cursor-pointer group">
+            <div class="flex items-center gap-[6px]">
+              <span class="text-white/50 group-hover:text-white {{item.icon}}"></span>
+              <a routerLink="{{ item.route }}" [ngClass]="{ hidden: !menuService.showSideBar}"
+                class="rounded text-white/50 gap-2 group-hover:text-white">
+                <span
+                  class="truncate text-base font-medium tracking-wide focus:outline-none transition-all duration-500">
+                  {{ item.label | transloco}}
+                </span>
+              </a>
+            </div>
+            <!-- Arrow Icon -->
+            <button *ngIf="item.children" [ngClass]="{ hidden: !menuService.showSideBar, 'rotate-90': item.expanded }"
+              class="pointer-events-none text-white/50 transition-all duration-500 group-hover:text-white">
+              >
+            </button>
+          </div>
+        </ng-template>
+
+
+        <!-- Tooltip -->
+        <div class="fixed w-full" *ngIf="!menuService.showSideBar">
+
+
+          <span
+            class="bg-primary-500 text-white absolute left-10 -top-[20px] w-auto min-w-max origin-left scale-0 rounded-md bg-black p-2 text-base font-bold text-white shadow-md transition-all  group-hover:scale-100">
+            {{ item.label }}
+
+          </span>
+
+        </div>
+      </div>
+
+      <!-- Submenu items -->
+      <app-sidebar-submenu [submenu]="item"></app-sidebar-submenu>
+
+    </li>
+
+  </ul>
+
+</div>
+
+<!-- Separator -->
+<div class="pt-3">
+  <hr class="border-t-2 border-primary-400" />
+</div>

@@ -1,0 +1,131 @@
+{
+    "title":"Reporting",
+    "show_report": "Show report",
+    "product_sale": {
+        "title": "Product sales",
+        "breadcrumb": {
+            "home": "Home",
+            "reporting": "Reporting"
+        },
+        "show_report": {
+            "select_product": "Select product",
+            "date_from": "Date from",
+            "date_to": "Date to"
+        },
+        "empty_state": {
+            "title": "You currently have no product reports",
+            "description": "Start now by choosing the product, choosing the report period, then pressing the View Report button."
+        },
+        "table": {
+            "id": "Id",
+            "productName": "name",
+            "quantity": "Quantity",
+            "before": "Before",
+            "discount": "Discount",
+            "net": "Net",
+            "tax": "Tax",
+            "profit": "Profit",
+            "after_tax": "After tax",
+            "brandName":"Brand Name"
+        }
+    },
+    "category_sale": {
+        "title": "Categories sales",
+        "breadcrumb": {
+            "home": "Home",
+            "reporting": "Reporting"
+        },
+        "show_report": {
+            "select_category": "Select category",
+            "date_from": "Date from",
+            "date_to": "Date to"
+        },
+        "empty_state": {
+            "title": "You currently have no category reports",
+            "description": "Start now by choosing the category, choosing the report period, then pressing the View Report button."
+        },
+        "table": {
+            "id": "Id",
+            "category": "Category",
+            "quantity": "Quantity",
+            "before": "Before",
+            "discount": "Discount",
+            "net": "Net",
+            "tax": "Tax",
+            "profit": "Profit",
+            "after_tax": "After tax"
+        }
+    },
+    "city_sale": {
+        "title": "Citites sales",
+        "breadcrumb": {
+            "home": "Home",
+            "reporting": "Reporting"
+        },
+        "show_report": {
+            "select_city": "Select city",
+            "date_from": "Date from",
+            "date_to": "Date to"
+        },
+        "empty_state": {
+            "title": "You currently have no city reports",
+            "description": "Start now by choosing the city, choosing the report period, then pressing the View Report button."
+        },
+        "table": {
+            "id": "Id",
+            "city_name": "City name",
+            "city_sale": "City sale"
+        }
+    },
+    "brand_sale": {
+        "title": "Brands sales",
+        "breadcrumb": {
+            "home": "Home",
+            "reporting": "Reporting"
+        },
+        "show_report": {
+            "select_brand": "Select brand",
+            "date_from": "Date from",
+            "date_to": "Date to"
+        },
+        "empty_state": {
+            "title": "You currently have no brand reports",
+            "description": "Start now by choosing the brand, choosing the report period, then pressing the View Report button."
+        },
+        "table": {
+            "id": "Id",
+            "brand_name": "Brand name",
+            "brand_sale": "Brand sale"
+        }
+    },
+    "coupon_sale": {
+        "title": "Coupon Sales",
+        "breadcrumb": {
+            "home": "Home",
+            "reporting": "Reporting"
+        },
+        "show_report": {
+            "select_coupon": "Select Coupon",
+            "date_from": "Date from",
+            "date_to": "Date to"
+        },
+        "empty_state": {
+            "title": "You currently have no Coupon reports",
+            "description": "Start now by choosing the Coupon, choosing the report period, then pressing the View Report button."
+        },
+        "table": {
+            "id": "Id",
+            "coupon_code": "Coupon Code",
+            "total_discount": "Total Discount",
+            "coupon_creation_date": "Coupon Creation Date",
+            "coupon_discount_type_name": "Coupon Type Name"
+        }
+    },
+    "categories_error_loading":"An error occurred while fetching categories sales",
+    "products_error_loading":"An error occurred while fetching product sales",
+    "brands_error_loading":"An error occurred while fetching brands sales",
+    "coupons_error_loading":"An error occurred while fetching coupons sales",
+    "cities_error_loading":"An error occurred while fetching cities sales"
+
+
+}

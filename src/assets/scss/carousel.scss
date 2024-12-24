@@ -1,0 +1,85 @@
+// OWL Carousel styles
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+// owl-carousel
+.ltr{
+    direction: ltr;
+}
+.owl-theme {
+    height: 100%;
+    padding: 10px;
+    .owl-dots {
+        text-align: left;
+        position: absolute;
+        bottom: 0;
+
+        .owl-dot {
+            span {
+                width: 16px;
+                height: 7px !important;
+                margin:5px !important;
+            }
+
+            &.active {
+                span {
+                    background: #ffffff !important;
+                    width: 30px !important;
+                    height: 7px;
+                }
+
+                &:hover {
+                    span {
+                        background: #ffffff !important;
+                    }
+                }
+            }
+
+        }
+
+    }
+    .owl-nav {
+        &.disabled+.owl-dots {
+            margin-top: 40px;
+        }
+    }
+}
+
+:host::ng-deep{
+    .owl-stage{
+        height: 100% !important;
+        background-color: blue !important;
+    }
+}
+
+.owl-stage-outer, .owl-stage-outer  div  {
+    height: 100% !important;
+}
+// .owl-stage {
+//     height: 100% !important;
+//     background-color: black !important;
+// }
+// .owl-item{
+//     height: 100% !important;
+//     background-color: yellow !important;
+// }
+.owl-stage-outer .imageSlide{
+    height: auto !important;
+}
+
+.owl-carousel.owl-drag .owl-item {
+    min-height: 570px;
+}
+
+.owl-theme .owl-nav.disabled+.owl-dots {
+    margin-top: 30px;
+}
+
+.owl-carousel.owl-drag .owl-item{
+    min-height: auto !important;
+}
+
+@media (min-width: 760px) and (max-width: 1024px) {
+    .imageSlide img{
+        height: 190px !important;
+    }
+}

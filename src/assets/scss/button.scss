@@ -1,0 +1,37 @@
+.btn {
+  @apply min-w-[40px] min-h-[40px] hover:bg-gray-100 border border-neutral-100 rounded-lg shadow-sm
+  transition-all duration-100 delay-75 active:bg-neutral-200 flex items-center gap-4 justify-center bg-transparent;
+
+  &__icon {
+      @apply text-lg text-neutral-400 block;
+  }
+}
+
+.custom-button {
+  @apply transition ease-in-out delay-150 bg-white duration-300 w-full h-10 border-1 border-primary-300 text-primary-300 font-normal
+   text-base rounded-md hover:bg-primary-300 hover:text-white;
+   &:disabled {
+      @apply cursor-not-allowed;
+   }
+}
+
+.filled-button {
+  @apply font-normal px-8 bg-primary-300 text-white hover:bg-transparent hover:text-primary-300;
+}
+
+@layer base {
+  .border-1 {
+    border-width: 1px;
+  }
+}
+
+  //dropdown
+  .hs-dropdown {
+    .hs-dropdown-menu{
+        @apply  transition-[opacity,margin] opacity-0 bg-white border border-gray-200 rounded-lg p-2 mt-2 z-50;
+        .item{
+            @apply flex items-center gap-x-2.5 p-3 rounded-sm text-sm text-neutral-800 hover:bg-gray-100
+            focus:outline-none focus:bg-gray-100 border-b border-gray-100 last:border-0 cursor-pointer
+        }
+    }
+  }

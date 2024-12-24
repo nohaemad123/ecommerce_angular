@@ -1,0 +1,46 @@
+<div
+  class="max-h-0 overflow-hidden pt-1"
+  [ngClass]="{ hidden: !menuService.showSideBar, 'max-h-screen': submenu.expanded }">
+  <ul  class="flex flex-col ltr:border-l-2 rtl:border-r-2 border-primary-300 text-night-200 dark:border-night-500">
+
+    <li *ngFor="let sub of submenu.children" class="ltr:border-l-[3px] rtl:border-r-[3px] border-primary-500">
+      <div
+
+        class="flex rounded text-white/50 mt-2 hover:text-white dark:text-night-300 dark:hover:bg-night-600 relative transition-all duration-500"
+        (click)="toggleMenu(sub)">
+        <!-- Condition -->
+        <ng-container
+          [ngTemplateOutlet]="sub.children ? childMenu : parentMenu"
+          [ngTemplateOutletContext]="{ sub: sub }">
+        </ng-container>
+
+        <!-- Parent Menu -->
+        <ng-template #parentMenu let-sub="sub">
+          <!-- [routerLinkActiveOptions]="{ exact: true }" -->
+          <a
+
+            [routerLink]="sub.route"
+            routerLinkActive="bg-primary-500 rounded-md p-2 xxx before:top-[10px]"
+            class=" bg-primary-300 inline-block w-full ltr:ml-5 rtl:mr-5 text-xs font-semibold before:content-[''] before:absolute before:top-[3px] before:start-0 before:h-2 before:w-4 before:bg-transparent before:border-b-[3px] before:border-primary-500 before:rounded-es-3xl">
+            {{ sub.label | transloco }}
+          </a>
+        </ng-template>
+
+        <!-- Child Menu -->
+        <ng-template #childMenu let-sub="sub">
+          <a class="inline-block w-full cursor-pointer  text-xs font-semibold">
+            {{ sub.label  | transloco }}
+          </a>
+          <button
+            [ngClass]="{ hidden: !menuService.showSideBar, 'rotate-90': sub.expanded }"
+            class="flex items-center p-1 text-gray-400 transition-all duration-500 dark:text-night-400">
+            >>
+          </button>
+        </ng-template>
+      </div>
+
+      <!-- Submenu items -->
+      <app-sidebar-submenu [submenu]="sub"></app-sidebar-submenu>
+    </li>
+  </ul>
+</div>

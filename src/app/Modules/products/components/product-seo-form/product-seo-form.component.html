@@ -1,0 +1,118 @@
+<div class="px-12 py-8 rounded-md bg-neutral-50">
+    <h3 class="mb-5 text-lg text-neutral-600">{{
+        "products.SeoMetaTags" | transloco
+        }}</h3>
+    <div>
+        <ul class="flex gap-8 list-none mb-7">
+            <li class="flex items-center gap-2 text-center" (click)="selectedLang = 'en'">
+                <img src="assets/images/en.png" class="w-5 h-5 rounded-full" alt="">
+                <a class="block text-sm leading-normal uppercase rounded cursor-pointer "
+                    [ngClass]="{ 'underline text-sky-600': selectedLang === 'en' }">
+                    {{
+                    "products.ENGLISH" | transloco
+                    }}
+                </a>
+            </li>
+            <li class="flex items-center gap-2 text-center" (click)="selectedLang = 'ar'"
+                [ngClass]="{ 'underline text-sky-600': selectedLang === 'ar' }">
+                <img src="assets/images/SA.png" class="w-5 h-5 rounded-full" alt="">
+                <a class="block text-sm leading-normal uppercase rounded cursor-pointer">
+                    {{
+                    "products.ARABIC" | transloco
+                    }}
+                </a>
+            </li>
+        </ul>
+    </div> <!-- <div class="w-full form-group">
+        <label for="login-email" class="input-lable">Meta Title (English)</label>
+        <input type="text" name="email" placeholder="Enter Meta Title" autocomplete="off"
+            class="custom-input">
+    </div> -->
+    <form [formGroup]="seoForm">
+        <div class="w-full mt-4 form-group">
+            <label for="productPageUrl" class="input-lable">{{
+                "products.ProductPageUrl" | transloco
+                }}</label>
+            <input type="text" formControlName="productPageUrl" name="productPageUrl" placeholder="{{
+            'products.ProductPageUrl' | transloco
+        }}" autocomplete="off" class="custom-input">
+        </div>
+        <ng-container *ngIf="selectedLang === 'ar'">
+            <div class="w-full mt-4 form-group">
+                <label for="productPageTitle" class="input-lable">{{
+                    "products.ProductPageTitle" | transloco
+                    }}</label>
+                <input type="text" formControlName="productPageTitle" name="productPageTitle" placeholder="{{
+                'products.ProductPageTitle' | transloco
+            }}" autocomplete="off" class="custom-input">
+            </div>
+
+            <div class="flex items-start gap-6 mt-4">
+                <div class="w-full form-group">
+                    <label for="productPageDescription" class="input-lable">{{
+                        'products.ProductPageDescription' | transloco
+                        }}</label>
+                    <textarea type="text" placeholder="{{
+                    'products.ProductPageDescription' | transloco
+                }}" class="h-auto custom-input" rows="5" formControlName="productPageDescription">
+                </textarea>
+                </div>
+            </div>
+            <div class="w-full mt-4 form-group">
+                <label for="Keywords" class="input-lable">{{
+                    "products.Keywords" | transloco
+                    }}</label>
+                <input type="text" formControlName="seoKeywords" name="seoKeywords" placeholder="{{
+                'products.Keywords' | transloco
+            }}" autocomplete="off" class="custom-input">
+            </div>
+        </ng-container>
+        <ng-container *ngIf="selectedLang === 'en'">
+            <div class="w-full mt-4 form-group">
+                <label for="ProductPageTitleEn" class="input-lable">{{
+                    "products.ProductPageTitleEn" | transloco
+                    }}</label>
+                <input type="text" formControlName="productPageTitleEn" name="ProductPageTitleEn" placeholder="{{
+                'products.ProductPageTitleEn' | transloco
+            }}" autocomplete="off" class="custom-input">
+            </div>
+            <div class="flex items-start gap-6 mt-4">
+                <div class="w-full form-group">
+                    <label for="ProductPageDescriptionEn" class="input-lable">{{
+                        'products.ProductPageDescriptionEn' | transloco
+                        }}</label>
+                    <textarea type="text" placeholder="{{
+                    'products.ProductPageDescriptionEn' | transloco
+                }}" class="h-auto custom-input" rows="5" formControlName="productPageDescriptionEn">
+                </textarea>
+                </div>
+            </div>
+            <div class="w-full mt-4 form-group">
+                <label for="KeywordsEn" class="input-lable">{{
+                    "products.Keywords" | transloco
+                    }}</label>
+                <input type="text" formControlName="seoKeywordsEn" name="KeywordsEn" placeholder="{{
+                'products.KeywordsEn' | transloco
+            }}" autocomplete="off" class="custom-input">
+            </div>
+        </ng-container>
+        <div class="flex items-start gap-6 mt-4">
+            <div class="w-full form-group">
+                <label for="SeoImage" class="input-lable">{{
+                    'products.SeoImage' | transloco
+                    }}</label>
+                <upload-image [folderName]="FOLDERNAME" [multiple]="false"
+                    [imgURL]="updatedIMG !== undefined ? updatedIMG : ''"
+                    (onUpload)="onUploadIMG($event)"></upload-image>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="flex justify-between mt-10 text-end">
+    <button class="w-40 custom-button group" (click)="onPervious()">
+        <span class="text-sm">{{ 'products.Previous' | transloco }}</span>
+    </button>
+    <button class="w-40 custom-button filled-button" [disabled]="!seoForm.valid" (click)="onNext()">
+        <span class="text-sm">{{ (mode === 'ADD' ? 'products.Add' : 'products.Save' ) | transloco}}</span>
+    </button>
+</div>

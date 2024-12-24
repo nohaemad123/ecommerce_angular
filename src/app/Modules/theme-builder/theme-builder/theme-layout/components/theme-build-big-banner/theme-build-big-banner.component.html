@@ -1,0 +1,92 @@
+<div class="p-3 border-2 border-dashed rounded-md">
+    Big banner
+</div>
+
+
+<form [formGroup]="bigBannerForm" (ngSubmit)="onSubmitSection()">
+    <div class="border-b border-gray-200 dark:border-neutral-700">
+        <nav class="flex space-x-1" aria-label="Tabs" role="tablist">
+          <button type="button" class="inline-flex items-center px-1 py-4 text-sm text-gray-500 border-b-2 border-transparent hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 gap-x-2 whitespace-nowrap hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500 active"
+           id="tabs-basic-english" data-hs-tab="#tabs-english" aria-controls="tabs-english" role="tab">
+           ENGLISH
+          </button>
+          <button type="button" class="inline-flex items-center px-1 py-4 text-sm text-gray-500 border-b-2 border-transparent hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 gap-x-2 whitespace-nowrap hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500"
+           id="tabs-basic-arabic" data-hs-tab="#tabs-arabic" aria-controls="tabs-arabic" role="tab">
+            ARABIC
+          </button>
+        </nav>
+      </div>
+
+      <div class="mt-3">
+        <div id="tabs-english" role="tabpanel" aria-labelledby="tabs-basic-english">
+
+          <div class="form-group">
+            <label for="login-email"
+                class="block mb-2 text-base font-normal text-gray-900">{{"themeBuilder.nav_settings.form.page_edit_title_en"|transloco}}</label>
+            <input type="text"
+                [ngClass]="{ 'border-red-500': (bigBannerForm.controls['titleEn'].touched && bigBannerForm.controls['titleEn'].errors?.['required'])}"
+                name="email"
+                placeholder="{{'themeBuilder.nav_settings.form.page_edit_title_en'|transloco}}"
+                autocomplete="off" formControlName="titleEn" class="custom-input">
+            <div *ngIf="(bigBannerForm.controls['titleEn'].touched && bigBannerForm.controls['titleEn'].invalid)"
+                class="mt-2 ">
+                <div *ngIf="bigBannerForm.controls['titleEn'].errors?.['required']"
+                    class="text-sm font-normal text-dangerDark invalid-feedback">
+                    {{'common_fields.required_messages'|transloco}}</div>
+            </div>
+        </div>
+        </div>
+        <div id="tabs-arabic" class="hidden" role="tabpanel" aria-labelledby="tabs-basic-arabic">
+
+          <div class="form-group">
+            <label
+                class="block mb-2 text-base font-normal text-gray-900">{{"themeBuilder.nav_settings.form.page_edit_title_ar"|transloco}}</label>
+            <input type="text"
+                [ngClass]="{ 'border-red-500': (bigBannerForm.controls['title'].touched)}"
+                name="title"
+                placeholder="{{'themeBuilder.nav_settings.form.page_edit_title_ar'|transloco}}"
+                autocomplete="off" formControlName="title" class="custom-input">
+            <div *ngIf="(bigBannerForm.controls['title'].touched)" class="mt-2 invalid-feedback">
+                <div *ngIf="bigBannerForm.controls['title'].errors?.['required']"
+                    class="text-sm font-normal text-dangerDark">
+                    {{'common_fields.required_messages'|transloco}}</div>
+            </div>
+        </div>
+        </div>
+
+      </div>
+
+      <upload-image [folderName]="FOLDERNAME" (onUpload)="onUploadIMG($event)"></upload-image>
+
+
+
+      <div class="form-group">
+        <label for="login-email"
+            class="block mb-2 text-base font-normal text-gray-900">{{"themeBuilder.nav_settings.form.link"|transloco}}</label>
+        <input type="link"
+            [ngClass]="{ 'border-red-500': (bigBannerForm.controls['link'].touched && bigBannerForm.controls['link'].errors?.['required'])}"
+            name="link"
+            placeholder="{{'themeBuilder.nav_settings.form.link'|transloco}}"
+            autocomplete="off" formControlName="link" class="custom-input">
+        <div *ngIf="(bigBannerForm.controls['link'].touched && bigBannerForm.controls['link'].invalid)"
+            class="mt-2 ">
+            <div *ngIf="bigBannerForm.controls['link'].errors?.['required']"
+                class="text-sm font-normal text-dangerDark invalid-feedback">
+                {{'common_fields.required_messages'|transloco}}</div>
+        </div>
+    </div>
+
+<div class="flex w-full mt-3">
+  <button type="submit" class="w-full custom-button filled-button" [disabled]="bigBannerForm.invalid">
+      <!-- <span *ngIf="submitLoading" class="ml-1 mr-1 spinner-border spinner-border-sm">
+          loading...
+      </span>
+      <span *ngIf="!submitLoading">
+          Save & Back
+      </span> -->
+      Save
+  </button>
+</div>
+
+
+</form>

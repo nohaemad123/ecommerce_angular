@@ -1,0 +1,84 @@
+{
+  "title": "All Coupons",
+  "breadcrumb": {
+    "coupons": "Coupons",
+    "list": "List"
+  },
+  "search": "Search",
+  "no_coupon": {
+    "title": "Coupons is empty",
+    "description": "Please add Coupon",
+    "btnText": "Add Coupon"
+  },
+  "table": {
+    "thead": {
+      "code": "Code",
+      "name": "Name",
+      "id":"ID",
+      "start_date": "Start Date",
+      "end_date": "End Date",
+      "status": "Status",
+      "actions": "Actions"
+    }
+  },
+  "toast": {
+    "delete_coupon": {
+      "title": "Coupon is deleted",
+      "subtitle": "Coupon delete successfully"
+    },
+    "add_coupon": {
+      "title": "Coupon is Added",
+      "subtitle": "Coupon Added successfully"
+    }
+  },
+
+  "new_coupon": {
+    "title": "New Coupon",
+    "form": {
+      "labels": {
+        "title_en": "Coupon name (English)",
+        "title_ar": "Coupon name (Arabic)",
+        "start_date":"Start Date",
+        "end_date":"End Date",
+        "code": "Coupon Code",
+        "couponDiscountTypeId":"Discount Type",
+        "dicountPercentage":"Discount Percentage",
+        "couponAmount":"Coupon Amount",
+        "img": "Image",
+        "action": "Action",
+        
+        "active":"Coupon status",
+        "status": "Coupontatus",
+        "maximumDicount": "maximum spent",
+        "excludeSaleProducts": "Sales Item",
+        "usageLimit":"Usage limit per coupon",
+        "usageLimitPerCustomer":"Usage limit per customer"
+      },
+      "placeholders": {
+        "title_en": "Please Enter English Coupon name",
+        "title_ar": "Please Enter Arabic Coupon name",
+        "code": "Please Enter Coupon Code",
+        "maximumDicount": "Please Enter maximum spent",
+        "usageLimit":"Please Enter Usage limit per coupon",
+        "usageLimitPerCustomer":"Please Enter Usage limit per customer"
+      },
+      "messages": {
+        "password_required": "Please enter your password"
+      },
+      "add_coupon_success": {
+        "title": "coupon is added",
+        "subtitle": "coupon added successfully"
+    },
+    "edit_coupon_success": {
+      "title": "coupon is added",
+      "subtitle": "coupon added successfully"
+  }
+    }
+  },
+  "common_fields": {
+    "submit_button": "Submit",
+    "required_messages": "this field is required"
+  },
+  "coupons_error_loading":"An error occurred while fetching coupons"
+
+}

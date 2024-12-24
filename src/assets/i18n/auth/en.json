@@ -1,0 +1,118 @@
+{
+    "login": {
+        "save_me": "Save me",
+        "forget_password": "Forget password?",
+        "button": "Sign in",
+        "dont_have_account": "Don’t have an account?",
+        "sign_up": "Sign up",
+        "form": {
+            "labels": {
+                "password": "Password"
+            },
+            "placeholders": {
+                "password": "Enter your password"
+            },
+            "messages": {
+                "password_required": "Please enter your password"
+            }
+        },
+        "success_message": {
+            "title": "login successefully",
+            "subtitle": "Welcome to elnasyan"
+        }
+    },
+    "register": {
+        "title": "Lets go",
+        "subTitle": "Create an account to continue",
+        "term_condition_text": "By Signing up, you agree to our",
+        "terms_conditions": "Terms and conditions",
+        "button": "Sign up",
+        "have_account": "Aleady have account?",
+        "sign_In": "Sign in",
+        "form": {
+            "labels": {
+                "company_name": "Company Name",
+                "website_link": "Website link",
+                "phone_number": "Phone number",
+                "password": "Password",
+                "confirm_password": "Confirm password"
+            },
+            "placeholders": {
+                "company_name": "Enter your company name",
+                "website_link": "Enter your website link",
+                "phone": "Enter your phone",
+                "password": "Enter your password",
+                "confirm_password": "Enter confirm password"
+            },
+            "messages": {
+                "company_required": "Please enter Company name",
+                "company_minlength": "The company name must not be less than 3 letters",
+                "url_required": "Please enter website link",
+                "Expattern_password": "ex:( asd123ASD@@ )",
+                "phone_required": "Please enter phone number",
+                "PHONE_NUMBER_LEAST": "phone number should be {{ number }} digits",
+                "password_required": "Please enter your password",
+                "password_pattern": "Password must contain more than 8 characters, 1 lowercase letter (a-z), 1 uppercase letter (A-Z), and 1 special character @,#,&",
+                "confirm_password_required": "Please enter confirm password"
+            }
+        },
+        "success_message": {
+            "title": "registered successefully",
+            "subtitle": "please login"
+        }
+    },
+    "forget_password": {
+        "title": "Forgot Password",
+        "subTitle": "Enter your Email to Receive a Verification Code",
+        "success_message": {
+            "title": "Please check your email",
+            "subtitle": "Code sent for you"
+        }
+    },
+    "verify_otp": {
+        "title": "Verify Your OTP",
+        "subTitle": "Please Enter The 4 Digits Code Sendto your Email",
+        "dont_receive": "Didn’t receive code.",
+        "resend": "Resend",
+        "button": "Verify",
+        "success_message": {
+            "title": "Please enter your new password",
+            "subtitle": "Code is correctly"
+        }
+    },
+    "reset_password": {
+        "title": "Reset Your Password",
+        "subTitle": "At least 9 characters, with uppercase, lowercase letters and numbers",
+        "form": {
+            "labels": {
+                "new_password": "New password",
+                "confirm_new_password": "Confirm new password"
+            },
+            "placeholders": {
+                "new_password": "Enter new password",
+                "confirm_new_password": "Enter confirm new password"
+            },
+            "messages": {
+                "new_password": "Please enter new password",
+                "confirm_new_password": "Please enter Confirm new password",
+                "password_match": "Passwords not match"
+            }
+        },
+        "success_message": {
+            "title": "New password be resetted",
+            "subtitle": "Welcome back to elnasyan"
+        }
+    },
+    "common_fields": {
+        "submit_button": "Submit",
+        "labels": {
+            "email": "Email"
+        },
+        "placeholders": {
+            "email": "Enter your email"
+        },
+        "messages": {
+            "email_required": "Please enter email"
+        }
+    }
+}

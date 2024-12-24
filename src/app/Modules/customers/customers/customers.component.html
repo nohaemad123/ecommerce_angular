@@ -1,0 +1,56 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main -->
+    <div class="flex flex-col flex-auto">
+
+                   <!-- Title -->
+                   <div class="text-lg font-medium leading-none tracking-normal">{{ 'customers.TITLE' | transloco}}</div>
+                   <!-- start breadcrumb -->
+                   <nav aria-label="breadcrumb" class="mt-2">
+                       <ol class="flex">
+                           <li><a href="#" class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">{{'customers.HOME' |
+                                   transloco}}</a></li>
+                           <li><a href="#"
+                                   class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">{{'customers.TITLE' |
+                                   transloco}}</a></li>
+                           <li class="text-primary" aria-current="page">
+                            <a href="#" class="text-gray-800 hover:text-primary text-xs">
+                                {{'customers.AllCustomers' | transloco}}
+                            </a>
+                            </li>
+                       </ol>
+                   </nav>
+                   <!-- end breadcrumb -->
+
+
+                   <ng-container *ngIf="(customers$ | async) as customers; else loading">
+                       <ng-container *ngIf="customers.items.length; else noCustomers">
+                           <div class="mt-4">
+                               <app-table [filter]="filterCriteria" [columns]="columns" [rows]="customers"
+                                   (setLimitEvent)="setLimit($event)" (setPageEvent)="setPage($event)"
+                                  ></app-table>
+                           </div>
+                       </ng-container>
+                   </ng-container>
+
+                   <!-- Loading template -->
+                   <ng-template #loading>
+                    <div class="mt-8" *ngIf="!showError">
+                        Loading...
+                    </div>
+        
+                    <ng-container *ngIf="showError">
+                        <app-error-loading [error_msg]="error_msg"></app-error-loading>
+                    </ng-container>
+                </ng-template>
+
+                   <!-- No Brands template -->
+                   <ng-template #noCustomers>
+                       <div class="mt-8">
+                           <app-empty-state [emptyStateData]="emptyStateData"></app-empty-state>
+                       </div>
+                   </ng-template>
+
+               </div>
+
+</div>

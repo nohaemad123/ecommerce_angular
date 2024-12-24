@@ -1,0 +1,117 @@
+{
+    "login": {
+        "save_me": "احفظني",
+        "forget_password": "نسيت كلمة المرور",
+        "button": "سجل دخول",
+        "dont_have_account": "ليس لديك حساب؟",
+        "sign_up": "قم بانشاء حساب",
+        "form": {
+            "labels": {
+                "password": "كلمة المرور"
+            },
+            "placeholders": {
+                "password": "ادخل كلمة المرور الخاصة بك"
+            },
+            "messages": {
+                "password_required": "برجاء ادخال كلمة المرور"
+            }
+        },
+        "success_message": {
+            "title": "تم تسجيل الدخول بنجاح",
+            "subtitle": "اهلا بك في النصيان"
+        }
+    },
+    "register": {
+        "title": "ابدأ الآن",
+        "subTitle": "قم بإنشاء حساب للمتابعة",
+        "term_condition_text": "بالتسجيل، فإنك توافق على لدينا",
+        "terms_conditions": "الشروط و الاحكام",
+        "button": "انشأ حساب جديد",
+        "have_account": "لديك حساب بالفعل",
+        "sign_In": "قم بتسجيل دخول",
+        "form": {
+            "labels": {
+                "company_name": "اسم الشركة",
+                "website_link": "رابط الموقع",
+                "phone_number": "رقم الهاتف",
+                "password": "كلمة المرور",
+                "confirm_password": "تأكيد كلمة المرور"
+            },
+            "placeholders": {
+                "company_name": "أدخل اسم شركتك",
+                "website_link": "ادخل رابط الموقع",
+                "phone": "ادخل رقم الهاتف",
+                "password": "ادخل كلمة المرور الخاصة بك",
+                "confirm_password": "ادخل تأكيد كلمة المرور"
+            },
+            "messages": {
+                "company_required": "برجاء ادخال اسم الشركة",
+                "company_minlength": "اسم الشركة لا يجب الا يقل عن 3 حرف",
+                "url_required": "برجاء ادخال رابط الموقع",
+                "Expattern_password": "مثال : ( asd123ASD@@ )",
+                "phone_required": "برجاء ادخال رقم الهاتف",
+                "PHONE_NUMBER_LEAST": "رقم الهاتف يجب ان يكون {{ number }} ارقام",
+                "password_pattern": "يجب أن تحتوي كلمة المرور على أكثر من 8 أحرف وحرف واحد صغير (a-z) واحد كبير (A-Z) و 1 حرف خاص @,#,&',}",
+                "confirm_password_required": "برجاء ادخال تأكيد كلمة المرور"
+            }
+        },
+        "success_message": {
+            "title": "تم انشاء الحساب بنجاح",
+            "subtitle": "اهلا بك في النصيان"
+        }
+    },
+    "forget_password": {
+        "title": "نسيت كلمة المرور",
+        "subTitle": "أدخل بريدك الإلكتروني لتلقي رمز التحقق",
+        "success_message": {
+            "title": "تفقد بريدك الالكتروني من فضلك",
+            "subtitle": "تم إرسال الرمز لك"
+        }
+    },
+    "verify_otp": {
+        "title": "تحقق من الكود لمرة واحدة (OTP) الخاصة بك",
+        "subTitle": "الرجاء إدخال الرمز المكون من 4 أرقام المرسل الى بريدك الإلكتروني",
+        "dont_receive": "لم تتلقى الرمز",
+        "resend": "إعادة إرسال",
+        "button": "تأكيد",
+        "success_message": {
+            "title": "الرجاء إدخال كلمة المرور الجديدة",
+            "subtitle": "الكود صجيج"
+        }
+    },
+    "reset_password": {
+        "title": "اعادة ضبط كلمه المرور",
+        "subTitle": "9 أحرف على الأقل، بأحرف كبيرة، الحروف الصغيرة والأرقام",
+        "form": {
+            "labels": {
+                "new_password": "كلمة المرور الجديدة",
+                "confirm_new_password": "تأكيد كلمة المرور الجديدة"
+            },
+            "placeholders": {
+                "new_password": "ادخل كلمة المرور الجديدة",
+                "confirm_new_password": "ادخل تأكيد كلمة المرور الجديدة"
+            },
+            "messages": {
+                "new_password": "برجاء ادخل كلمة كلمة المرور الجديدة",
+                "confirm_new_password": "برجاء ادخال تأكيد كلمة المرور الجديدة",
+                "password_match": "كلمات المرور غير متطابقة"
+            }
+        },
+        "success_message": {
+            "title": "تم إعادة تعيين كلمة المرور الجديدة",
+            "subtitle": "اهلا بك في النصيان مجددا"
+        }
+    },
+    "common_fields": {
+        "submit_button": "ارسل",
+        "labels": {
+            "email": "البريد الالكتروني"
+        },
+        "placeholders": {
+            "email": "ادخل البريد الالكتروني"
+        },
+        "messages": {
+            "email_required": "برجاء ادخال البريد الالكتروني"
+        }
+    }
+}

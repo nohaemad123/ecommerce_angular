@@ -1,0 +1,132 @@
+<ngx-datatable  [rows]="rows?.items" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="50" rowHeight="auto"
+    [selected]="SelectedRows" [scrollbarH]="false" [selectionType]="SelectionType.checkbox" [externalPaging]="true"
+    [limit]="filter.limit"  [count]="rows.totalItems"  [offset]="filter.page - 1" (page)="setPage($event)">
+
+    <ng-container *ngFor="let col of columns" >
+        <ngx-datatable-column [width]="col.width!" [sortable]="col.sortable!" [canAutoResize]="col.width=='auto'"
+            [draggable]="col.draggable" [resizeable]="col.resizeable!" prop="{{col.data?.prop?col.data.prop:''}}"
+            name="{{col.title|transloco}}" *ngIf="col.type =='index'" class="border border-slate-300">
+            <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                #{{col.data?.prop?row[col.data.prop]:rowIndex+1}}
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column  [width]="col.width!" [sortable]="col.sortable!" [canAutoResize]="col.width=='auto'"
+            [draggable]="col.draggable" [resizeable]="col.resizeable!" [prop]="col.data.prop"
+            name="{{col.title|transloco}}" *ngIf="col.type =='text'">
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [width]="col.width!" [sortable]="col.sortable!" [canAutoResize]="col.width=='auto'"
+            [draggable]="col.draggable" [resizeable]="col.resizeable!" [prop]="col.data.prop"
+            name="{{col.title|transloco}}" *ngIf="col.type =='status'">
+            <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                <!-- {{row[col.data.prop]}} -->
+                <div class="badge {{getStatus(row[col.data.prop])?.class}}"> {{getStatus(row[col.data.prop])?.name}}
+
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column class="w-auto" [width]="col.width!" [sortable]="col.sortable!" [canAutoResize]="col.width=='auto'"
+            [draggable]="col.draggable" [resizeable]="col.resizeable!" [prop]="col.data.prop"
+            name="{{col.title|transloco}}" *ngIf="col.type =='avatar'">
+
+            <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                <!-- <div class=" d-flex align-items-center {{clickable()?'clickable-avatar':''}}"
+                    > -->
+                <div class="flex items-center justify-center text-start gap-1">
+                    <img class="m-auto rounded-full" (error)="changeSource($event)" [src]="baseUrlImage + row[col.data.src]"
+                    height="36" width="36" alt="datatable-avatar" />
+                    <!-- <div *ngIf="row[col.data.src]?.length > 0; else customAvatar"
+                        class="flex items-center justify-center overflow-hidden bg-transparent border rounded-full w-11 h-11 border-neutral-200">
+                </div>
+                    <ng-template #customAvatar>
+                        <div>
+                            <img class="m-auto" (error)="changeSource($event)" [src]="baseUrlImage + row[col.data.src]"
+                            height="32" width="32" alt="datatable-avatar" />
+                         </div>
+                    </ng-template> -->
+                    <div>
+                        <p class="text-sm line-clamp-2" [title]="row[col.data.prop] ">{{ row[col.data.prop] }}</p>
+                        <!-- <span class="text-sm"> {{ row[col.data.description] }}</span> -->
+                    </div>
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [width]="col.width!" [sortable]="col.sortable!" [canAutoResize]="col.width=='auto'"
+            [draggable]="col.draggable" [resizeable]="col.resizeable!" [prop]="col.data.prop"
+            name="{{col.title|transloco}}" *ngIf="col.type =='date'">
+            <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                {{row[col.data.prop]| date: 'dd/MM/yyyy hh:mm a'}}
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [width]="col.width!" [sortable]="col.sortable!" [canAutoResize]="col.width=='auto'"
+            [draggable]="col.draggable" [resizeable]="col.resizeable!" [prop]="col.data.prop"
+            name="{{col.title|transloco}}" *ngIf="col.type =='objectItem'">
+            <ng-template let-row="row" let-name="value" (error)="updateObject($event)" ngx-datatable-cell-template>
+                <ng-container>
+                    {{
+                    row[col.data.object]?row[col.data.object][col.data.prop]:"---" }}
+                </ng-container>
+            </ng-template>
+
+
+        </ngx-datatable-column>
+        <ngx-datatable-column [width]="col.width!" [sortable]="col.sortable!" [canAutoResize]="col.width=='auto'"
+            [draggable]="col.draggable" [resizeable]="col.resizeable!" name="{{col.title|transloco}}"
+            *ngIf="col.type =='actions'">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+                <div class="flex items-center gap-3">
+                    <div class="hs-dropdown">
+                        <button type="button" class="btn group">
+                            <span class="btn__icon icon icon-dots-three-horizontal"></span>
+                        </button>
+
+                        <div class="hs-dropdown-menu duration hs-dropdown-open:opacity-100 min-w-60 hidden"
+                            aria-labelledby="hs-dropdown-custom-icon-trigger">
+                            <a class="item"
+                            *ngFor="let action of getNotCollapsedActions(col);" (click)="actionClicked(action,row[action.id])" placement="top">
+                                <i size="18" [class]="getOptionIcon(action.name)" [style.color]="getOptionIcon(action.name)=='icon icon-trash-o' ? 'red' : '#218BC7'"></i>
+                                {{ action.name }}
+                              </a>
+                        </div>
+                    </div>
+                    <!-- <div ngbDropdown container="body" *ngIf=" getCollapsedActions(col).length>0">
+                        <a ngbDropdownToggle href="javascript:void(0);" class="hide-arrow" id="dropdownBrowserState"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i data-feather="more-vertical" class="cursor-pointer text-primary mr-50"></i>
+                        </a>
+                        <div ngbDropdownMenu class="dropdown-menu-right" aria-labelledby="dropdownBrowserState">
+                            <a href="javascript:void(0)" *ngFor="let action of getCollapsedActions(col);" style="color: #000;"
+                                (click)="actionClicked(action,row[action.id])" ngbDropdownItem
+                                class="d-flex align-items-center">
+                                <i [class]="getOptionIcon(action.name)" class="mr-50"></i> {{action.name }}</a>
+
+                        </div>
+                    </div> -->
+                </div>
+            </ng-template>
+        </ngx-datatable-column>
+    </ng-container>
+</ngx-datatable>
+
+<ng-container *ngIf="filter?.limit">
+    <select
+        class="py-0 border-0 rounded-md cursor-pointer bg-neutral-100 h-7 pl-3 text-neutral-500 absolute bottom-[10px]"
+        [(ngModel)]="filter.limit" (change)="setLimit(filter.limit!)">
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+    </select>
+</ng-container>
+<!-- <ngx-datatable
+class="w-full table-auto"
+[rows]="rows"
+[columns]="columns"
+[columnMode]="ColumnMode.force"
+[headerHeight]="50"
+[footerHeight]="50"
+rowHeight="auto"
+>
+</ngx-datatable> -->

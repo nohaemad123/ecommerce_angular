@@ -1,0 +1,6 @@
+.tabs{
+    &__btn{
+        @apply hs-tab-active:font-semibold hs-tab-active:bg-primary-50 hs-tab-active:text-primary-300 focus:outline-none
+        focus:text-primary-300 bg-neutral-100 w-56 text-neutral-400 h-12 rounded-md text-sm
+    }
+}

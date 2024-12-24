@@ -1,0 +1,109 @@
+{
+    "breadcrumb": {
+        "title": "الملف الشخصي",
+        "home": "الرئيسية"
+    },
+    "store_profile": {
+        "save":"حفظ",
+        "titles": {
+            "store_data": "بيانات المتجر",
+            "technical_support": "الدعم الفني",
+            "buisness_platform": "شهادة توثيق منصة الأعمال",
+            "social_media": "حساب وسائل التواصل الاجتماعي",
+            "application_links": "روابط التطبيق",
+            "maarof_data": "بيانات معروف",
+            "logo_website": "شعار الموقع",
+            "icon_logo": "شعار أيقونة"
+        },
+        "form": {
+            "labels": {
+                "store_name": "اسم المتجر",
+                "meta_description": "الوصف",
+                "location": "الموقع",
+                "phone": "رقم الهاتف",
+                "whatsapp_number": "رقم الواتس",
+                "email": "البريد الالكتروني",
+                "authentication_number": "رقم المصادقة",
+                "instagram": "انستجرام",
+                "facebook": "فيسبوك",
+                "twitter": "تويتر",
+                "youtube": "يوتيوب",
+                "snapchat": "سناب شات",
+                "tiktok": "تيك توك",
+                "telegram": "انستجرام",
+                "iphone_link": "رابط تطبيق الايفون",
+                "android_link": "رابط تطبيق الاندرويد",
+                "maarof_phone": "رقم معروف",
+                "maarof_link": "رابط معروف"
+            },
+            "placeholders": {
+                "store_name": "ادخل اسم المتجر",
+                "meta_description": "ادخل الوصف",
+                "location": "ادخل الموقع",
+                "phone": "ادخل رقم الهاتف",
+                "whatsapp_number": "ادخل رقم الواتساب",
+                "email": "ادخل البريد الالكتروني",
+                "authentication_number": "ادخل رقم المصادقة",
+                "instagram": "ادخل رابط الانستجرام",
+                "facebook": "ادخل رابط الفيسبوك",
+                "twitter": "ادخل رابط تويتر",
+                "youtube": "ادخل رابط اليوتيوب",
+                "snapchat": "ادخل رابط سناب شات",
+                "tiktok": "ادخل رابط تيك توك",
+                "telegram": "ادخل رابط تليجرام",
+                "iphone_link": "ادخل رابط تطبيق الايفون",
+                "android_link": "ادخل رابط تطبيق الاندرويد",
+                "maarof_phone": "ادخل رقم معروف",
+                "maarof_link": "ادخل رابط معروف"
+            },
+            "messages": {
+                "name_required": "من فضلك ادخل اسم المتجر",
+                "name_maxlength": "اسم المتجر يجب الا يزيد عن 300 حرف",
+                "description_maxlength": "سم المتجر يجب الا يزيد عن 300 حرف",
+                "phone1_required": "من فضلك ادخل رقم الهاتف",
+                "email_required": "من فضلك ادخل البريد الالكتروني",
+                "authentication_number_required": "من فضلك ادخل رقم المصادقة",
+                "PHONE_NUMBER_LEAST": "يجب أن يتكون رقم الهاتف من {{ number }} رقم",
+                "WHATSAPP_NUMBER_LEAST": "رقم الواتس اب يجب أن يكون {{ number }} رقم"
+            }
+        },
+        "success_message": {
+            "title": "تم تحديث بيانات المتجر",
+            "subtitle": "تم تحديث بيانات المتجر بنجاح"
+        }
+    },
+    "store_address": {
+        "title": "تعديل عنوان المتجر",
+        "form": {
+            "labels": {
+                "country": "الدولة",
+                "city": "المدينة",
+                "address": "العنوان",
+                "postal_code": "رمز بريدي",
+                "street": "الشارع",
+                "neighborhood": "الحي",
+                "number": "الرقم",
+                "building_number": "رقم المبنى"
+            },
+            "placeholders": {
+                "address": "ادخل العنوان",
+                "postal_code": "ادخل الرمز البريدي",
+                "street": "ادخل الشارع",
+                "neighborhood": "ادخل الحي",
+                "number": "ادخل الرقم",
+                "building_number": "ادخل رقم المبنى"
+            },
+            "messages": {
+                "postal_code": "من فضلك ادخل الرمز البريدي",
+                "street": "من فضلك ادحل الشارع",
+                "neighborhood": "من فضلك ادخل الحي",
+                "number": "من فضلك ادخل الرقم",
+                "building_number": "من فضلك ادخل رقم المبنى"
+            }
+        },
+        "success_message": {
+            "title": "تم تحديث عنوان المتجر",
+            "subtitle": "تم تحديث عنوان المتجر بنجاح"
+        }
+    }
+}

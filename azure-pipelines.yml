@@ -1,0 +1,64 @@
+trigger:
+  branches:
+    include:
+      - dev
+      - main
+
+resources:
+- repo: self
+
+variables:
+  ImageName: 'nasyan_ecommerce_dashboard'
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - script: |
+        if [[ "$(Build.SourceBranch)" == "refs/heads/main" ]]; then
+          echo "##vso[task.setvariable variable=ImageName]nasyan_ecommerce_dashboard_prod"
+          echo "##vso[task.setvariable variable=webhookUrl]http://173.212.237.125:9000/api/webhooks/b80828c5-910b-4e37-ae40-2b044d95929c"
+        fi
+    - task: Docker@1
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'docker_registry'
+        command: 'Build an image'
+        dockerFile: '**/Dockerfile'
+        imageName: 'registry.nasyan.uk.to/$(ImageName):$(tag)'
+        useDefaultContext: false
+        buildContext: $(Build.Repository.LocalPath)
+      displayName: 'Build the Docker image'
+
+    - bash: |
+        docker tag registry.nasyan.uk.to/$(ImageName):$(tag) registry.nasyan.uk.to/$(ImageName):latest
+      displayName: 'Tag the Docker image'
+    - script: |
+        echo '{"insecure-registries":["registry.nasyan.uk.to"]}' | sudo tee /etc/docker/daemon.json
+        sudo systemctl restart docker
+      displayName: 'Configure Docker for insecure registry'
+    - task: Docker@2
+      inputs:
+        command: 'login'
+        containerRegistry: 'docker_registry'
+    - task: Docker@1
+      inputs:
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'docker_registry'
+        command: 'Push an image'
+        imageName: 'registry.nasyan.uk.to/$(ImageName):latest'
+      displayName: 'Push the Docker image to Docker registry'
+
+    - bash: |
+        webhookUrl="http://173.212.237.125:9000/api/webhooks/0ee85a93-91a3-416e-993e-a1ce37c6d5e4"
+        if [[ "$(Build.SourceBranch)" == "refs/heads/main" ]]; then
+          webhookUrl="http://173.212.237.125:9000/api/webhooks/b80828c5-910b-4e37-ae40-2b044d95929c"
+        fi
+        curl -X POST -H "Content-Type: application/json" "$webhookUrl"
+      displayName: 'Send Webhook'

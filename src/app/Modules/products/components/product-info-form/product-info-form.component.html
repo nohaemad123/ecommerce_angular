@@ -1,0 +1,589 @@
+<form [formGroup]="infoForm">
+    <div class="px-12">
+        <h2 class="text-lg text-neutral-600 mb-7">{{
+            'products.FORM.LABELS.Product_Information' | transloco
+            }}</h2>
+        <div>
+            <ul class="flex gap-8 list-none mb-7">
+                <li class="flex items-center gap-2 text-center" (click)="selectedLang = 'en'">
+                    <img src="assets/images/en.png" class="w-5 h-5 rounded-full" alt="">
+                    <a class="block text-sm leading-normal uppercase rounded cursor-pointer "
+                        [ngClass]="{ 'underline text-sky-600': selectedLang === 'en' }">
+                        {{
+                        "products.ENGLISH" | transloco
+                        }}
+                    </a>
+                </li>
+                <li class="flex items-center gap-2 text-center" (click)="selectedLang = 'ar'"
+                    [ngClass]="{ 'underline text-sky-600': selectedLang === 'ar' }">
+                    <img src="assets/images/SA.png" class="w-5 h-5 rounded-full" alt="">
+                    <a class="block text-sm leading-normal uppercase rounded cursor-pointer">
+                        {{
+                        "products.ARABIC" | transloco
+                        }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <form [formGroup]="infoForm">
+            <ng-container *ngIf="selectedLang === 'en'">
+                <div class="w-full form-group">
+                    <label for="productNameEn" class="input-lable required"> {{
+                        'products.FORM.LABELS.ENAME' | transloco
+                        }}</label>
+                    <input type="text" name="productNameEn" formControlName="productNameEn" placeholder="{{
+                            'products.FORM.LABELS.ENAME' | transloco
+                            }}" autocomplete="off" class="custom-input">
+                    <div *ngIf="(infoForm.controls['productNameEn'].touched && infoForm.controls['productNameEn'].invalid)"
+                        class="mt-2 invalid-feedback">
+                        <div *ngIf="infoForm.controls['productNameEn'].errors?.['required']"
+                            class="text-sm font-normal text-dangerDark">
+                            {{'products.common_fields.required_messages'|transloco}}</div>
+                    </div>
+                </div>
+                <div class="w-full mt-4 form-group">
+                    <label for="productShortDescriptionEn" class="input-lable">{{
+                        'products.EBREIF_DESCRIPTION_TITLE' | transloco
+                        }}</label>
+                    <input type="text" name="productShortDescriptionEn" formControlName="productShortDescriptionEn"
+                        placeholder="{{
+                            'products.EBREIF_DESCRIPTION_TITLE' | transloco
+                            }}" autocomplete="off" class="custom-input">
+                </div>
+                <div class="w-full mt-4 form-group">
+                    <label for="descriptionEn" class="input-lable">{{
+                        'products.EPRODUCT_DESCRIPTION_TITLE' | transloco
+                        }}</label>
+                    <textarea type="text" name="descriptionEn" formControlName="descriptionEn" placeholder="{{
+                            'products.EPRODUCT_DESCRIPTION_TITLE' | transloco
+                            }}" autocomplete="off" class="h-auto custom-input" rows="8">
+                </textarea>
+                </div>
+                <div class="w-full mt-4 form-group">
+                    <label for="labelEn" class="input-lable">{{
+                        'products.FORM.LABELS.LABEL_EN' | transloco
+                        }}</label>
+                    <input type="text" name="labelEn" formControlName="labelEn" placeholder="{{
+                        'products.FORM.LABELS.LABEL_EN' | transloco
+                        }}" autocomplete="off" class="custom-input">
+                </div>
+            </ng-container>
+            <ng-container *ngIf="selectedLang === 'ar'">
+                <div class="w-full form-group">
+                    <label for="productName" class="input-lable required">{{
+                        'products.FORM.LABELS.ANAME' | transloco
+                        }}</label>
+                    <input type="text" name="productName" formControlName="productName" placeholder="{{
+                        'products.FORM.LABELS.ANAME' | transloco
+                        }}" autocomplete="off" class="custom-input">
+                    <div *ngIf="(infoForm.controls['productName'].touched && infoForm.controls['productName'].invalid)"
+                        class="mt-2 invalid-feedback">
+                        <div *ngIf="infoForm.controls['productName'].errors?.['required']"
+                            class="text-sm font-normal text-dangerDark">
+                            {{'products.common_fields.required_messages'|transloco}}</div>
+                    </div>
+                </div>
+                <div class="w-full mt-4 form-group">
+                    <label for="productShortDescription" class="input-lable">{{
+                        'products.ABREIF_DESCRIPTION_TITLE' | transloco
+                        }}</label>
+                    <input type="text" name="productShortDescription" formControlName="productShortDescription"
+                        placeholder="{{
+                            'products.ABREIF_DESCRIPTION_TITLE' | transloco
+                            }}" autocomplete="off" class="custom-input">
+                </div>
+                <div class="w-full mt-4 form-group">
+                    <label for="description" class="input-lable">{{
+                        'products.APRODUCT_DESCRIPTION_TITLE' | transloco
+                        }}</label>
+                    <textarea type="text" name="description" formControlName="description" placeholder="{{
+                        'products.APRODUCT_DESCRIPTION_TITLE' | transloco
+                        }}" autocomplete="off" class="h-auto custom-input" rows="8">
+            </textarea>
+                </div>
+                <div class="w-full mt-4 form-group">
+                    <label for="label" class="input-lable">{{
+                        'products.FORM.LABELS.LABEL' | transloco
+                        }}</label>
+                    <input type="text" name="label" formControlName="label" placeholder="{{
+                        'products.FORM.LABELS.LABEL' | transloco
+                        }}" autocomplete="off" class="custom-input">
+                </div>
+            </ng-container>
+            <h2 class="mt-12 mb-5 text-lg text-neutral-600">{{
+                'products.FORM.LABELS.Product_Information' | transloco
+                }}</h2>
+            <div class="space-y-5">
+                <!-- <div>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer">
+                        <div class="checkbox">
+                        </div>
+                        <span class="text-sm font-normal text-gray-400 ms-3 dark:text-gray-300">Refundable</span>
+                    </label>
+                </div> -->
+                <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group" *ngIf="brandsList?.length">
+                        <label class="input-lable required">
+                            {{
+                            'products.FORM.LABELS.BRAND' | transloco
+                            }}
+                        </label>
+                        <div class="">
+                            <ng-select class="relative selectBox" placeholder="
+                            {{
+                                'products.FORM.LABELS.PLEASE_SELECT_OPTION' | transloco
+                                }}" formControlName="brandID" [clearable]="false">
+                                <ng-option *ngFor="let brand of brandsList" [value]="brand?.id">{{ brand?.name
+                                    }}</ng-option>
+                            </ng-select>
+                        </div>
+                        <div *ngIf="(infoForm.controls['brandID'].touched && infoForm.controls['brandID'].invalid)"
+                            class="mt-2 invalid-feedback">
+                            <div *ngIf="infoForm.controls['brandID'].errors?.['required']"
+                                class="text-sm font-normal text-dangerDark">
+                                {{'products.common_fields.required_messages'|transloco}}</div>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label class="input-lable required"> {{
+                            'products.FORM.LABELS.CATEGORIES' | transloco
+                            }}</label>
+                        <div class="">
+                            <!-- <ng-select class="relative selectBox" name="category" [clearable]="false"
+                                formControlName="categories" [multiple]="true" placeholder="
+                                {{
+                                    'products.FORM.LABELS.PLEASE_SELECT_OPTION' | transloco
+                                    }}" bindLabel="name" bindValue="value" [items]="categoriesList"
+                                groupBy="subCategories">
+                                <ng-template ng-optgroup-tmp let-item="item">
+                                    {{item.name}}
+                                </ng-template>
+                                <ng-template ng-option-tmp let-item="item">
+                                    {{item.name}}
+                                </ng-template>
+                            </ng-select> -->
+                            <ng-select class="relative selectBox" name="category" [clearable]="false"
+                                formControlName="categories" [multiple]="true" placeholder="
+                                {{
+                                    'products.FORM.LABELS.PLEASE_SELECT_OPTION' | transloco
+                                    }}" bindLabel="name" bindValue="id" [items]="categoriesList"
+                                >
+                            </ng-select>
+                        </div>
+                        <div *ngIf="(infoForm.controls['categories'].touched && infoForm.controls['categories'].invalid)"
+                            class="mt-2 invalid-feedback">
+                            <div *ngIf="infoForm.controls['categories'].errors?.['required']"
+                                class="text-sm font-normal text-dangerDark">
+                                {{'products.common_fields.required_messages'|transloco}}</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label for="codeProduct" class="input-lable">
+                            {{
+                            'products.FORM.LABELS.PRODUCT_CODE' | transloco
+                            }}
+                        </label>
+                        <input type="text" name="codeProduct" formControlName="codeProduct" placeholder="{{
+                            'products.FORM.LABELS.PRODUCT_CODE' | transloco
+                            }}" autocomplete="off" class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label class="input-lable required">{{
+                            'products.FORM.LABELS.STATUS' | transloco
+                            }}</label>
+                        <div class="">
+                            <ng-select formControlName="status" [clearable]="false" class="relative selectBox"
+                                placeholder="{{
+                                'products.FORM.LABELS.PLEASE_SELECT_OPTION' | transloco
+                                }}">
+                                <ng-option *ngFor="let status of statusList" [value]="status.value">{{ status.name
+                                    }}</ng-option>
+                            </ng-select>
+                        </div>
+                        <div *ngIf="(infoForm.controls['status'].touched && infoForm.controls['status'].invalid)"
+                            class="mt-2 invalid-feedback">
+                            <div *ngIf="infoForm.controls['status'].errors?.['required']"
+                                class="text-sm font-normal text-dangerDark">
+                                {{'products.common_fields.required_messages'|transloco}}</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label for="productQuantity" class="input-lable required">{{
+                            'products.FORM.LABELS.QUANTITY' | transloco
+                            }}</label>
+                        <input type="number" name="productQuantity" formControlName="productQuantity" placeholder="{{
+                            'products.FORM.LABELS.QUANTITY' | transloco
+                          }}" autocomplete="off" class="custom-input">
+                        <div *ngIf="(infoForm.controls['productQuantity'].touched && infoForm.controls['productQuantity'].invalid)"
+                            class="mt-2 invalid-feedback">
+                            <div *ngIf="infoForm.controls['productQuantity'].errors?.['required']"
+                                class="text-sm font-normal text-dangerDark">
+                                {{'products.common_fields.required_messages'|transloco}}</div>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label for="minimumQuantity" class="input-lable">{{
+                            'products.FORM.LABELS.MINIMUM_QUANTITY' | transloco
+                            }}</label>
+                        <input type="number" name="minimumQuantity" formControlName="minimumQuantity" placeholder="{{
+                            'products.FORM.LABELS.MINIMUM_QUANTITY' | transloco
+                          }}" autocomplete="off" class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label for="maximumQuantity" class="input-lable">{{
+                            'products.FORM.LABELS.MAXIMUM_QUANTITY' | transloco
+                            }}</label>
+                        <input type="number" name="maximumQuantity" formControlName="maximumQuantity" placeholder="{{
+                            'products.FORM.LABELS.MAXIMUM_QUANTITY' | transloco
+                          }}" autocomplete="off" class="custom-input">
+                    </div>
+                    <!-- <div class="flex-1 w-full form-group">
+                    <label class="input-lable">Barcode Symbology</label>
+                    <div class="">
+                        <ng-select class="relative selectBox" placeholder="Please Select One Option">
+                            <ng-option>1</ng-option>
+                            <ng-option>2</ng-option>
+                        </ng-select>
+                    </div>
+                </div> -->
+                </div>
+                <!-- <div class="mt-12 mb-5">
+                    <label class="inline-flex items-center mt-5 mb-5 cursor-pointer">
+                        <input type="checkbox" [(ngModel)]="isPhysicalProduct" [ngModelOptions]="{standalone: true}" class="sr-only peer">
+                        <div class="checkbox">
+                        </div>
+                        <span class="text-sm font-normal text-gray-400 ms-3 dark:text-gray-300">Publish</span>
+                    </label>
+                </div> -->
+
+                <!-- <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label for="login-email" class="input-lable">Labels</label>
+                        <input type="text" name="email" placeholder="Enter Labels" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                </div> -->
+                <!-- <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label class="input-lable">Unit</label>
+                        <div class="">
+                            <ng-select class="relative selectBox" placeholder="Please Select One Option">
+                                <ng-option>1</ng-option>
+                                <ng-option>2</ng-option>
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label class="input-lable">Sale Unit</label>
+                        <div class="">
+                            <ng-select class="relative selectBox" placeholder="Please Select One Option">
+                                <ng-option>1</ng-option>
+                                <ng-option>2</ng-option>
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label class="input-lable">Purchase Unit</label>
+                        <div class="">
+                            <ng-select class="relative selectBox" placeholder="Please Select One Option">
+                                <ng-option>1</ng-option>
+                                <ng-option>2</ng-option>
+                            </ng-select>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <h2 class="mb-5 text-lg mt-15 text-neutral-600">{{ 'products.FORM.LABELS.Size_and_dimensions' | transloco }}
+            </h2>
+            <div class="space-y-5">
+                <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label for="width" class="input-lable">{{ 'products.FORM.LABELS.Width' | transloco }}</label>
+                        <input type="number" name="width" formControlName="width"
+                            placeholder="{{ 'products.FORM.LABELS.Width' | transloco }}" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group" *ngIf="getUnitsByType('Width')?.length">
+                        <label class="input-lable" >
+                            {{
+                            'products.Unit' | transloco
+                            }}
+                        </label>
+                        <div class="">
+                            <ng-select class="relative selectBox" placeholder="
+                            {{
+                                'products.FORM.LABELS.PLEASE_SELECT_OPTION' | transloco
+                                }}" formControlName="widthId" [clearable]="false">
+                                <ng-option *ngFor="let unit of getUnitsByType('Width')" [value]="unit?.id">{{ unit?.name
+                                    }}</ng-option>
+                            </ng-select>
+                        </div>
+                        <!-- <div *ngIf="(infoForm.controls['brandID'].touched && infoForm.controls['brandID'].invalid)"
+                            class="mt-2 invalid-feedback">
+                            <div *ngIf="infoForm.controls['brandID'].errors?.['required']"
+                                class="text-sm font-normal text-dangerDark">
+                                {{'products.common_fields.required_messages'|transloco}}</div>
+                        </div> -->
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label for="length" class="input-lable">{{ 'products.FORM.LABELS.Length' | transloco }}</label>
+                        <input type="number" name="length" formControlName="length"
+                            placeholder="{{ 'products.FORM.LABELS.Length' | transloco }}" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group" *ngIf="getUnitsByType('Length')?.length">
+                        <label class="input-lable" >
+                            {{
+                            'products.Unit' | transloco
+                            }}
+                        </label>
+                        <div class="">
+                            <ng-select class="relative selectBox" placeholder="
+                            {{
+                                'products.FORM.LABELS.PLEASE_SELECT_OPTION' | transloco
+                                }}" formControlName="lengthId" [clearable]="false">
+                                <ng-option *ngFor="let unit of getUnitsByType('Length')" [value]="unit?.id">{{ unit?.name
+                                    }}</ng-option>
+                            </ng-select>
+                        </div>
+                        <!-- <div *ngIf="(infoForm.controls['brandID'].touched && infoForm.controls['brandID'].invalid)"
+                            class="mt-2 invalid-feedback">
+                            <div *ngIf="infoForm.controls['brandID'].errors?.['required']"
+                                class="text-sm font-normal text-dangerDark">
+                                {{'products.common_fields.required_messages'|transloco}}</div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label for="height" class="input-lable">{{ 'products.FORM.LABELS.Height' | transloco }}</label>
+                        <input type="number" name="height" formControlName="height"
+                            placeholder="{{ 'products.FORM.LABELS.Height' | transloco }}" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group" *ngIf="getUnitsByType('Height')?.length">
+                        <label class="input-lable" >
+                            {{
+                            'products.Unit' | transloco
+                            }}
+                        </label>
+                        <div class="">
+                            <ng-select class="relative selectBox" placeholder="
+                            {{
+                                'products.FORM.LABELS.PLEASE_SELECT_OPTION' | transloco
+                                }}" formControlName="heightId" [clearable]="false">
+                                <ng-option *ngFor="let unit of getUnitsByType('Height')" [value]="unit?.id">{{ unit?.name
+                                    }}</ng-option>
+                            </ng-select>
+                        </div>
+                        <!-- <div *ngIf="(infoForm.controls['brandID'].touched && infoForm.controls['brandID'].invalid)"
+                            class="mt-2 invalid-feedback">
+                            <div *ngIf="infoForm.controls['brandID'].errors?.['required']"
+                                class="text-sm font-normal text-dangerDark">
+                                {{'products.common_fields.required_messages'|transloco}}</div>
+                        </div> -->
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label for="weight" class="input-lable">{{ 'products.FORM.LABELS.WEIGHT' | transloco }}</label>
+                        <input type="number" name="weight" formControlName="weight"
+                            placeholder="{{ 'products.FORM.LABELS.WEIGHT' | transloco }}" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group" *ngIf="getUnitsByType('Weight')?.length">
+                        <label class="input-lable" >
+                            {{
+                            'products.Unit' | transloco
+                            }}
+                        </label>
+                        <div class="">
+                            <ng-select class="relative selectBox" placeholder="
+                            {{
+                                'products.FORM.LABELS.PLEASE_SELECT_OPTION' | transloco
+                                }}" formControlName="weightId" [clearable]="false">
+                                <ng-option *ngFor="let unit of getUnitsByType('Weight')" [value]="unit?.id">{{ unit?.name
+                                    }}</ng-option>
+                            </ng-select>
+                        </div>
+                        <!-- <div *ngIf="(infoForm.controls['brandID'].touched && infoForm.controls['brandID'].invalid)"
+                            class="mt-2 invalid-feedback">
+                            <div *ngIf="infoForm.controls['brandID'].errors?.['required']"
+                                class="text-sm font-normal text-dangerDark">
+                                {{'products.common_fields.required_messages'|transloco}}</div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <h2 class="mt-12 mb-5 text-lg text-neutral-600">{{
+                'products.FORM.LABELS.Cost' | transloco
+                }}</h2>
+            <div class="space-y-5">
+                <!-- <div class="flex_c gap-7">
+                    <div>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer">
+                            <div class="checkbox">
+                            </div>
+                            <span class="text-sm font-normal text-gray-400 ms-3 dark:text-gray-300">Publish</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer">
+                            <div class="checkbox">
+                            </div>
+                            <span class="text-sm font-normal text-gray-400 ms-3 dark:text-gray-300">ToDay
+                                Deal</span>
+                        </label>
+                    </div>
+                    <div>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" value="" class="sr-only peer">
+                            <div class="checkbox">
+                            </div>
+                            <span class="text-sm font-normal text-gray-400 ms-3 dark:text-gray-300">Featured</span>
+                        </label>
+                    </div>
+                </div> -->
+                <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label for="costProduct" class="input-lable">{{
+                            'products.FORM.LABELS.COST' | transloco
+                            }}</label>
+                        <input type="number" name="costProduct" formControlName="costProduct" placeholder="{{
+                            'products.FORM.LABELS.COST' | transloco
+                          }}" autocomplete="off" class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label for="productPrice" class="input-lable required">{{
+                            'products.FORM.LABELS.PRICE' | transloco
+                            }}</label>
+                        <input type="number" name="productPrice" formControlName="productPrice" placeholder="{{
+                            'products.FORM.LABELS.PRICE' | transloco
+                          }}" autocomplete="off" class="custom-input">
+                        <div *ngIf="(infoForm.controls['productPrice'].touched && infoForm.controls['productPrice'].invalid)"
+                            class="mt-2 invalid-feedback">
+                            <div *ngIf="infoForm.controls['productPrice'].errors?.['required']"
+                                class="text-sm font-normal text-dangerDark">
+                                {{'products.common_fields.required_messages'|transloco}}</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label for="login-email" class="input-lable">Wholesaler Price</label>
+                        <input type="text" name="email" placeholder="Enter Wholesaler Price" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                </div> -->
+                <!-- <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label for="login-email" class="input-lable">Daily Sale Objective</label>
+                        <input type="text" name="email" placeholder="Enter Cost" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label for="login-email" class="input-lable">Quantity</label>
+                        <input type="text" name="email" placeholder="Enter Price" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label for="login-email" class="input-lable">Sku</label>
+                        <input type="text" name="email" placeholder="Enter Wholesaler Price" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                </div> -->
+                <!-- <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label for="login-email" class="input-lable">Minimum Purchase</label>
+                        <input type="text" name="email" placeholder="Enter Cost" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label for="login-email" class="input-lable">Point</label>
+                        <input type="text" name="email" placeholder="Enter Price" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label for="login-email" class="input-lable">External link</label>
+                        <input type="text" name="email" placeholder="Enter Wholesaler Price" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                </div> -->
+                <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label for="priceAfterDiscount" class="input-lable">{{
+                            'products.PriceAfterDiscount' | transloco
+                            }}</label>
+                        <input type="number" name="priceAfterDiscount" formControlName="priceAfterDiscount" placeholder="{{
+                            'products.PriceAfterDiscount' | transloco
+                          }}" autocomplete="off" class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label for="discountStartDate" class="input-lable">{{
+                            'products.DiscountStartDate' | transloco
+                            }}</label>
+                        <input type="date" name="discountStartDate" formControlName="discountStartDate" placeholder="{{
+                            'products.DiscountStartDate' | transloco
+                          }}" autocomplete="off" class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label for="discountEndDate" class="input-lable">{{
+                            'products.DiscountEndDate' | transloco
+                            }}</label>
+                        <input type="date" name="discountEndDate" formControlName="discountEndDate" placeholder="{{
+                            'products.DiscountEndDate' | transloco
+                          }}" autocomplete="off" class="custom-input">
+                    </div>
+
+                    <!-- <div class="flex-1 w-full form-group">
+                        <label class="input-lable">discount type</label>
+                        <div class="">
+                            <ng-select class="relative selectBox" placeholder="Please Select One Option">
+                                <ng-option>1</ng-option>
+                                <ng-option>2</ng-option>
+                            </ng-select>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label for="login-email" class="input-lable">date rang discount</label>
+                        <input type="date" name="email" placeholder="Enter Wholesaler Price" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                    <div class="flex-1 w-full form-group">
+                        <label for="login-email" class="input-lable">date rang discount</label>
+                        <input type="date" name="email" placeholder="Enter Wholesaler Price" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                </div> -->
+                <!-- <div class="flex_c gap-7">
+                    <div class="flex-1 w-full form-group">
+                        <label for="login-email" class="input-lable">Alert Quantity</label>
+                        <input type="text" name="email" placeholder="Enter Cost" autocomplete="off"
+                            class="custom-input">
+                    </div>
+                    <div class="flex-1"></div>
+                    <div class="flex-1"></div>
+                </div> -->
+            </div>
+            <div class="mt-10 text-end">
+                <!-- <button class="custom-button group" data-hs-stepper-back-btn>
+                    <span class="text-sm">Discard</span>
+                </button> -->
+                <button class="w-40 custom-button filled-button" [disabled]="!infoForm.valid" (click)="onNext()">
+                <!-- <button class="w-40 custom-button filled-button" (click)="onNext()"> -->
+                    <span class="text-sm">{{ 'products.Next' | transloco}}</span>
+                </button>
+            </div>
+
+        </form>
+    </div>
+</form>

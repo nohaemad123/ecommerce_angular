@@ -1,0 +1,189 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main - add product -->
+    <main>
+        <!-- Title -->
+        <h2 class="text-lg font-medium leading-none tracking-normal">{{ (mode === 'ADD' ? 'products.AddProduct' : 'products.EditProduct' ) | transloco}}</h2>
+        <!-- start breadcrumb -->
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="flex">
+                <li><a href="#" class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">{{'home' | transloco}}</a>
+                </li>
+                <li><a href="#"
+                        class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">{{'products' | transloco}}</a>
+                </li>
+                <li class="text-primary" aria-current="page">{{ (mode === 'ADD' ? 'products.AddProduct' : 'products.EditProduct' ) | transloco}}</li>
+            </ol>
+        </nav>
+
+        <!-- Stepper -->
+        <div class="mt-8 bg-white stepper" id="stepper" data-hs-stepper>
+            <!-- Stepper Nav -->
+            <ul class="stepper__nav">
+                <li class="items-start stepper__nav_item group" data-hs-stepper-nav-item='{"index": 1}' [class.active]="currentStepIndex === 1">
+                    <div class="z-20 group flex_c_c">
+                        <div class="stepper">
+                            <span class="number" *ngIf="currentStepIndex == 1"></span>
+                            <span *ngIf="currentStepIndex > 1" class="doneIcon hs-stepper-success:flex_c_c leading-[2.4]"></span>
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                    <span class="ltr:-ml-16 rtl:-mr-8 title">
+                        {{
+                            'products.FORM.LABELS.Product_Information' | transloco
+                          }}
+                    </span>
+                </li>
+
+                <li class="items-start stepper__nav_item group" data-hs-stepper-nav-item='{"index": 2}' [class.active]="currentStepIndex === 2">
+                    <div class="z-20 group flex_c_c">
+                        <div class="stepper">
+                            <span class="number" *ngIf="currentStepIndex == 2"></span>
+                            <span *ngIf="currentStepIndex > 2" class="doneIcon hs-stepper-success:flex_c_c leading-[2.4]"></span>
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                    <span class="ltr:-ml-2 rtl:-mr-5 title">
+                        {{
+                            'products.FORM.LABELS.Product_Image' | transloco
+                          }}
+                    </span>
+                </li>
+                <!-- <li class="items-start stepper__nav_item group" data-hs-stepper-nav-item='{"index": 3}' [class.active]="currentStepIndex === 3">
+                    <div class="z-20 group flex_c_c">
+                        <div class="stepper">
+                            <span class="number" *ngIf="currentStepIndex == 3"></span>
+                            <span *ngIf="currentStepIndex > 3" class="doneIcon hs-stepper-success:flex_c_c leading-[2.4]"></span>
+                        </div>
+                        <div class="line"></div>
+
+                    </div>
+                    <span class="-ms-2 title">
+                        Option
+                    </span>
+                </li> -->
+                <!-- <li class="items-start stepper__nav_item group" data-hs-stepper-nav-item='{"index": 4}' [class.active]="currentStepIndex === 4">
+                    <div class="z-20 group flex_c_c">
+                        <div class="stepper">
+                            <span class="number" *ngIf="currentStepIndex == 4"></span>
+                            <span *ngIf="currentStepIndex > 4" class="doneIcon hs-stepper-success:flex_c_c leading-[2.4]"></span>
+                        </div>
+                        <div class="line"></div>
+
+                    </div>
+                    <span class="-ms-5 title">
+                        Marketing
+                    </span>
+                </li> -->
+                <li class="items-start stepper__nav_item group min-w-24" data-hs-stepper-nav-item='{"index": 3}' [class.active]="currentStepIndex === 3">
+                    <div class="z-20 group flex_c_c">
+                        <div class="stepper">
+                            <span class="number" *ngIf="currentStepIndex == 3"></span>
+                            <span *ngIf="currentStepIndex > 3" class="doneIcon hs-stepper-success:flex_c_c leading-[2.4]"></span>
+                        </div>
+                        <!-- <div class="line"></div> -->
+                    </div>
+                    <span class="rtl:-mr-16 title">
+                        {{
+                            'products.FORM.LABELS.Product_Seo' | transloco
+                          }}
+                    </span>
+                </li>
+                <!-- <li class="items-start stepper__nav_item group" data-hs-stepper-nav-item='{"index": 6}' [class.active]="currentStepIndex === 6">
+                    <div class="z-20 group flex_c_c">
+                        <div class="stepper">
+                            <span class="number" *ngIf="currentStepIndex == 6"></span>
+                            <span *ngIf="currentStepIndex > 6" class="doneIcon hs-stepper-success:flex_c_c leading-[2.4]"></span>
+                        </div>
+                        <div class="hidden line"></div>
+
+                    </div>
+                    <span class="title">
+                        FAQs
+                    </span>
+                </li> -->
+                <!-- End Item -->
+            </ul>
+            <!-- End Stepper Nav -->
+
+            <!-- Stepper Content -->
+            <div class="mt-5 sm:mt-16">
+                <!-- 1-Contnet -->
+                <div data-hs-stepper-content-item='{"index": 1}' *ngIf="currentStepIndex === 1">
+                    <app-product-info-form 
+                    [mode]="mode"
+                    [productData]="productData"
+                    (nextEmitter)="onStepNext($event)"
+                    ></app-product-info-form>
+                </div>
+                <!-- End 1-Contnet -->
+
+                <!-- 2-Contnet -->
+                <div data-hs-stepper-content-item='{"index": 2}' *ngIf="currentStepIndex === 2">
+                    <app-product-images-form
+                    [mode]="mode"
+                    [productData]="productData"
+                    (nextEmitter)="onStepNext($event)"
+                    (previousEmitter)="onStepPrevious($event)"
+                    ></app-product-images-form>
+                </div>
+                <!-- End 2-Contnet -->
+
+                <!-- 3-Contnet -->
+                <!-- <div data-hs-stepper-content-item='{"index": 3}' *ngIf="currentStepIndex === 3">
+                   <app-product-variants-form 
+                   [mode]="mode"
+                   [productData]="productData"
+                   (nextEmitter)="onStepNext($event)"
+                   (previousEmitter)="onStepPrevious($event)"
+                   ></app-product-variants-form>
+                </div> -->
+                <!-- End 3-Contnet -->
+
+                <!-- 4-Contnet -->
+                <!-- <div data-hs-stepper-content-item='{"index": 4}' *ngIf="currentStepIndex === 4">
+                    <app-product-marketing-form
+                    [mode]="mode"
+                    [productData]="productData"
+                    (nextEmitter)="onStepNext($event)"
+                    (previousEmitter)="onStepPrevious($event)">
+                    </app-product-marketing-form>
+                </div> -->
+                <!-- End 4-Contnet -->
+
+                <!-- 5-Contnet -->
+                <div data-hs-stepper-content-item='{"index": 3}' *ngIf="currentStepIndex === 3">
+                    <app-product-seo-form
+                    [mode]="mode"
+                    [productData]="productData"
+                    (finishEmitter)="onFinish($event)"
+                    (previousEmitter)="onStepPrevious($event)">
+                    </app-product-seo-form>
+                </div>
+                <!-- End 5-Contnet -->
+
+                <!-- 6-Contnet -->
+                <!-- <div data-hs-stepper-content-item='{"index": 6}' *ngIf="currentStepIndex === 6">
+                   <app-product-faqs-form [mode]="mode"
+                   [productData]="productData"
+                   (nextEmitter)="onStepNext($event)"
+                   (previousEmitter)="onStepPrevious($event)"></app-product-faqs-form>
+                </div> -->
+                <!-- End 6-Contnet -->
+
+                <!-- actions -->
+                <!-- <div class="mt-10 text-end"> -->
+                    <!-- <button class="custom-button group" data-hs-stepper-back-btn>
+                        <span class="text-sm">Discard</span>
+                    </button> -->
+                    <!-- <button class="w-40 custom-button filled-button" data-hs-stepper-next-btn>
+                        <span class="text-sm">Next</span>
+                    </button> -->
+                <!-- </div> -->
+                <!-- End Button Group -->
+            </div>
+            <!-- End Stepper Content -->
+        </div>
+        <!-- End Stepper -->
+    </main>
+</div>

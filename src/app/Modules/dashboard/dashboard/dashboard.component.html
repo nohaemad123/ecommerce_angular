@@ -1,0 +1,11 @@
+<!-- <p>dashboard works!</p> -->
+<!-- <button (click)="switchLanguage()" class="text-slate-400 text-xl">Switch Language</button> -->
+<h1 class="font-bold ltr:text-3xl rtl:text-2xl mb-5">
+    {{ "dashboard" | transloco }}
+</h1>
+
+<div>Some tags before</div>
+
+<upload-image [folderName]="FOLDERNAME" (onUpload)="onUpload($event)"></upload-image>
+
+<div>Some tags after</div>

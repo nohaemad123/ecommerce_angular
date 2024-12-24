@@ -1,0 +1,2 @@
+This module is responsible for data retrieval and management.
+It’s what we’ll use to get the data our app consumes. Below is its structure:

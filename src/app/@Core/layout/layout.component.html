@@ -1,0 +1,21 @@
+<div class="flex  h-screen w-full overflow-hidden ">
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+
+  <div class="flex grow flex-col content-start overflow-hidden bg-primary-300">
+    <!-- Header -->
+    <app-navbar></app-navbar>
+
+    <!-- main content -->
+
+    <div id="main-content"
+      class="bg-white flex flex-col grow justify-between overflow-auto p-5 ltr:rounded-tl-2xl rtl:rounded-tr-2xl scrollbar-thin scrollbar-thumb-rounded
+       scrollbar-thumb-white scrollbar-track-gray-100 scrollbar-track-rounded">
+      <div>
+        <router-outlet *ngIf="true"></router-outlet>
+      </div>
+      <app-footer></app-footer>
+
+    </div>
+  </div>
+</div>

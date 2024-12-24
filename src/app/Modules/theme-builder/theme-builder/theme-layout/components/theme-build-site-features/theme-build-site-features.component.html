@@ -1,0 +1,114 @@
+
+<div class="p-3 border-2 border-dashed rounded-md">
+    Site Features
+</div>
+
+<div class="h-screen max-h-[80vh] overflow-y-scroll">
+
+<form [formGroup]="siteFeatureForm" class="" (ngSubmit)="onSubmitSection()">
+
+    <div formArrayName="features"
+
+    *ngFor="let img of features.controls; let i = index">
+        <ng-container [formGroupName]="i">
+            <div class="mt-3">
+                <div class="form-group">
+                    <div class="flex justify-between">
+                        <label for="login-email"
+                        class="block text-base text-gray-900 mb-2 font-normal">{{"themeBuilder.nav_settings.form.banner_image"|transloco}}</label>
+                        <button type="button" *ngIf="features.controls.length > 1" (click)="removeFeature(i)" class="font-semibold inline-flex items-center text-red-600 text-sm">
+                            Remove
+                        </button>
+                    </div>
+                    <div class="border-b border-gray-200 dark:border-neutral-700">
+                        <nav class="flex space-x-1" aria-label="Tabs" role="tablist">
+                          <button type="button" class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500 active"
+                           id="tabs-basic-english-{{i}}" attr.data-hs-tab="#tabs-english-{{i}}" attr.aria-controls="tabs-english-{{i}}" role="tab">
+                           ENGLISH
+                          </button>
+                          <button type="button" class="hs-tab-active:font-semibold hs-tab-active:border-blue-600 hs-tab-active:text-blue-600 py-4 px-1 inline-flex items-center gap-x-2 border-b-2 border-transparent text-sm whitespace-nowrap text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:hover:text-blue-500"
+                           id="tabs-basic-arabic-{{i}}" attr.data-hs-tab="#tabs-arabic-{{i}}" attr.aria-controls="tabs-arabic-{{i}}" role="tab">
+                            ARABIC
+                          </button>
+                        </nav>
+                      </div>
+
+                      <div class="mt-3">
+                        <div id="tabs-english-{{i}}" role="tabpanel" attr.aria-labelledby="tabs-basic-english-{{i}}">
+
+                          <div class="form-group">
+                            <label for="titleEn"
+                                class="block text-base text-gray-900 mb-2 font-normal">{{"themeBuilder.nav_settings.form.page_edit_title_en"|transloco}}
+                            <span class="text-red-600">*</span>
+                            </label>
+                            <input type="text"
+                                name="titleEn"
+                                placeholder="{{'themeBuilder.nav_settings.form.page_edit_title_en'|transloco}}"
+                                autocomplete="off" formControlName="titleEn" class="custom-input">
+
+                        </div>
+                        <div class="form-group">
+                            <label  for="descEn"
+                                class="block text-base text-gray-900 mb-2 font-normal">{{"themeBuilder.nav_settings.form.page_edit_desc_en"|transloco}}</label>
+                            <input type="text"
+                                name="descEn"
+                                placeholder="{{'themeBuilder.nav_settings.form.desc'|transloco}}"
+                                autocomplete="off" formControlName="descEn" class="custom-input">
+
+                        </div>
+                        </div>
+                        <div id="tabs-arabic-{{i}}" class="hidden" role="tabpanel" attr.aria-labelledby="tabs-basic-arabic-{{i}}">
+                            <div class="form-group">
+                                <label for="title"
+                                    class="block text-base text-gray-900 mb-2 font-normal">{{"themeBuilder.nav_settings.form.page_edit_title_ar"|transloco}}
+                                    <span class="text-red-600">*</span></label>
+                                <input type="text"
+                                    name="title"
+                                    placeholder="{{'themeBuilder.nav_settings.form.page_edit_title_en'|transloco}}"
+                                    autocomplete="off" formControlName="title" class="custom-input">
+
+                            </div>
+                            <div class="form-group">
+                                <label
+                                    class="block text-base text-gray-900 mb-2 font-normal">{{"themeBuilder.nav_settings.form.page_edit_desc_ar"|transloco}}</label>
+                                <input type="text"
+                                    name="desc"
+                                    placeholder="{{'themeBuilder.nav_settings.form.desc'|transloco}}"
+                                    autocomplete="off" formControlName="desc" class="custom-input">
+
+                            </div>
+
+                        </div>
+
+                      </div>
+
+                      <!-- <upload-image [folderName]="FOLDERNAME" [imgURL]="img.value.imagePath ? img.value.imagePath: ''" (onUpload)="onUploadIMG($event,i)"></upload-image> -->
+              </div>
+
+
+
+            </div>
+
+
+        </ng-container>
+      </div>
+
+      <button type="button" (click)="addFeature()" class="font-semibold m-3 mx-2 inline-flex items-center text-blue-600 text-sm">
+        Add new image
+    </button>
+
+<div class="flex w-full my-3">
+  <button type="submit" class="custom-button w-full filled-button" [disabled]="siteFeatureForm.invalid">
+      <!-- <span *ngIf="submitLoading" class="spinner-border spinner-border-sm mr-1 ml-1">
+          loading...
+      </span>
+      <span *ngIf="!submitLoading">
+          Save & Back
+      </span> -->
+      Save
+  </button>
+</div>
+
+
+</form>
+</div>

@@ -1,0 +1,88 @@
+{
+    "home": "الصفحة الرئيسية",
+    "list": {
+        "title": "كل الاصناف",
+        "breadcrumb": {
+            "categories": "الاصناف",
+            "list": "List"
+        },
+        "add_category": "اضافة صنف",
+        "search": "البحث",
+        "no_categories": {
+            "title": "الاصناف فارغة",
+            "description": "برجاء اضافة صنف",
+            "btnText": "اضافة صنف"
+        },
+        "table": {
+            "thead": {
+                "code": "الكود",
+                "categories": "الصنف",
+                "parent_category":"الصنف الرئيسي",
+                "status": "الحالة",
+                "actions": "الاجراءات"
+            }
+        },
+        "delete_category": {
+            "title": "تم حذف الصنف",
+            "subtitle": "تم حذف الصنف بنجاح"
+        }
+    },
+    "add_edit": {
+        "breadcrumb": {
+            "add_category": "اضافة صنف",
+            "categories": "الاصناف"
+        },
+        "save": "حفظ",
+        "english": "عربي",
+        "arabic": "انجليزي",
+        "form": {
+            "labels": {
+                "name_en": "الاسم (انجليزي)",
+                "name_ar": "الاسم (عربي)",
+                "description_en": "الوصف (انجليزي)",
+                "description_ar": "الوصف (عربي)",
+                "add_parent": "اضافة صنف رئيسي",
+                "parent_category": "الصنف الرئيسي",
+                "status": "الحالة",
+                "icon":"الصوره",
+                "meta_title_en": "عنوان الصفحة (انجليزي)",
+                "meta_title_ar": "عنوان الصفحة (عربي)",
+                "meta_description_en": "وصف الصفحة (انجليزي)",
+                "meta_description_ar": "وصف الصفحة (عربي)"
+            },
+
+            "placeholders": {
+                "name_en": "ادخل الاسم (انجليزي)",
+                "name_ar": "ادخل الاسم (عربي)",
+                "description_en": "ادخل الوصف (انجليزي)",
+                "description_ar": "ادخل الوصف (عربي)",
+                "meta_title_en": "ادخل عنوان الصفحة (انجليزي)",
+                "meta_title_ar": "ادخل عنوان الصفحة (عربي)",
+                "meta_description_en": "ادخل وصف الصفحة (انجليزي)",
+                "meta_description_ar": "ادخل وصف الصفحة (عربي)"
+            },
+            "messages": {
+                "name_en": "برجاء ادخال الاسم (انجليزي)",
+                "name_ar": "برجاء ادخال الاسم (عربي)",
+                "description_en": "برجاء ادخال الوصف (انجليزي)",
+                "description_ar": "برجاء ادخال الوصف (عربي)"
+            },
+            "add_category_success": {
+                "title": "تمت اضافة الصنف الرئيسي",
+                "subtitle": "تمت اضافة الصنف الرئيسي بنجاح"
+            },
+            "add_sub_category_success": {
+                "title": "تمت اضافة الصنف الفرعي",
+                "subtitle": "تمت اضافة الصنف الفرعي بنجاح"
+            },
+            "edit_category_success": {
+                "title": "تمت تعديل الصنف الرئيسي",
+                "subtitle": "تمت تعديل الصنف الرئيسي بنجاح"
+            },
+            "edit_sub_category_success": {
+                "title": "تمت تعديل الصنف الفرعي",
+                "subtitle": "تمت تعديل الصنف الفرعي بنجاح"
+            }
+        }
+    }
+}

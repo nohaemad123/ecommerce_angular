@@ -1,0 +1,171 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main - add brand -->
+    <main class="flex flex-col flex-auto">
+
+        <!-- Title -->
+        <h2 class="text-lg font-medium leading-none tracking-normal">{{'brands.new_brand.title' | transloco}}</h2>
+        <!-- start breadcrumb -->
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="flex">
+                <li><a href="#" class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">Home</a>
+                </li>
+                <li><a href="#"
+                        class="after:content-['>'] after:mx-1 text-gray-600 hover:text-primary text-xs">Brands</a>
+                </li>
+                <li class="text-primary" aria-current="page">List</li>
+            </ol>
+        </nav>
+        <!-- end breadcrumb -->
+
+
+
+
+        <form class="space-y-6" [formGroup]="newBrandForm" (ngSubmit)="onSubmitNewBrand()">
+            <div class="flex gap-8 py-7">
+                <div class="w-3/5 px-5 rounded-lg bg-neutral-50 py-7 h-100">
+
+                    <ul class="flex gap-8 mb-6 list-none">
+                        <li class="flex items-center gap-2 text-center">
+                            <img src="../../../../assets/images/en.png" class="w-5 h-5 rounded-full" alt="">
+                            <a class="block text-sm leading-normal uppercase rounded cursor-pointer"
+                                (click)="toggleTabs(1)"
+                                [ngClass]="{'text-gray-400': openTab !== 1, 'text-sky-600 underline': openTab === 1}">
+                                English
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-2 text-center">
+                            <img src="../../../../assets/images/SA.png" class="w-5 h-5 rounded-full" alt="">
+                            <a class="block text-sm leading-normal uppercase rounded cursor-pointer"
+                                (click)="toggleTabs(2)"
+                                [ngClass]="{'text-gray-400': openTab !== 2, 'text-sky-600 underline': openTab === 2}">
+                                Arabic
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
+                        <div class="form-group">
+                            <label for="login-email"
+                                class="block mb-2 text-base font-normal text-gray-900">{{"brands.new_brand.form.labels.title_en"|transloco}}</label>
+                            <input type="text"
+                                [ngClass]="{ 'border-red-500': (newBrandForm.controls['nameEn'].touched)}" name="email"
+                                placeholder="{{'brands.new_brand.form.placeholders.title_en'|transloco}}"
+                                autocomplete="off" formControlName="nameEn" class="custom-input">
+                            <div *ngIf="(newBrandForm.controls['nameEn'].touched && newBrandForm.controls['nameEn'].invalid)"
+                                class="mt-2 invalid-feedback">
+                                <div *ngIf="newBrandForm.controls['nameEn'].errors?.['required']"
+                                    class="text-sm font-normal text-dangerDark">
+                                    {{'brands.common_fields.required_messages'|transloco}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
+                        <div class="form-group">
+                            <label
+                                class="block mb-2 text-base font-normal text-gray-900">{{"brands.new_brand.form.labels.title_ar"|transloco}}</label>
+                            <input type="text" [ngClass]="{ 'border-red-500': (newBrandForm.controls['name'].touched)}"
+                                name="email" placeholder="{{'brands.new_brand.form.placeholders.title_en'|transloco}}"
+                                autocomplete="off" formControlName="name" class="custom-input">
+                            <div *ngIf="(newBrandForm.controls['name'].touched)" class="mt-2 invalid-feedback">
+                                <div *ngIf="newBrandForm.controls['name'].errors?.['required']"
+                                    class="text-sm font-normal text-dangerDark">
+                                    {{'brands.common_fields.required_messages'|transloco}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="w-2/5">
+
+
+
+                        <!-- <div class="form-group after:pe-6">
+                            <label
+                                class="block mb-2 text-base font-normal text-gray-900">{{"brands.new_brand.form.labels.img"|transloco}}</label>
+                            <input type="file"
+                                [ngClass]="{ 'border-red-500': (newBrandForm.controls['imgBrand'].touched)}"
+                                autocomplete="off" formControlName="imgBrand" class="custom-input">
+                            <div *ngIf="(newBrandForm.controls['imgBrand'].touched && newBrandForm.controls['imgBrand'].invalid)"
+                                class="mt-2 invalid-feedback">
+                                <div *ngIf="newBrandForm.controls['imgBrand'].errors?.['required']"
+                                    class="text-sm font-normal text-dangerDark">
+                                    {{'brands.common_fields.required_messages'|transloco}}</div>
+                            </div>
+                        </div> -->
+                    <div class="px-2 py-3 mb-6 rounded-lg  bg-neutral-50">
+                        <div class="form-group">
+                            <!-- <label
+                            class="block mb-3 text-sm text-gray-700">{{"brands.new_brand.form.labels.action"|transloco}}</label> -->
+
+                            <label class="flex justify-between cursor-pointer">
+
+
+                                <input type="checkbox" [ngClass]="statusChecked ? 'checked' : ''"
+                                    [checked]="statusChecked" (change)="toggleCheck($event)" formControlName="status"
+                                    value="" class="sr-only  peer">
+                                <span
+                                    class="text-sm font-normal text-gray-400 ms-3 dark:text-gray-300">{{"brands.new_brand.form.labels.status"|transloco}}</span>
+
+                                <div class="checkbox">
+                                </div>
+
+                            </label>
+
+                            <div *ngIf="(newBrandForm.controls['status'].touched && newBrandForm.controls['status'].invalid)"
+                                class="mt-2 invalid-feedback">
+                                <div *ngIf="newBrandForm.controls['status'].errors?.['required']"
+                                    class="text-sm font-normal text-dangerDark">
+                                    {{'brands.common_fields.required_messages'|transloco}}</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="px-2 py-3 rounded-lg  bg-neutral-50">
+                        <div class="form-group">
+                            <div class="flex-1 form-group">
+                                <span class="text-sm font-normal ms-3">icon</span>
+
+                                <upload-image [folderName]="FOLDERNAME"
+                                    [imgURL]="updatedIMG !== undefined ? updatedIMG : ''"
+                                    (onUpload)="onUploadIMG($event)"></upload-image>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- actions -->
+            <div class="flex flex-row-reverse">
+                <button type="submit" class="w-40 custom-button filled-button" [disabled]="newBrandForm.invalid">
+                    <span *ngIf="submitLoading" class="ml-1 mr-1 spinner-border spinner-border-sm">
+                        loading...</span>
+                    <span *ngIf="!submitLoading">
+                        {{"brands.common_fields.submit_button"|transloco}}
+                    </span>
+                </button>
+
+            </div>
+        </form>
+
+
+    </main>
+
+</div>

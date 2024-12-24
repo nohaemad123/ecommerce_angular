@@ -1,0 +1,84 @@
+<div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+
+    <!-- Main - Brands feed -->
+    <main class="flex flex-col flex-auto">
+
+        <!-- Title -->
+        <h2 class="text-lg font-medium leading-none tracking-normal">{{'brands.title' | transloco}}</h2>
+
+        <!-- start breadcrumb -->
+        <nav aria-label="breadcrumb" class="mt-2">
+            <ol class="flex">
+                <li><a href="#"
+                    class="after:content-['>'] after:mx-1 text-[#949496] hover:text-primary text-xs">
+                    {{'home' | transloco}}
+                </a>
+                </li>
+                <li><a href="#"
+                       class="after:content-['>'] after:mx-1 text-[#949496] hover:text-primary text-xs">
+                        {{'brands' | transloco}}</a>
+                </li>
+                <li class="text-primary" aria-current="page">
+                    <a href="#" class="text-gray-800 hover:text-primary text-xs">
+                        {{'brands.title' | transloco}}
+                    </a>
+                </li>
+            </ol>
+        </nav>
+        <!-- end breadcrumb -->
+
+        <div class="flex items-center justify-between mt-4">
+            <div class="relative px-0.5">
+                <input type="text" [formControl]="searchControl" class="w-64 ps-8 custom-input" placeholder="Search">
+                <!-- icon -->
+                <div class="absolute cursor-pointer top-3 left-3">
+                    <span class="text-gray-400 icon icon-search"></span>
+                </div>
+            </div>
+            <div>
+                <button [routerLink]="['/Products/Brand/New']" routerLinkActive="router-link-active"  type="button" class="custom-button filled-button">
+                    <span class="text-xs icon icon-plus"></span>
+                    <span class="text-sm"> Add Brand </span>
+                </button>
+            </div>
+        </div>
+
+
+        <ng-container *ngIf="(brands$ | async) as brands; else loading">
+            <ng-container *ngIf="brands.items.length; else noBrands">
+                <div class="mt-8">
+                          <app-table
+                            [filter]="filterCriteria"
+                            [columns]="columns"
+                            [rows]="brands"
+                            (actionEmitter)="actionClicked($event)"
+                            (setLimitEvent)="setLimit($event)"
+                            (setPageEvent)="setPage($event)"
+                          ></app-table>
+                </div>
+            </ng-container>
+        </ng-container>
+
+
+        <!-- Loading template -->
+
+        <ng-template #loading>
+            <div class="mt-8" *ngIf="!brandsError">
+                Loading...
+            </div>
+
+            <ng-container *ngIf="brandsError">
+                <app-error-loading [error_msg]="error_msg"></app-error-loading>
+            </ng-container>
+        </ng-template>
+
+        <!-- No Brands template -->
+        <ng-template #noBrands>
+            <div class="mt-8">
+                <app-empty-state [emptyStateData]="emptyStateData"></app-empty-state>
+            </div>
+        </ng-template>
+
+    </main>
+
+</div>

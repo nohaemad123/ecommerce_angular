@@ -1,0 +1,56 @@
+<div class="space-y-4">
+    <div class="px-12 py-8 rounded-md bg-neutral-50">
+        <h2 class="mb-3 text-lg text-neutral-600">products.FAQs Product</h2>
+        <div>
+            <ul class="flex gap-8 mb-4 list-none">
+                <li class="flex items-center gap-2 text-center">
+                    <img src="../../../../assets/images/en.png" class="w-5 h-5 rounded-full" alt="">
+                    <a
+                        class="block text-sm leading-normal underline uppercase rounded cursor-pointer text-sky-600">
+                        English
+                    </a>
+                </li>
+                <li class="flex items-center gap-2 text-center">
+                    <img src="../../../../assets/images/SA.png" class="w-5 h-5 rounded-full" alt="">
+                    <a class="block text-sm leading-normal uppercase rounded cursor-pointer">
+                        Arabic
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="w-6/12 form-group">
+            <label for="login-email" class="input-lable">You can add some questions and
+                answers</label>
+            <div class="relative">
+                <input type="text" name="email" placeholder="Click here to add a question"
+                    autocomplete="off" class="bg-white custom-input pe-18">
+                <div class="absolute top-1.5 right-4">
+                    <button
+                        class="border-0 custom-button hover:bg-transparent hover:text-primary-200"
+                        data-hs-stepper-next-btn>
+                        <span class="text-sm font-bold">+ Add</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="w-full my-4 form-group">
+            <label for="login-email" class="input-lable">Question (English)</label>
+            <input type="text" name="email" placeholder="Question (English)" autocomplete="off"
+                class="custom-input">
+        </div>
+        <div class="w-full mt-4 form-group">
+            <label for="login-email" class="input-lable">Answer (English)</label>
+            <textarea type="text" name="email" placeholder="Enter your Name" autocomplete="off"
+                class="h-auto custom-input" rows="8">
+            </textarea>
+        </div>
+    </div>
+    <div class="flex justify-between mt-10 text-end">
+        <button class="w-40 custom-button group" (click)="onPervious()">
+            <span class="text-sm">Previous</span>
+        </button>
+        <button class="w-40 custom-button filled-button"  (click)="onNext()">
+            <span class="text-sm">Confirm</span>
+        </button>
+    </div>
+</div>
